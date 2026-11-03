@@ -1,0 +1,2184 @@
+<title>小手机</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap">
+<style>
+/* Layout: one phone centred on a sage desk; a short guide sits beside it on wide screens. Each app inside the phone keeps its own palette. */
+:root{
+  --ui:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --hand:"Ma Shan Zheng","Kaiti SC","STKaiti","KaiTi",serif;
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+
+  --page:#EFEBE6; --page-ink:#3B3632; --page-sub:#8C847C; --page-line:#DCD5CD;
+  --bezel:#2A2725; --hw:#000000; --on-color:#FFFFFF; --on-wall:#FFFFFF; --on-pri:#FFFFFF;
+  --ink-dark:#3B3632; --ink-light:#F6F1EA; --home-ink:var(--ink-dark);
+  --glass:rgba(255,255,255,.55); --glass-line:rgba(255,255,255,.85); --tile:#FFFFFF; --tile-ink:#3B3632;
+
+  --wx-bg:#F6F3EF; --wx-bar:#FBF9F7; --wx-card:#FFFFFF; --wx-pin:#F3EEE8; --wx-text:#2E2A27; --wx-sub:#9A928A;
+  --wx-line:#ECE6DF; --wx-green:#3B3632; --wx-me:#E7DCCE; --wx-me-text:#2E2A27; --wx-other:#FFFFFF;
+  --wx-link:#8A6F5A; --wx-input:#FFFFFF; --wx-quote:#F1ECE6; --wx-red:#E07C69; --wx-press:rgba(59,54,50,.06);
+  --rp:#DF8270; --rp-deep:#C96B5A; --rp-done:#EFC6BA; --gold:#F6DDB0; --gold-ink:#7A5230; --tf:#E0A574; --tf-done:#F0D6BD;
+  --map:#EFEAE2; --map-line:#E0D8CC; --menu:#3B3632; --call:#2A2623; --call-sub:#B6ADA4;
+
+  --sheet:#FFFDFB; --sheet-gap:#F3EFEA; --sheet-line:#EEE8E1; --sheet-text:#2E2A27; --sheet-sub:#9A928A;
+  --field:#F4F0EB; --mask:rgba(40,34,30,.38); --danger:#CF5F4E; --toast:rgba(46,42,39,.88); --banner:rgba(255,253,250,.95);
+
+  --d-paper:#F6F1EA; --d-card:#FFFDF9; --d-line:#E8DFD3; --d-ink:#3B3632; --d-sub:#9A8F83; --d-seal:#C27A68; --d-chip:#F1EAE1;
+  --c-bg:#FBF9F6; --c-text:#2E2A27; --c-sub:#A0978E; --c-accent:#C4826F; --c-soft:#F3EEE8; --c-line:#ECE6DF;
+  --m-bg:#F8F4EE; --m-card:#FFFFFF; --m-accent:#A8876A; --m-text:#2E2A27; --m-sub:#A0968A; --m-line:#EEE7DD;
+  --s-bg:#F5F2EE; --s-card:#FFFFFF; --s-text:#2E2A27; --s-sub:#9A928A; --s-line:#ECE6DF; --s-accent:#8A6F5A;
+
+  --wall-cream:radial-gradient(70% 45% at 85% 8%,#FFFFFF 0%,transparent 70%),radial-gradient(80% 55% at 0% 100%,#E9DCCB 0%,transparent 70%),linear-gradient(175deg,#F8F3EC 0%,#F1E9DF 55%,#EADFD1 100%);
+  --wall-blush:radial-gradient(70% 45% at 80% 5%,#FFF6F2 0%,transparent 70%),radial-gradient(90% 60% at 10% 95%,#E8C8C0 0%,transparent 70%),linear-gradient(175deg,#F7ECE7 0%,#F0DDD6 60%,#E6CCC4 100%);
+  --wall-sage:radial-gradient(70% 45% at 80% 5%,#F7F8F2 0%,transparent 70%),radial-gradient(90% 60% at 0% 100%,#C9D2C0 0%,transparent 70%),linear-gradient(175deg,#EEF0E8 0%,#E1E6D9 60%,#D3DACA 100%);
+  --wall-mist:radial-gradient(70% 45% at 80% 5%,#F7F8FA 0%,transparent 70%),radial-gradient(90% 60% at 0% 100%,#C8CFD8 0%,transparent 70%),linear-gradient(175deg,#EEF0F3 0%,#E0E4EA 60%,#D2D8E0 100%);
+  --wall-night:radial-gradient(80% 50% at 75% 15%,#4A4038 0%,transparent 70%),linear-gradient(180deg,#2B2622 0%,#211D1A 60%,#181513 100%);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page:#171513; --page-ink:#E4DDD5; --page-sub:#8C847C; --page-line:#2E2A27;
+    --bezel:#0A0908; --on-pri:#1E1B19;
+    --wx-bg:#141211; --wx-bar:#1C1A18; --wx-card:#1E1C1A; --wx-pin:#262320; --wx-text:#ECE6DF; --wx-sub:#8A827A;
+    --wx-line:#2C2926; --wx-green:#E7DCCE; --wx-me:#4A423B; --wx-me-text:#F3ECE4; --wx-other:#2A2724;
+    --wx-link:#C9AE95; --wx-input:#2A2724; --wx-quote:#262320; --wx-press:rgba(255,255,255,.06);
+    --rp:#C46F5F; --rp-deep:#A85A4B; --rp-done:#6E4A42; --tf:#C08A5C; --tf-done:#6A5340;
+    --map:#2A2622; --map-line:#38332D; --menu:#4A443F;
+    --sheet:#211E1C; --sheet-gap:#161413; --sheet-line:#2F2B28; --sheet-text:#ECE6DF; --sheet-sub:#8A827A;
+    --field:#2C2926; --mask:rgba(0,0,0,.6); --danger:#E7826F; --banner:rgba(42,39,36,.95);
+    --d-paper:#1A1816; --d-card:#23201D; --d-line:#332E29; --d-ink:#E6DED4; --d-sub:#958B80; --d-seal:#DB8E7A; --d-chip:#2D2925;
+    --c-bg:#141211; --c-text:#F0EAE3; --c-sub:#8E857C; --c-accent:#DE9C88; --c-soft:#1E1B19; --c-line:#2C2926;
+    --m-bg:#161412; --m-card:#211E1B; --m-accent:#D1AE8C; --m-text:#EDE5DA; --m-sub:#8F8579; --m-line:#2E2A25;
+    --s-bg:#121110; --s-card:#1E1C1A; --s-text:#F0EAE3; --s-sub:#8E857C; --s-line:#2C2926; --s-accent:#D1AE8C;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+    --page:#171513; --page-ink:#E4DDD5; --page-sub:#8C847C; --page-line:#2E2A27;
+    --bezel:#0A0908; --on-pri:#1E1B19;
+    --wx-bg:#141211; --wx-bar:#1C1A18; --wx-card:#1E1C1A; --wx-pin:#262320; --wx-text:#ECE6DF; --wx-sub:#8A827A;
+    --wx-line:#2C2926; --wx-green:#E7DCCE; --wx-me:#4A423B; --wx-me-text:#F3ECE4; --wx-other:#2A2724;
+    --wx-link:#C9AE95; --wx-input:#2A2724; --wx-quote:#262320; --wx-press:rgba(255,255,255,.06);
+    --rp:#C46F5F; --rp-deep:#A85A4B; --rp-done:#6E4A42; --tf:#C08A5C; --tf-done:#6A5340;
+    --map:#2A2622; --map-line:#38332D; --menu:#4A443F;
+    --sheet:#211E1C; --sheet-gap:#161413; --sheet-line:#2F2B28; --sheet-text:#ECE6DF; --sheet-sub:#8A827A;
+    --field:#2C2926; --mask:rgba(0,0,0,.6); --danger:#E7826F; --banner:rgba(42,39,36,.95);
+    --d-paper:#1A1816; --d-card:#23201D; --d-line:#332E29; --d-ink:#E6DED4; --d-sub:#958B80; --d-seal:#DB8E7A; --d-chip:#2D2925;
+    --c-bg:#141211; --c-text:#F0EAE3; --c-sub:#8E857C; --c-accent:#DE9C88; --c-soft:#1E1B19; --c-line:#2C2926;
+    --m-bg:#161412; --m-card:#211E1B; --m-accent:#D1AE8C; --m-text:#EDE5DA; --m-sub:#8F8579; --m-line:#2E2A25;
+    --s-bg:#121110; --s-card:#1E1C1A; --s-text:#F0EAE3; --s-sub:#8E857C; --s-line:#2C2926; --s-accent:#D1AE8C;
+    color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{font-feature-settings:"lnum" 1;margin:0;background:var(--page);color:var(--page-ink);font:14px/1.5 var(--ui);overflow:hidden;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:2px solid var(--wx-link);outline-offset:2px}
+input:focus-visible,textarea:focus-visible{outline:none}
+input,textarea{font:inherit}
+
+/* ---------- stage ---------- */
+.stage{height:100%;display:flex;align-items:center;justify-content:center;gap:56px;padding-block:20px;box-sizing:border-box}
+.guide{width:260px;flex:none;display:flex;flex-direction:column;gap:14px}
+.guide h1{margin:0;font-family:var(--display),var(--serif);font-weight:400;font-size:40px;letter-spacing:.02em;color:var(--page-ink);text-wrap:balance}
+.guide p{margin:0;color:var(--page-sub);line-height:1.7}
+.guide ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--page-line);padding-top:14px}
+.guide li{display:grid;grid-template-columns:52px 1fr;gap:8px;line-height:1.6;color:var(--page-ink)}
+.guide li b{font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--page-sub);padding-top:2px}
+.phone{height:min(860px,100%);aspect-ratio:400/860;max-width:100%;background:var(--bezel);border-radius:56px;padding:11px;box-sizing:border-box;position:relative;flex:none;
+  box-shadow:0 0 0 1.5px #4A4541 inset,0 30px 60px -24px rgba(60,45,35,.4),0 12px 24px -12px rgba(60,45,35,.25)}
+.screen{position:relative;width:100%;height:100%;border-radius:46px;overflow:hidden;background:var(--hw);container-type:size;isolation:isolate;-webkit-user-select:none;user-select:none}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:98px;height:29px;border-radius:20px;background:var(--hw);z-index:60;pointer-events:none}
+@media (max-width:900px){.guide{display:none}}
+@media (max-width:520px){
+  .stage{padding-block:12px}
+  .phone{height:100%;width:100%;aspect-ratio:auto;padding:0;background:none;box-shadow:none;border-radius:30px}
+  .screen{border-radius:30px}
+}
+
+/* ---------- system chrome ---------- */
+.sb{position:absolute;top:0;left:0;right:0;height:50px;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0 36px;box-sizing:border-box;
+  font:600 15px/1 var(--ui);font-variant-numeric:tabular-nums;z-index:59;pointer-events:none;transition:color .3s;color:var(--on-wall)}
+.sb-r{display:flex;gap:6px;align-items:center}
+.home-bar{position:absolute;left:0;right:0;bottom:0;height:24px;z-index:58;display:flex;align-items:center;justify-content:center;border:0;background:none;padding:0}
+.home-bar span{width:128px;height:5px;border-radius:3px;background:currentColor;opacity:.75;transition:width .2s}
+.home-bar:hover span{width:150px}
+.layers{position:absolute;inset:0;pointer-events:none}
+.layers > .page{pointer-events:auto}
+.page{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;transition:transform .34s cubic-bezier(.2,.8,.2,1),opacity .34s,filter .34s;will-change:transform}
+.page.in-slide{transform:translateX(100%)}
+.page.in-app{transform:scale(.86);opacity:0}
+.page.behind{transform:translateX(-28%);filter:brightness(.92)}
+.page.in-up{transform:translateY(100%)}
+@media (prefers-reduced-motion:reduce){.page,.home,.sheet,.mask,.modal,.banner{transition:none!important}}
+
+.nav{flex:none;height:94px;padding-top:50px;box-sizing:border-box;display:grid;grid-template-columns:96px 1fr 96px;align-items:center}
+.nav-l{display:flex;align-items:center;padding-left:6px}
+.nav-r{display:flex;align-items:center;justify-content:flex-end;gap:2px;padding-right:8px}
+.nav-t{text-align:center;font-weight:600;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.nav-t small{display:block;font-size:11px;font-weight:400;opacity:.6;margin-top:1px}
+.ib{min-width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;gap:2px;border:0;background:none;border-radius:10px;padding:0 4px}
+.ib:active{background:var(--wx-press)}
+.ib.sm{min-width:26px;height:26px}
+.back span{font-size:15px;font-variant-numeric:tabular-nums}
+.txtbtn{border:0;background:none;font-size:16px;padding:6px 10px;border-radius:8px}
+
+/* ---------- home (ins style) ---------- */
+.home{position:absolute;inset:0;color:var(--home-ink);transition:transform .38s cubic-bezier(.2,.8,.2,1),filter .38s}
+.screen[data-wall=night]{--home-ink:var(--ink-light);--glass:rgba(255,255,255,.1);--glass-line:rgba(255,255,255,.16);--tile:rgba(255,255,255,.12);--tile-ink:#F6F1EA}
+.home.dim{transform:scale(.94);filter:brightness(.82)}
+.wall{position:absolute;inset:0;background:var(--wall-cream)}
+.wall::before{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;background-image:radial-gradient(rgba(120,100,80,.18) .6px,transparent .7px);background-size:3px 3px}
+.wall.night::after{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 68% 8%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 84% 30%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 26%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 12% 44%,#fff 50%,transparent 51%);opacity:.5}
+.home-grid{position:absolute;top:62px;left:22px;right:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px 12px}
+.w{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1);border-radius:22px;padding:14px 16px;box-sizing:border-box;box-shadow:0 0 0 .5px var(--glass-line) inset,0 8px 24px -14px rgba(80,60,45,.35);text-align:left;border:0;color:inherit}
+.w-clock{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding:4px 4px 0}
+.w-clock .t{font:400 72px/0.85 var(--display);letter-spacing:-.01em;font-variant-numeric:lining-nums tabular-nums}
+.w-clock .d{font:italic 400 15px/1 var(--display);margin-top:10px;letter-spacing:.02em;opacity:.8}
+.w-clock .d span{font:12px/1 var(--ui);font-style:normal;letter-spacing:.12em;margin-left:6px;opacity:.85}
+.w-clock .wt{text-align:right;font-size:11px;line-height:1.6;letter-spacing:.08em;opacity:.75;padding-bottom:2px}
+.w-clock .wt b{display:block;font:300 34px/1 var(--display);letter-spacing:0}
+.eng{font:italic 400 13px/1 var(--display);letter-spacing:.02em;opacity:.7}
+.polar{grid-column:span 2;position:relative;background:#FFFFFF;padding:9px 9px 0;border-radius:4px;box-shadow:0 10px 26px -12px rgba(80,60,45,.45),0 1px 2px rgba(80,60,45,.12);transform:rotate(-3deg);border:0;cursor:pointer;display:flex;flex-direction:column;align-self:center;max-width:100%}
+.polar .ph{aspect-ratio:1;overflow:hidden;line-height:0;border-radius:2px}
+.polar .ph svg{width:100%;height:100%;filter:saturate(.8) contrast(.95) sepia(.12)}
+.polar .cap{font:17px/1 var(--hand);color:#5A514A;text-align:center;padding:9px 0 11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.polar::before{content:"";position:absolute;top:-9px;left:50%;width:58px;height:18px;margin-left:-29px;background:rgba(232,214,196,.85);transform:rotate(4deg);box-shadow:0 1px 2px rgba(0,0,0,.06);z-index:1}
+.quad{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;align-content:center}
+.w-ev{grid-column:1/-1;display:flex;flex-direction:column;gap:8px;cursor:pointer;min-width:0}
+.w-ev .hd{display:flex;justify-content:space-between;align-items:baseline}
+.w-ev .hd small{font-size:11px;letter-spacing:.1em;opacity:.6}
+.w-ev .it{display:grid;grid-template-columns:7px 1fr auto;gap:10px;align-items:center;font-size:13px;line-height:1.35;min-width:0}
+.w-ev .it i{width:7px;height:7px;border-radius:50%}
+.w-ev .it span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-ev .it em{font-style:normal;opacity:.6;font-size:11px;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.w-dy{grid-column:1/-1;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.w-dy .seal{position:static;grid-row:span 2;width:44px;height:44px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font:19px/1 var(--hand);transform:rotate(-10deg);opacity:.75}
+.w-dy .tt{font:19px/1.2 var(--hand);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-dy .ex{font-size:12px;opacity:.65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;font-size:11px;position:relative;color:inherit;letter-spacing:.06em}
+.app:active .ai{transform:scale(.94)}
+.ai{width:min(58px,100%);aspect-ratio:1;border-radius:30%;display:grid;place-items:center;background:var(--tile);color:var(--tile-ink);box-shadow:0 6px 16px -10px rgba(80,60,45,.5),0 0 0 .5px rgba(120,100,80,.12) inset;position:relative;overflow:hidden;transition:transform .15s}
+.ai svg{width:48%;height:48%;stroke-width:1.35}
+.ai-cal{display:flex;flex-direction:column;justify-content:center;gap:1px}
+.ai-cal small{color:var(--c-accent);font-size:9px;font-weight:600;line-height:1.2;letter-spacing:.08em}
+.ai-cal b{font:400 27px/1 var(--display)}
+.app .bd{position:absolute;top:-5px;right:calc(50% - 34px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--wx-red);color:var(--on-color);font-size:11px;font-weight:600;display:grid;place-items:center;box-sizing:border-box;z-index:2;box-shadow:0 0 0 2px var(--tile)}
+.dock{position:absolute;left:16px;right:16px;bottom:28px;padding:12px 18px;border-radius:30px;background:var(--glass);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 0 0 .5px var(--glass-line) inset;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dock .an{display:none}
+.pager{position:absolute;bottom:134px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.pager i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.3}.pager i:first-child{opacity:.8}
+@container (max-height:760px){.w-dy{display:none}}
+@container (max-height:660px){.w-clock .t{font-size:60px}.pager{display:none}.w-ev .it:nth-of-type(n+3){display:none}}
+
+/* ---------- shared overlays ---------- */
+.mask{position:absolute;inset:0;background:var(--mask);z-index:90;opacity:0;transition:opacity .25s}
+.mask.show{opacity:1}
+.sheet{position:absolute;left:0;right:0;bottom:0;z-index:91;background:var(--sheet);color:var(--sheet-text);border-radius:16px 16px 0 0;transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);padding-bottom:26px;max-height:78%;display:flex;flex-direction:column}
+.sheet.show{transform:none}
+.sheet-h{white-space:pre-line;padding:16px 20px 12px;text-align:center;font-size:13px;color:var(--sheet-sub);line-height:1.5}
+.sheet-body{overflow-y:auto}
+.sheet-item{display:block;width:100%;padding:16px;text-align:center;font-size:17px;border:0;background:none;border-top:.5px solid var(--sheet-line)}
+.sheet-item:active{background:var(--wx-press)}
+.sheet-item.danger{color:var(--danger)}
+.sheet-gap{height:8px;background:var(--sheet-gap);flex:none}
+.modal{position:absolute;left:28px;right:28px;top:50%;z-index:91;background:var(--sheet);color:var(--sheet-text);border-radius:16px;padding:22px 20px 18px;transform:translateY(-50%) scale(.92);opacity:0;transition:transform .25s,opacity .25s;display:flex;flex-direction:column;gap:12px;box-sizing:border-box;max-height:80%;overflow-y:auto}
+.modal.show{transform:translateY(-50%);opacity:1}
+.modal h3{margin:0;font-size:17px;text-align:center}
+.f-label{font-size:12px;color:var(--sheet-sub);margin-bottom:-6px}
+.f-input{width:100%;box-sizing:border-box;border:0;background:var(--field);color:inherit;border-radius:10px;padding:11px 12px;font-size:16px;outline:none;-webkit-user-select:text;user-select:text}
+textarea.f-input{resize:none;min-height:90px;line-height:1.6}
+.f-err{color:var(--danger);font-size:12px;min-height:16px;margin-top:-4px}
+.f-row{display:flex;gap:10px}
+.btn{flex:1;border:0;border-radius:10px;padding:12px;font-size:16px;font-weight:600;background:var(--field);color:inherit}
+.btn.pri{background:var(--wx-green);color:var(--on-pri)}
+.btn.red{background:var(--rp);color:var(--on-color)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:0;border-radius:999px;padding:6px 12px;font-size:13px;background:var(--field);color:inherit}
+.chip.on{background:var(--wx-green);color:var(--on-pri)}
+.toast{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.95);background:var(--toast);color:var(--on-color);padding:12px 18px;border-radius:12px;font-size:14px;z-index:99;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;max-width:70%;text-align:center;line-height:1.5;white-space:pre-line}
+.toast.show{opacity:1;transform:translate(-50%,-50%)}
+.banner{position:absolute;top:50px;left:10px;right:10px;z-index:97;background:var(--banner);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);color:var(--wx-text);border-radius:20px;padding:11px 14px;display:flex;gap:11px;align-items:center;transform:translateY(-160%);transition:transform .4s cubic-bezier(.2,.9,.25,1.1);box-shadow:0 10px 30px -10px rgba(0,0,0,.35);cursor:pointer;border:0;text-align:left;width:calc(100% - 20px)}
+.banner:not(.show){opacity:0;visibility:hidden;pointer-events:none;transition:transform .4s,opacity .3s,visibility 0s .4s}
+.banner.show{transform:none}
+.banner .bt{font-size:12px;color:var(--wx-sub);display:flex;justify-content:space-between}
+.banner .bm{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.banner > div{flex:1;min-width:0}
+.viewer{position:absolute;inset:0;z-index:95;background:#000;display:grid;place-items:center;cursor:zoom-out}
+.viewer svg{width:100%;height:auto}
+.viewer p{position:absolute;bottom:40px;left:0;right:0;text-align:center;color:#C9C9C9;font-size:13px;margin:0}
+.flash{position:absolute;inset:0;background:#FFFFFF;z-index:98;opacity:0;pointer-events:none;transition:opacity .35s}
+.flash.on{opacity:1;transition:none}
+.shake{animation:shake .5s 2}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg)}75%{transform:rotate(4deg)}}
+
+/* ---------- avatar ---------- */
+.av{width:var(--s,48px);height:var(--s,48px);border-radius:calc(var(--s,48px) * .14);display:grid;place-items:center;color:var(--on-color);font-weight:600;font-size:calc(var(--s,48px) * .42);flex:none;overflow:hidden;line-height:1}
+.av svg{width:58%;height:58%}
+.gav{display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:3px;box-sizing:border-box;background:var(--wx-quote)}
+.gav .av{width:100%;height:100%;border-radius:2px}
+.av.pat{animation:pat .6s}
+@keyframes pat{0%,100%{transform:none}20%{transform:rotate(-12deg) scale(.92)}50%{transform:rotate(10deg)}75%{transform:rotate(-6deg)}}
+
+/* ---------- WeChat ---------- */
+.wx{background:var(--wx-bg);color:var(--wx-text)}
+.wx .nav{background:var(--wx-bar)}
+.wx-body{flex:1;overflow-y:auto;overscroll-behavior:contain}
+.wx-tabs{flex:none;display:grid;grid-template-columns:repeat(4,1fr);background:var(--wx-bar);border-top:.5px solid var(--wx-line);padding:7px 0 26px}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;background:none;border:0;position:relative;padding:0}
+.tab.on{color:var(--wx-green)}
+.tab.on svg{fill:currentColor;fill-opacity:.16}
+.tab .bd{position:absolute;top:-4px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;box-sizing:border-box;border-radius:9px;background:var(--wx-red);color:var(--on-color);font-size:11px;display:grid;place-items:center}
+.wx-search{margin:2px 10px 8px;display:flex;align-items:center;gap:6px;background:var(--wx-card);border-radius:8px;padding:0 10px;height:36px;color:var(--wx-sub)}
+.wx-search input{flex:1;min-width:0;border:0;background:none;outline:none;color:var(--wx-text);font-size:15px;-webkit-user-select:text;user-select:text}
+.cl-item{display:flex;gap:12px;padding:12px 16px;background:var(--wx-card);position:relative;cursor:pointer;align-items:center}
+.cl-item.pinned{background:var(--wx-pin)}
+.cl-item.pressing,.row.pressing{background:var(--wx-press)}
+.cl-item + .cl-item::before{content:"";position:absolute;left:76px;right:0;top:0;border-top:.5px solid var(--wx-line)}
+.cl-av{position:relative;flex:none}
+.cl-av .bd{position:absolute;top:-7px;right:-7px;min-width:19px;height:19px;padding:0 5px;box-sizing:border-box;border-radius:10px;background:var(--wx-red);color:var(--on-color);font-size:11px;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.cl-av .dt{position:absolute;top:-4px;right:-4px;width:10px;height:10px;border-radius:50%;background:var(--wx-red)}
+.cl-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.cl-top,.cl-bot{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cl-name{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-time{font-size:11px;color:var(--wx-sub);flex:none;font-variant-numeric:tabular-nums}
+.cl-last{font-size:13px;color:var(--wx-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-last .at{color:var(--danger)}
+.cl-last .ty{color:var(--wx-green)}
+.cl-bot svg{flex:none;color:var(--wx-sub)}
+.empty{padding:60px 20px;text-align:center;color:var(--wx-sub);font-size:13px;line-height:1.8}
+.group{background:var(--wx-card);margin-bottom:8px}
+.row{display:flex;align-items:center;gap:12px;padding:0 16px;min-height:54px;position:relative;cursor:pointer;width:100%;border:0;background:none;text-align:left;font-size:16px;box-sizing:border-box}
+.row + .row::before{content:"";position:absolute;left:var(--indent,52px);right:0;top:0;border-top:.5px solid var(--wx-line)}
+.row:active{background:var(--wx-press)}
+.row .lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .val{color:var(--wx-sub);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.row .chev{color:var(--wx-sub);flex:none;opacity:.7}
+.row .ri{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;color:var(--on-color);flex:none}
+.row .ri svg{width:18px;height:18px}
+.row.center{justify-content:center;color:var(--danger)}
+.idx{padding:6px 16px;font-size:12px;color:var(--wx-sub);background:var(--wx-bg)}
+.sw{width:50px;height:30px;border-radius:15px;background:var(--wx-line);position:relative;flex:none;transition:background .2s;border:0;padding:0}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:26px;height:26px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .2s}
+.sw.on{background:var(--wx-green)}.sw.on::after{transform:translateX(20px)}
+.me-card{background:var(--wx-card);padding:24px 20px 28px;display:flex;gap:16px;align-items:center;margin-bottom:8px;cursor:pointer;border:0;width:100%;text-align:left}
+.me-card .nm{font-size:21px;font-weight:600}
+.me-card .id{font-size:13px;color:var(--wx-sub);margin-top:6px}
+.me-card .sg{font-size:13px;color:var(--wx-sub);margin-top:2px}
+.popmenu{position:absolute;top:92px;right:10px;z-index:92;background:var(--menu);color:var(--on-color);border-radius:8px;padding:4px 0;min-width:150px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.popmenu::before{content:"";position:absolute;top:-6px;right:18px;border:6px solid transparent;border-top:0;border-bottom-color:var(--menu)}
+.popmenu button{display:flex;align-items:center;gap:12px;width:100%;padding:13px 18px;border:0;background:none;font-size:15px;color:inherit;text-align:left}
+.popmenu button + button{border-top:.5px solid rgba(255,255,255,.12)}
+
+/* chat */
+.chat-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:6px 0 14px}
+.msg{display:flex;gap:10px;padding:7px 12px;align-items:flex-start}
+.msg.me{flex-direction:row-reverse}
+.msg > .av{cursor:pointer}
+.msg-main{max-width:calc(100% - 112px);display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}
+.msg.me .msg-main{align-items:flex-end}
+.msg-name{font-size:12px;color:var(--wx-sub);padding-left:2px;margin-top:-2px}
+.bw{display:flex;align-items:center;gap:8px;max-width:100%}
+.msg.me .bw{flex-direction:row-reverse}
+.tail{position:relative}
+.tail::before{content:"";position:absolute;top:13px;left:-4px;width:10px;height:10px;background:inherit;transform:rotate(45deg);border-radius:2px}
+.msg.me .tail::before{left:auto;right:-4px}
+.bubble{background:var(--wx-other);color:var(--wx-text);padding:9px 12px;border-radius:6px;font-size:16px;line-height:1.45;word-break:break-word;white-space:pre-wrap;max-width:100%;box-sizing:border-box;-webkit-touch-callout:none;cursor:default}
+.msg.me .bubble{background:var(--wx-me);color:var(--wx-me-text)}
+.pressing.bubble,.pressing .bubble,.b-img.pressing,.b-rp.pressing,.b-tf.pressing{filter:brightness(.88)}
+.b-voice{display:flex;align-items:center;gap:6px;cursor:pointer;font-variant-numeric:tabular-nums}
+.msg.me .b-voice{flex-direction:row-reverse}
+.b-voice svg{flex:none}
+.msg.me .b-voice svg{transform:scaleX(-1)}
+.b-voice.playing .w2{animation:wv 1s infinite .15s}.b-voice.playing .w3{animation:wv 1s infinite .3s}
+@keyframes wv{0%,100%{opacity:1}50%{opacity:.15}}
+.v-dot{width:8px;height:8px;border-radius:50%;background:var(--wx-red);flex:none}
+.v-tx{background:var(--wx-other);color:var(--wx-text);font-size:14px;padding:8px 10px;border-radius:6px;max-width:100%;box-sizing:border-box;line-height:1.5}
+.b-call{display:flex;align-items:center;gap:6px}
+.b-img{width:150px;border-radius:6px;overflow:hidden;line-height:0;cursor:zoom-in;-webkit-touch-callout:none}
+.b-img svg{width:100%;height:auto;display:block}
+.b-stk{font-size:76px;line-height:1.05;-webkit-touch-callout:none}
+.b-rp,.b-tf{width:228px;max-width:100%;border-radius:6px;background:var(--rp);color:var(--on-color);cursor:pointer;-webkit-touch-callout:none}
+.b-tf{background:var(--tf)}
+.b-rp.done{background:var(--rp-done)}.b-tf.done{background:var(--tf-done)}
+.cd-top{display:flex;gap:10px;align-items:center;padding:12px 12px 10px;min-height:44px}
+.cd-top .ttl{font-size:15px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-top small{display:block;font-size:12px;opacity:.82}
+.cd-top > div{min-width:0}
+.cd-bot{font-size:11px;padding:5px 12px 6px;border-top:.5px solid rgba(255,255,255,.28);opacity:.88}
+.rp-ico{width:30px;height:38px;border-radius:4px;background:var(--rp-deep);position:relative;flex:none}
+.rp-ico::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;border-radius:4px 4px 50% 50%/4px 4px 8px 8px;background:rgba(255,255,255,.12)}
+.rp-ico::after{content:"";position:absolute;left:50%;top:10px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--gold)}
+.tf-ico{width:34px;height:34px;border-radius:50%;border:1.6px solid currentColor;display:grid;place-items:center;flex:none}
+.tf-ico svg{width:18px;height:18px}
+.b-card,.b-loc{width:228px;max-width:100%;background:var(--wx-other);color:var(--wx-text);border-radius:6px;cursor:pointer;-webkit-touch-callout:none}
+.b-card .cd-bot,.b-loc .cd-bot{border-top-color:var(--wx-line);color:var(--wx-sub)}
+.b-card .cd-top{gap:12px;padding:14px 12px}
+.b-loc .lt{padding:10px 12px 8px}
+.b-loc .lt b{font-weight:400;font-size:15px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-loc .lt small{font-size:12px;color:var(--wx-sub);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.map{height:84px;border-radius:0 0 6px 6px;background-color:var(--map);background-image:linear-gradient(var(--map-line) 2px,transparent 2px),linear-gradient(90deg,var(--map-line) 2px,transparent 2px),linear-gradient(35deg,transparent 46%,var(--map-line) 46% 52%,transparent 52%);background-size:38px 30px,46px 30px,100% 100%;display:grid;place-items:center;color:var(--wx-red)}
+.quote{font-size:12px;color:var(--wx-sub);background:var(--wx-quote);padding:5px 8px;border-radius:4px;max-width:100%;box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msg-time{text-align:center;font-size:12px;color:var(--wx-sub);padding:12px 0 4px;font-variant-numeric:tabular-nums}
+.msg-sys{text-align:center;font-size:12px;color:var(--wx-sub);padding:6px 48px;line-height:1.6}
+.msg-sys button{border:0;background:none;color:var(--wx-link);font-size:12px;padding:0 2px}
+.typing{padding:2px 0 10px 62px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--wx-sub);animation:wv 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+.chat-bar{flex:none;background:var(--wx-bar);border-top:.5px solid var(--wx-line);padding:8px 8px 28px}
+.chat-bar.open{padding-bottom:0}
+.bar-row{display:flex;align-items:flex-end;gap:4px}
+.bar-row .ib{color:var(--wx-text);height:40px}
+.ci{flex:1;min-width:0;resize:none;border:0;border-radius:6px;background:var(--wx-input);color:var(--wx-text);font-size:16px;line-height:22px;padding:9px 10px;height:40px;max-height:110px;outline:none;box-sizing:border-box;margin:0;-webkit-user-select:text;user-select:text}
+.hold{flex:1;height:40px;border:0;border-radius:6px;background:var(--wx-input);font-weight:600;font-size:15px;touch-action:none;-webkit-touch-callout:none}
+.hold.active{background:var(--wx-line)}
+.send{border:0;border-radius:6px;background:var(--wx-green);color:var(--on-pri);height:36px;padding:0 14px;font-size:15px;margin:0 2px 2px 4px;flex:none}
+.quote-chip{display:flex;align-items:center;gap:6px;margin:0 50px 6px 46px;background:var(--wx-quote);color:var(--wx-sub);border-radius:4px;padding:2px 2px 2px 10px;font-size:12px}
+.quote-chip span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.panel{height:236px;margin-top:8px;border-top:.5px solid var(--wx-line);box-sizing:border-box;padding-bottom:26px;display:flex;flex-direction:column}
+.p-tabs{display:flex;gap:4px;padding:8px 10px 0}
+.p-tabs button{border:0;background:none;border-radius:6px;padding:4px 10px;font-size:13px;color:var(--wx-sub)}
+.p-tabs button.on{background:var(--wx-card);color:var(--wx-text)}
+.emo-grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(8,1fr);padding:6px 8px;align-content:start}
+.emo-grid button{border:0;background:none;font-size:26px;height:44px;border-radius:8px;padding:0}
+.emo-grid button:active{background:var(--wx-press)}
+.emo-grid.stk{grid-template-columns:repeat(4,1fr)}
+.emo-grid.stk button{font-size:44px;height:70px}
+.plus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 0;padding:18px 12px 0}
+.plus-grid button{display:flex;flex-direction:column;align-items:center;gap:7px;border:0;background:none;font-size:12px;color:var(--wx-sub);padding:0}
+.plus-grid span{width:58px;height:58px;border-radius:16px;background:var(--wx-card);display:grid;place-items:center;color:var(--wx-text)}
+.plus-grid svg{width:26px;height:26px}
+.bmenu{position:absolute;z-index:93;background:var(--menu);color:var(--on-color);border-radius:8px;display:flex;flex-wrap:wrap;padding:4px;max-width:260px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.bmenu button{width:52px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:0;background:none;font-size:11px;color:inherit;border-radius:6px}
+.bmenu button:active{background:rgba(255,255,255,.12)}
+.bmenu svg{width:20px;height:20px}
+.rec{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:168px;padding:18px 12px 14px;border-radius:14px;background:var(--toast);color:var(--on-color);z-index:94;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px;text-align:center}
+.rec.cancel{background:var(--rp-deep)}
+.rec .lv{display:flex;gap:3px;align-items:flex-end;height:30px}
+.rec .lv i{width:4px;border-radius:2px;background:currentColor;animation:lv .9s infinite ease-in-out}
+@keyframes lv{0%,100%{height:6px}50%{height:28px}}
+.rec .sec{font:300 28px/1 var(--display);font-variant-numeric:tabular-nums}
+
+/* red packet modal */
+.rp-open{position:absolute;left:40px;right:40px;top:50%;transform:translateY(-50%) scale(.9);opacity:0;transition:transform .3s,opacity .3s;z-index:91;height:440px;max-height:76%;background:var(--rp);border-radius:14px;color:var(--gold);display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.rp-open.show{transform:translateY(-50%);opacity:1}
+.rp-open::before{content:"";position:absolute;left:-30%;right:-30%;top:-40%;height:96%;border-radius:0 0 50% 50%;background:var(--rp-deep);box-shadow:0 4px 10px rgba(0,0,0,.18)}
+.rp-open > *{position:relative}
+.rp-open .from{margin-top:56px;display:flex;align-items:center;gap:8px;font-size:15px}
+.rp-open .wish{margin-top:16px;font-size:21px;padding:0 20px;text-align:center;line-height:1.4}
+.rp-kai{position:absolute;left:50%;top:56%;width:96px;height:96px;margin-left:-48px;border-radius:50%;border:0;background:var(--gold);color:var(--gold-ink);font:600 40px/1 var(--serif);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.rp-kai.spin{animation:spin .5s linear infinite}
+@keyframes spin{to{transform:rotateY(360deg)}}
+.rp-open .x{position:absolute;top:10px;left:10px;color:var(--gold)}
+.rp-open .more{position:absolute;bottom:18px;font-size:13px;opacity:.85}
+.rp-res{text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.rp-res .amt{font:300 48px/1.1 var(--display);color:var(--rp-deep);font-variant-numeric:tabular-nums}
+.rp-res .amt small{font-size:16px;margin-left:4px}
+.rp-res p{margin:0;font-size:13px;color:var(--sheet-sub)}
+
+/* call */
+.call{position:absolute;inset:0;z-index:95;background:var(--call);color:var(--on-color);display:flex;flex-direction:column;align-items:center;padding-top:120px;box-sizing:border-box;overflow:hidden}
+.call .bgav{position:absolute;inset:-20%;filter:blur(60px);opacity:.45}
+.call > *{position:relative}
+.call .nm{font-size:24px;font-weight:600;margin-top:18px}
+.call .st{font-size:14px;color:var(--call-sub);margin-top:8px;font-variant-numeric:tabular-nums}
+.call .self{position:absolute;top:60px;right:16px;width:92px;height:136px;border-radius:12px;background:var(--rp-deep);overflow:hidden;display:grid;place-items:center}
+.call-btns{position:absolute;bottom:60px;left:0;right:0;display:grid;grid-template-columns:repeat(3,1fr);justify-items:center}
+.call-btns button{display:flex;flex-direction:column;align-items:center;gap:8px;border:0;background:none;font-size:12px;color:var(--call-sub)}
+.call-btns span{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;color:var(--on-color)}
+.call-btns .on span{background:#FFFFFF;color:var(--call)}
+.call-btns .hang span{background:var(--wx-red)}
+.call-btns .hang svg{transform:rotate(135deg)}
+
+/* moments */
+.mo-cover{height:250px;position:relative;margin-bottom:44px;background:linear-gradient(170deg,#EADFD2,#D9C3B0 60%,#C7AA93);flex:none}
+.mo-cover .who{position:absolute;right:16px;bottom:-26px;display:flex;gap:14px;align-items:flex-start}
+.mo-cover .who b{color:var(--on-color);font-size:18px;margin-top:20px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+.mo-post{display:flex;gap:10px;padding:16px 16px 14px;border-top:.5px solid var(--wx-line);background:var(--wx-card)}
+.mo-c{flex:1;min-width:0}
+.mo-name{color:var(--wx-link);font-weight:600;font-size:15px;border:0;background:none;padding:0}
+.mo-text{font-size:15px;margin:3px 0 8px;white-space:pre-wrap;word-break:break-word;line-height:1.55}
+.mo-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:236px}
+.mo-imgs.one{grid-template-columns:1fr;max-width:180px}
+.mo-imgs.two{grid-template-columns:1fr 1fr;max-width:158px}
+.mo-imgs div{line-height:0;cursor:zoom-in;aspect-ratio:1;overflow:hidden}
+.mo-imgs.one div{aspect-ratio:4/3}
+.mo-imgs svg{width:100%;height:100%;display:block}
+.mo-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--wx-sub);margin-top:8px;position:relative}
+.mo-act{width:34px;height:22px;border-radius:4px;border:0;background:var(--wx-quote);color:var(--wx-link);display:grid;place-items:center;padding:0}
+.mo-pop{position:absolute;right:42px;top:50%;transform:translateY(-50%);background:var(--menu);color:var(--on-color);border-radius:6px;display:flex;overflow:hidden}
+.mo-pop button{display:flex;align-items:center;gap:6px;padding:9px 16px;border:0;background:none;color:inherit;font-size:13px}
+.mo-pop button + button{border-left:.5px solid rgba(255,255,255,.15)}
+.mo-fb{background:var(--wx-quote);border-radius:4px;margin-top:8px;font-size:14px;line-height:1.55;overflow:hidden}
+.mo-likes{padding:5px 10px;color:var(--wx-link);display:flex;gap:6px;align-items:flex-start}
+.mo-likes svg{flex:none;margin-top:4px}
+.mo-cm{padding:3px 10px;cursor:pointer}
+.mo-likes + .mo-cm{border-top:.5px solid var(--wx-line);padding-top:6px}
+.mo-cm:last-child{padding-bottom:6px}
+.mo-cm b{color:var(--wx-link);font-weight:500}
+.mo-bar{flex:none;display:flex;gap:8px;padding:8px 10px 28px;background:var(--wx-bar);border-top:.5px solid var(--wx-line)}
+.mo-bar input{flex:1;min-width:0;border:0;border-radius:6px;background:var(--wx-input);color:var(--wx-text);padding:0 10px;height:38px;font-size:15px;outline:none;-webkit-user-select:text;user-select:text}
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 16px}
+.pick button{position:relative;border:0;padding:0;line-height:0;aspect-ratio:1;overflow:hidden;border-radius:4px;background:none}
+.pick svg{width:100%;height:100%}
+.pick button.on::after{content:"✓";position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--wx-green);color:var(--on-pri);font-size:13px;line-height:22px;text-align:center}
+.compose{flex:1;overflow-y:auto;background:var(--wx-card);display:flex;flex-direction:column;gap:14px;padding-top:10px}
+.compose textarea{border:0;background:none;color:var(--wx-text);font-size:16px;line-height:1.6;resize:none;min-height:120px;padding:4px 20px;outline:none;-webkit-user-select:text;user-select:text}
+.compose .hint{font-size:12px;color:var(--wx-sub);padding:0 20px}
+.pbtn{border:0;border-radius:6px;background:var(--wx-green);color:var(--on-pri);font-size:14px;padding:7px 14px}
+.pbtn:disabled{opacity:.45}
+.prof{background:var(--wx-card);padding:20px 20px 24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:8px}
+.prof .nm{font-size:22px;font-weight:600;display:flex;align-items:center;gap:6px}
+.prof .ln{font-size:13px;color:var(--wx-sub);margin-top:6px;line-height:1.6}
+.thumbs{display:flex;gap:4px}
+.thumbs div{width:52px;height:52px;line-height:0;overflow:hidden;border-radius:2px}
+.thumbs svg{width:100%;height:100%}
+.bigbtn{display:flex;justify-content:center;align-items:center;gap:8px;width:100%;min-height:56px;border:0;background:var(--wx-card);color:var(--wx-link);font-size:16px;font-weight:500}
+.bigbtn + .bigbtn{border-top:.5px solid var(--wx-line)}
+.members{background:var(--wx-card);display:grid;grid-template-columns:repeat(5,1fr);gap:14px 6px;padding:18px 12px;margin-bottom:8px}
+.members button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;font-size:11px;color:var(--wx-sub);padding:0;min-width:0}
+.members button span:last-child{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.members .addm{width:52px;height:52px;border-radius:7px;border:1px dashed var(--wx-sub);display:grid;place-items:center}
+.wallet-card{margin:12px;border-radius:14px;background:linear-gradient(150deg,#D9C7B3,#B79C84);color:#FFFFFF;padding:22px 20px;display:flex;flex-direction:column;gap:6px}
+.wallet-card .amt{font:300 40px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.txn{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--wx-card);gap:10px}
+.txn + .txn{border-top:.5px solid var(--wx-line)}
+.txn small{display:block;color:var(--wx-sub);font-size:12px;font-variant-numeric:tabular-nums}
+.txn b{font-weight:500;font-variant-numeric:tabular-nums}
+.txn b.plus{color:var(--tf)}
+.form{background:var(--wx-card);padding:4px 0;margin-bottom:8px}
+.form label{display:flex;align-items:center;gap:12px;padding:0 16px;min-height:54px;position:relative}
+.form label + label::before{content:"";position:absolute;left:16px;right:0;top:0;border-top:.5px solid var(--wx-line)}
+.form label span{width:76px;flex:none;font-size:16px}
+.form input{flex:1;min-width:0;border:0;background:none;color:var(--wx-text);font-size:16px;outline:none;height:52px;-webkit-user-select:text;user-select:text}
+.swatches{display:flex;gap:10px;flex-wrap:wrap;padding:12px 16px 16px}
+.swatches button{width:34px;height:34px;border-radius:8px;border:0;padding:0;outline-offset:2px}
+.swatches button.on{outline:2.5px solid var(--wx-green)}
+.sel-row{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--wx-card);cursor:pointer;width:100%;border:0;text-align:left;font-size:16px;position:relative}
+.sel-row + .sel-row::before{content:"";position:absolute;left:100px;right:0;top:0;border-top:.5px solid var(--wx-line)}
+.ck{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--wx-sub);flex:none;display:grid;place-items:center;color:var(--on-color);box-sizing:border-box}
+.sel-row.on .ck{background:var(--wx-green);border-color:var(--wx-green);color:var(--on-pri)}
+.foot{padding:16px;display:flex}
+
+/* ---------- Diary ---------- */
+.dy{background:var(--d-paper);color:var(--d-ink)}
+.dy .nav{background:var(--d-paper)}
+.dy-body{flex:1;overflow-y:auto;padding-bottom:30px}
+.dy-hero{padding:0 22px 8px;display:flex;justify-content:space-between;align-items:flex-end}
+.dy-hero h1{margin:0;font:400 40px/1.1 var(--hand);letter-spacing:.04em}
+.dy-hero p{margin:4px 0 0;font-size:12px;color:var(--d-sub);letter-spacing:.06em}
+.dy-new{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--d-ink);background:none;display:grid;place-items:center;flex:none}
+.dy-month{font-size:12px;letter-spacing:.16em;color:var(--d-sub);padding:18px 22px 8px;font-variant-numeric:tabular-nums}
+.dy-card{display:grid;grid-template-columns:48px 1fr;gap:14px;margin:0 16px 10px;padding:16px 16px 14px;background:var(--d-card);border-radius:3px 16px 16px 3px;cursor:pointer;width:calc(100% - 32px);border:0;text-align:left;color:inherit;box-shadow:0 1px 0 var(--d-line)}
+.dy-card:active{filter:brightness(.97)}
+.dy-date{display:flex;flex-direction:column;align-items:center;border-right:1px dashed var(--d-line);padding-right:12px}
+.dy-date b{font:600 28px/1 var(--serif);font-variant-numeric:tabular-nums}
+.dy-date small{font-size:11px;color:var(--d-sub);margin-top:6px}
+.dy-card .tt{font:22px/1.25 var(--hand);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dy-card .ex{font:13px/1.65 var(--serif);color:var(--d-sub);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dy-card .mt{display:flex;gap:6px;margin-top:8px;font-size:11px}
+.dy-card .mt span{background:var(--d-chip);padding:2px 8px;border-radius:999px}
+.dy-card .mt .md{color:var(--d-seal)}
+.dy-card > div{min-width:0}
+.dy-sheet{margin:4px 14px 20px;background:var(--d-card);border-radius:4px;padding:20px 20px 30px;position:relative;box-shadow:0 1px 0 var(--d-line)}
+.dy-sheet .meta{font-size:12px;color:var(--d-sub);letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.dy-sheet h2{margin:10px 70px 18px 0;font:400 30px/1.2 var(--hand);text-wrap:balance;min-height:36px}
+.dy-sheet .txt{font:16px/32px var(--serif);white-space:pre-wrap;word-break:break-word;margin-top:16px;min-height:256px;background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--d-line) 31px 32px)}
+.seal{position:absolute;right:18px;top:18px;width:62px;height:62px;border:2px solid var(--d-seal);color:var(--d-seal);border-radius:50%;display:grid;place-items:center;font:22px/1 var(--hand);transform:rotate(-12deg);opacity:.88}
+.seal::before{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid var(--d-seal);opacity:.6}
+.dy-acts{display:flex;gap:10px;padding:0 14px 30px}
+.dy-acts button{flex:1;border:1px solid var(--d-line);background:var(--d-card);border-radius:12px;padding:12px;font-size:15px;color:var(--d-ink)}
+.dy-acts .del{color:var(--d-seal)}
+.dy-form{display:flex;flex-direction:column;gap:14px;padding:4px 18px 30px}
+.dy-form .lb{font-size:12px;color:var(--d-sub);letter-spacing:.1em;margin-bottom:-6px}
+.dy-form input,.dy-form textarea{border:0;background:var(--d-card);color:var(--d-ink);border-radius:10px;padding:12px;font-size:16px;outline:none;width:100%;box-sizing:border-box;-webkit-user-select:text;user-select:text}
+.dy-form .ti{font:22px/1.3 var(--hand)}
+.dy-form textarea{min-height:256px;resize:none;font:16px/32px var(--serif);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--d-line) 31px 32px);background-attachment:local;padding:0 12px}
+.dy-form .chip{background:var(--d-card);color:var(--d-ink)}
+.dy-form .chip.on{background:var(--d-ink);color:var(--d-paper)}
+.dy .save{border:0;background:var(--d-ink);color:var(--d-paper);border-radius:999px;padding:7px 16px;font-size:14px}
+.dy-empty{padding:80px 30px;text-align:center;color:var(--d-sub);font:20px/1.6 var(--hand)}
+
+/* ---------- Calendar ---------- */
+.cal{background:var(--c-bg);color:var(--c-text)}
+.cal .nav{background:var(--c-bg)}
+.cal .nav .ib,.cal .txtbtn{color:var(--c-accent)}
+.cal-head{padding:0 20px 12px;display:flex;align-items:flex-end;justify-content:space-between}
+.cal-head h1{margin:0;font:500 32px/1 var(--display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.cal-head h1 small{font:400 13px/1 var(--ui);color:var(--c-accent);display:block;margin-bottom:6px;letter-spacing:.06em}
+.cal-head .arr{display:flex;gap:2px}
+.cal-head .arr .ib{color:var(--c-text)}
+.cal-week{display:grid;grid-template-columns:repeat(7,1fr);font-size:11px;color:var(--c-sub);text-align:center;padding:0 8px 6px;border-bottom:.5px solid var(--c-line)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);padding:6px 8px 8px;flex:none}
+.cd{height:54px;display:flex;flex-direction:column;align-items:center;gap:1px;border:0;background:none;padding:3px 0 0;font-variant-numeric:tabular-nums;min-width:0}
+.cd .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:17px}
+.cd.we .n{color:var(--c-sub)}
+.cd.out{opacity:.28}
+.cd.today .n{color:var(--c-accent);font-weight:700}
+.cd.sel .n{background:var(--c-text);color:var(--c-bg);font-weight:600}
+.cd.sel.today .n{background:var(--c-accent);color:var(--on-color)}
+.cd .lb{font-size:9px;line-height:11px;height:11px;color:var(--c-accent);white-space:nowrap;overflow:hidden;max-width:100%}
+.cd .ds{display:flex;gap:2px;height:5px}
+.cd .ds i{width:5px;height:5px;border-radius:50%}
+.cal-ag{flex:1;overflow-y:auto;background:var(--c-soft);padding:14px 16px 30px;border-radius:20px 20px 0 0;display:flex;flex-direction:column;gap:10px}
+.cal-ag .h{display:flex;justify-content:space-between;align-items:baseline}
+.cal-ag .h b{font-size:17px}
+.cal-ag .h span{font-size:12px;color:var(--c-sub)}
+.ev{display:grid;grid-template-columns:52px 4px 1fr;gap:12px;align-items:center;background:var(--c-bg);border-radius:14px;padding:12px 14px;border:0;width:100%;text-align:left;color:inherit;font-variant-numeric:tabular-nums}
+.ev .tm{font-size:13px;color:var(--c-sub);line-height:1.3}
+.ev i{height:32px;border-radius:2px}
+.ev b{font-weight:500;font-size:15px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev small{color:var(--c-sub);font-size:12px}
+.ev > div{min-width:0}
+.cal-dy{display:flex;gap:12px;align-items:center;background:var(--c-bg);border-radius:14px;padding:12px 14px;border:1px dashed var(--c-line);width:100%;text-align:left;color:inherit}
+.cal-dy .tt{font:18px/1.3 var(--hand)}
+.cal-dy small{display:block;color:var(--c-sub);font-size:12px}
+.cal-add{border:0;border-radius:14px;padding:13px;font-size:15px;background:none;color:var(--c-accent);border:1px dashed var(--c-accent)}
+.colors{display:flex;gap:12px}
+.colors button{width:30px;height:30px;border-radius:50%;border:0;padding:0;outline-offset:3px}
+.colors button.on{outline:2px solid var(--sheet-text)}
+.btn.cal-pri{background:var(--c-accent);color:var(--on-color)}
+
+/* ---------- Memo ---------- */
+.memo{background:var(--m-bg);color:var(--m-text)}
+.memo .nav{background:var(--m-bg)}
+.memo .nav .ib,.memo .txtbtn{color:var(--m-accent)}
+.memo h1{margin:0;padding:0 20px 12px;font-size:32px;font-weight:700}
+.memo-list{margin:0 16px;background:var(--m-card);border-radius:14px;overflow:hidden}
+.memo-it{display:block;width:100%;border:0;background:none;text-align:left;padding:13px 16px;color:inherit;position:relative}
+.memo-it + .memo-it::before{content:"";position:absolute;left:16px;right:0;top:0;border-top:.5px solid var(--m-line)}
+.memo-it b{display:block;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.memo-it small{color:var(--m-sub);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;margin-top:2px;font-variant-numeric:tabular-nums}
+.memo-ed{flex:1;border:0;background:none;color:var(--m-text);padding:6px 20px 30px;font-size:17px;line-height:1.7;resize:none;outline:none;-webkit-user-select:text;user-select:text}
+.memo-foot{flex:none;display:flex;justify-content:space-between;align-items:center;padding:10px 20px 30px;color:var(--m-sub);font-size:12px}
+.memo-foot .ib{color:var(--m-accent)}
+.memo-new{position:absolute;right:20px;bottom:36px;width:54px;height:54px;border-radius:50%;border:0;background:var(--m-accent);color:var(--on-color);display:grid;place-items:center;box-shadow:0 6px 16px -6px rgba(0,0,0,.4)}
+
+/* ---------- Album / Settings ---------- */
+.set{background:var(--s-bg);color:var(--s-text)}
+.set .nav{background:var(--s-bg)}
+.set .nav .ib{color:var(--s-accent)}
+.set h1{margin:0;padding:0 20px 12px;font-size:32px;font-weight:700}
+.set-body{flex:1;overflow-y:auto;padding-bottom:30px}
+.sg{margin:0 16px 22px;background:var(--s-card);border-radius:14px;overflow:hidden}
+.sg-h{font-size:12px;color:var(--s-sub);padding:0 32px 6px;letter-spacing:.04em}
+.set .row + .row::before{border-top-color:var(--s-line)}
+.set .row .val,.set .row .chev{color:var(--s-sub)}
+.set .row:active{background:var(--s-line)}
+.walls{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:14px}
+.walls button{aspect-ratio:9/16;border-radius:10px;border:0;padding:0;outline-offset:3px;max-width:100%;position:relative}
+.walls button.on{outline:2.5px solid var(--s-accent)}
+.walls small{position:absolute;bottom:6px;left:0;right:0;text-align:center;color:var(--ink-dark);font-size:10px;letter-spacing:.04em}
+.walls button[data-wall=night] small{color:var(--ink-light)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--s-bg);border-radius:9px;padding:2px;margin:12px 14px}
+.seg button{border:0;background:none;border-radius:7px;padding:7px;font-size:13px;color:var(--s-text)}
+.seg button.on{background:var(--s-card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+.alb{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.alb button{border:0;padding:0;line-height:0;aspect-ratio:1;overflow:hidden;background:none}
+.alb svg{width:100%;height:100%}
+.alb-h{padding:14px 16px 8px;font-size:13px;color:var(--s-sub)}
+</style>
+
+<div class="stage">
+  <aside class="guide">
+    <h1><i style="font-weight:300">little</i> 小手机</h1>
+    <p>一台可以真正用起来的迷你手机：微信、日记、日历、备忘录、相册和设置。内容自动保存在当前浏览器。</p>
+    <ul>
+      <li><b>返回</b><span>点屏幕底部的横条回到桌面，按 Esc 返回上一页</span></li>
+      <li><b>消息</b><span>长按或右键消息：复制、引用、撤回、删除、语音转文字</span></li>
+      <li><b>互动</b><span>双击聊天里的头像「拍一拍」；按住说话发语音</span></li>
+      <li><b>更多</b><span>聊天框右侧 ＋ 里有红包、转账、位置、名片和音视频通话</span></li>
+      <li><b>设置</b><span>改名字、换壁纸、切换深浅色、恢复示例数据</span></li>
+    </ul>
+  </aside>
+  <div class="phone">
+    <div class="screen" id="screen">
+      <div class="home" id="home"></div>
+      <div class="layers" id="layers"></div>
+      <div class="sb" id="sb"><span id="sbTime">9:41</span><span class="sb-r">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor" aria-hidden="true"><path d="M8 2.2c2.4 0 4.6.9 6.3 2.5l1.2-1.3A10.6 10.6 0 0 0 8 .4C5.2.4 2.6 1.5.5 3.4l1.2 1.3A9 9 0 0 1 8 2.2zm0 3.6c1.4 0 2.7.5 3.8 1.4l1.2-1.3A7.4 7.4 0 0 0 8 4c-1.9 0-3.6.7-5 1.9l1.2 1.3c1-.9 2.4-1.4 3.8-1.4zM8 9.4c-.7 0-1.3.3-1.8.7L8 12l1.8-1.9c-.5-.4-1.1-.7-1.8-.7z"/></svg>
+        <svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="12" rx="3.5" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="16" height="9" rx="2" fill="currentColor"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" fill="currentColor" opacity=".45"/></svg>
+      </span></div>
+      <div class="island"></div>
+      <button class="home-bar" id="homeBar" aria-label="回到桌面"><span></span></button>
+      <div class="toast" id="toast"></div>
+      <button class="banner" id="banner" type="button"></button>
+      <div class="flash" id="flash"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ================= helpers ================= */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid = () => Math.random().toString(36).slice(2, 10);
+const pad = n => String(n).padStart(2, '0');
+const WEEK = ['日','一','二','三','四','五','六'];
+const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const parseYmd = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const dayOff = n => { const d = new Date(); d.setDate(d.getDate()+n); return ymd(d); };
+const hm = d => `${pad(d.getHours())}:${pad(d.getMinutes())}`;
+const sod = d => { const x = new Date(d); x.setHours(0,0,0,0); return x.getTime(); };
+const rand = a => a[Math.floor(Math.random()*a.length)];
+const money = n => Number(n).toFixed(2);
+const DAY = 864e5;
+function refs(el){ const r = {}; el.querySelectorAll('[data-ref]').forEach(n => r[n.dataset.ref] = n); return r; }
+function fmtList(t){
+  const d = new Date(t), today = sod(Date.now());
+  if (t >= today) return hm(d);
+  if (t >= today - DAY) return '昨天';
+  if (t >= today - 6*DAY) return '星期' + WEEK[d.getDay()];
+  if (d.getFullYear() === new Date().getFullYear()) return `${d.getMonth()+1}月${d.getDate()}日`;
+  return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+}
+function fmtMsg(t){ const s = fmtList(t), d = new Date(t); return t >= sod(Date.now()) ? s : `${s} ${hm(d)}`; }
+function fmtAgo(t){
+  const m = Math.floor((Date.now()-t)/6e4);
+  if (m < 1) return '刚刚'; if (m < 60) return m + '分钟前';
+  const h = Math.floor(m/60); if (h < 24) return h + '小时前';
+  const d = Math.floor(h/24); return d === 1 ? '昨天' : d + '天前';
+}
+function cnDate(s){ const d = parseYmd(s); return `${d.getMonth()+1}月${d.getDate()}日 星期${WEEK[d.getDay()]}`; }
+
+/* ================= icons ================= */
+const ic = (d, w=22, extra='') => `<svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${d}</svg>`;
+const P = {
+  back:'<path d="M15 4l-8 8 8 8"/>',
+  more:'<circle cx="5" cy="12" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/><circle cx="19" cy="12" r="1.3" fill="currentColor"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+  plusc:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  voice:'<circle cx="12" cy="12" r="9"/><path d="M9.5 10a3 3 0 0 1 0 4M12.5 8a6 6 0 0 1 0 8"/>',
+  kbd:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M10.5 10h.01M14 10h.01M17 10h.01M8 14h8"/>',
+  smile:'<circle cx="12" cy="12" r="9"/><path d="M8.5 14.2a4.2 4.2 0 0 0 7 0"/><path d="M9 9.6h.01M15 9.6h.01" stroke-width="2.2"/>',
+  chat:'<path d="M12 4c4.9 0 8.8 3.2 8.8 7.2s-3.9 7.2-8.8 7.2c-.9 0-1.8-.1-2.6-.3L5.2 20l.9-3.4C4.2 15.3 3.2 13.4 3.2 11.2 3.2 7.2 7.1 4 12 4z"/>',
+  book:'<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="2.8"/><path d="M8.2 17c.7-1.8 2.1-2.8 3.8-2.8s3.1 1 3.8 2.8"/>',
+  compass:'<circle cx="12" cy="12" r="9"/><path d="M15.6 8.4l-2 5.2-5.2 2 2-5.2z"/>',
+  me:'<circle cx="12" cy="8.5" r="4"/><path d="M4.5 20.5c1.3-3.8 4.2-5.7 7.5-5.7s6.2 1.9 7.5 5.7"/>',
+  camera:'<path d="M4 8h3.2l1.8-2.6h6l1.8 2.6H20v11H4z"/><circle cx="12" cy="13.2" r="3.4"/>',
+  image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 15.5l-5-5L5 20"/>',
+  video:'<rect x="2.5" y="6" width="13.5" height="12" rx="2.2"/><path d="M16 10.2l5.5-3.2v10l-5.5-3.2"/>',
+  phone:'<path d="M5.2 3.5h3.6l1.8 4.6-2.3 1.4a11.5 11.5 0 0 0 6.2 6.2l1.4-2.3 4.6 1.8v3.6a1.6 1.6 0 0 1-1.7 1.6A16.6 16.6 0 0 1 3.5 5.2a1.6 1.6 0 0 1 1.7-1.7z"/>',
+  pin:'<path d="M12 21s-7-6.3-7-11.4a7 7 0 0 1 14 0C19 14.7 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.5"/>',
+  rp:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M5 8.2c3.6 2.6 10.4 2.6 14 0"/><circle cx="12" cy="10.6" r="1.7"/>',
+  tf:'<path d="M4 9.5h15l-4-4M20 14.5H5l4 4"/>',
+  card:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M5.8 16c.6-1.4 1.8-2.1 3.2-2.1s2.6.7 3.2 2.1M14.5 10h4M14.5 13.5h3"/>',
+  moments:'<circle cx="12" cy="12" r="9"/><path d="M12 3l2.6 7.6M21 12l-7.6 2.6M12 21l-2.6-7.6M3 12l7.6-2.6"/>',
+  scan:'<path d="M4 9V5h4M16 5h4v4M20 15v4h-4M8 19H4v-4M4 12h16"/>',
+  shake:'<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M3.5 8v8M20.5 8v8"/>',
+  wallet:'<rect x="3" y="6" width="18" height="13" rx="2.2"/><path d="M3 10.5h18M15.5 15h2.5"/>',
+  star:'<path d="M12 3.8l2.5 5.2 5.6.8-4 4 1 5.6L12 16.8l-5.1 2.6 1-5.6-4-4 5.6-.8z"/>',
+  gear:'<circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.6M12 18.6v2.6M2.8 12h2.6M18.6 12h2.6M5.5 5.5l1.9 1.9M16.6 16.6l1.9 1.9M5.5 18.5l1.9-1.9M16.6 7.4l1.9-1.9"/>',
+  chev:'<path d="M9.5 5.5l6.5 6.5-6.5 6.5"/>',
+  close:'<path d="M6 6l12 12M18 6L6 18"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/>',
+  quote:'<path d="M5 18v-5.5C5 9 7 7 10 6.5M14 18v-5.5C14 9 16 7 19 6.5"/><path d="M5 13h4v5H5zM14 13h4v5h-4z"/>',
+  undo:'<path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+  text:'<path d="M5 6h14M12 6v13M8.5 19h7"/>',
+  heart:'<path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.1a4.3 4.3 0 0 1 7.5 2.7C19.5 15.4 12 20 12 20z"/>',
+  comment:'<path d="M4 5h16v11H9l-5 4z"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  adduser:'<circle cx="10" cy="8.5" r="3.8"/><path d="M3.5 20c1.1-3.4 3.6-5.2 6.5-5.2 1.3 0 2.5.3 3.6 1M18 13v6M15 16h6"/>',
+  users:'<circle cx="9" cy="8.5" r="3.5"/><path d="M2.8 19.5c1-3.2 3.4-4.9 6.2-4.9s5.2 1.7 6.2 4.9"/><path d="M15.5 5.3a3.4 3.4 0 0 1 0 6.4M18 14.9c1.6.7 2.6 2.2 3.2 4.6"/>',
+  tag:'<path d="M3.5 12.5V4.5h8l9 9-8 8z"/><circle cx="8" cy="9" r="1.5"/>',
+  bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/><path d="M4 4l16 16"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/>',
+  micoff:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M4 4l16 16"/>',
+  speaker:'<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>',
+  flip:'<path d="M4 8h3l1.8-2.5h6.4L17 8h3v11H4z"/><path d="M9 13a3 3 0 0 1 5.2-2M15 13a3 3 0 0 1-5.2 2"/>',
+  folder:'<path d="M3.5 6.5h6l2 2h9v10h-17z"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>',
+  cal:'<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  note:'<path d="M5 3.5h10l4 4V20.5H5z"/><path d="M14.5 3.5v4.5H19M8.5 12.5h7M8.5 16h5"/>',
+  fav:'<path d="M6 3.5h12v17l-6-4-6 4z"/>',
+};
+const I = {}; for (const k in P) I[k] = ic(P[k]);
+const sm = (k, w=16) => ic(P[k], w);
+const VWAVE = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="12" r="1.6" fill="currentColor" stroke="none"/><path class="w2" d="M10 8.5a5 5 0 0 1 0 7"/><path class="w3" d="M14 5.5a9.5 9.5 0 0 1 0 13"/></svg>`;
+
+/* ================= photos (drawn, not fetched) ================= */
+const PHOTOS = {
+  sunset:{name:'橘子汽水色的晚霞', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="@a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F9C784"/><stop offset=".55" stop-color="#F28F6B"/><stop offset="1" stop-color="#8E6C8A"/></linearGradient></defs><rect width="160" height="120" fill="url(#@a)"/><circle cx="80" cy="76" r="20" fill="#FFE6BF"/><rect y="78" width="160" height="42" fill="#5D5379"/><path d="M0 78L18 70 30 74 44 66 58 78zM104 78l16-11 12 4 14-8 14 7v8z" fill="#4A4266"/><g stroke="#F9C784" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M62 86h36M50 94h22M88 94h24M66 102h28M40 111h20M98 111h30"/></g></svg>`},
+  cat:{name:'午睡的猫', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><rect width="160" height="120" fill="#E8DCCB"/><rect y="90" width="160" height="30" fill="#CDBBA3"/><rect x="104" y="14" width="44" height="54" rx="3" fill="#F6EFE4"/><path d="M104 41h44M126 14v54" stroke="#D9CBB6" stroke-width="2"/><ellipse cx="86" cy="90" rx="40" ry="20" fill="#6B6B73"/><circle cx="60" cy="68" r="22" fill="#6B6B73"/><path d="M42 56l2-22 14 15zM78 56l-2-22-14 15z" fill="#6B6B73"/><path d="M46 52l1-11 7 8zM74 52l-1-11-7 8z" fill="#E7A9A5"/><path d="M48 69q4-4 8 0M64 69q4-4 8 0" stroke="#2B2B30" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M58 75l2 2 2-2" stroke="#2B2B30" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M124 96q22-2 20-24" stroke="#6B6B73" stroke-width="8" fill="none" stroke-linecap="round"/></svg>`},
+  coffee:{name:'图书馆楼下的拿铁', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><rect width="160" height="120" fill="#B89474"/><path d="M0 30h160M0 64h160M0 98h160" stroke="#A3815F" stroke-width="2"/><ellipse cx="78" cy="76" rx="44" ry="17" fill="#F3EEE7"/><path d="M104 64q14-1 12 10-2 7-14 5" stroke="#FFFFFF" stroke-width="5" fill="none"/><ellipse cx="78" cy="66" rx="29" ry="12" fill="#FFFFFF"/><ellipse cx="78" cy="66" rx="24" ry="9" fill="#7A4E2D"/><path d="M71 64q7-8 14 0-7 6-14 0z" fill="#EBD6BC"/><g stroke="#FFFFFF" stroke-width="2" fill="none" opacity=".55" stroke-linecap="round"><path d="M70 46q-4-6 0-12t0-12M86 46q-4-6 0-12t0-12"/></g><rect x="14" y="68" width="30" height="40" rx="2" fill="#5B6C8F" transform="rotate(-8 29 88)"/></svg>`},
+  city:{name:'下班路上的灯', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><rect width="160" height="120" fill="#1E2740"/><circle cx="128" cy="24" r="9" fill="#F3E6B5"/><g fill="#2D3A5C"><rect x="6" y="56" width="22" height="64"/><rect x="30" y="38" width="18" height="82"/><rect x="52" y="64" width="26" height="56"/><rect x="82" y="30" width="20" height="90"/><rect x="106" y="58" width="24" height="62"/><rect x="134" y="46" width="22" height="74"/></g><g fill="#F6C863"><rect x="10" y="62" width="4" height="4"/><rect x="18" y="72" width="4" height="4"/><rect x="34" y="46" width="4" height="4"/><rect x="40" y="60" width="4" height="4"/><rect x="34" y="80" width="4" height="4"/><rect x="58" y="72" width="4" height="4"/><rect x="68" y="84" width="4" height="4"/><rect x="86" y="38" width="4" height="4"/><rect x="94" y="52" width="4" height="4"/><rect x="86" y="70" width="4" height="4"/><rect x="112" y="66" width="4" height="4"/><rect x="120" y="80" width="4" height="4"/><rect x="140" y="54" width="4" height="4"/><rect x="146" y="70" width="4" height="4"/></g><rect y="106" width="160" height="14" fill="#151C30"/><path d="M0 112h160" stroke="#F6C863" stroke-width="1" stroke-dasharray="8 6" opacity=".6"/></svg>`},
+  flower:{name:'阳台的菊花', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><rect width="160" height="120" fill="#BBCFB2"/><rect x="0" y="0" width="160" height="16" fill="#A8BFA0"/><g stroke="#5E7F4E" stroke-width="3"><path d="M50 94V60M80 94V46M112 94V64"/></g><path d="M64 80q-12-6-14 2M96 74q12-8 16-2" stroke="#5E7F4E" stroke-width="3" fill="none"/><g fill="none" stroke="#F7D57A" stroke-width="7" stroke-dasharray="3 2.4"><circle cx="50" cy="56" r="13"/><circle cx="80" cy="42" r="15"/><circle cx="112" cy="60" r="12"/></g><g fill="#F2B83E"><circle cx="50" cy="56" r="9"/><circle cx="80" cy="42" r="11"/><circle cx="112" cy="60" r="8"/></g><g fill="#D98E2B"><circle cx="50" cy="56" r="4"/><circle cx="80" cy="42" r="5"/><circle cx="112" cy="60" r="3.5"/></g><path d="M28 92h104l-8 28H36z" fill="#A7684A"/><path d="M28 92h104v6H28z" fill="#8E553B"/></svg>`},
+  mountain:{name:'山顶的日出', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="@m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9DB8D6"/><stop offset="1" stop-color="#F6CFA0"/></linearGradient></defs><rect width="160" height="120" fill="url(#@m)"/><circle cx="104" cy="62" r="12" fill="#FFF1D6"/><path d="M0 120V78l30-26 22 18 28-30 32 32 20-14 28 22v40z" fill="#6F7FA0"/><path d="M0 120V96l36-22 34 18 34-16 56 24v20z" fill="#45506E"/><path d="M74 46l6-6 8 8-6-2z" fill="#E9EEF5"/></svg>`},
+  sea:{name:'东沙的海', svg:`<svg viewBox="0 0 160 120" preserveAspectRatio="xMidYMid slice"><rect width="160" height="120" fill="#CFE3EA"/><rect y="52" width="160" height="40" fill="#5E95AE"/><path d="M0 60q20-5 40 0t40 0 40 0 40 0M0 72q20-5 40 0t40 0 40 0 40 0" stroke="#A9CFDE" stroke-width="2" fill="none"/><rect y="88" width="160" height="32" fill="#E6D3B3"/><path d="M0 90q40-8 80 0t80 0" fill="#F2F7F8" opacity=".7"/><circle cx="124" cy="24" r="10" fill="#FFFFFF" opacity=".8"/></svg>`},
+};
+let photoN = 0;
+const photo = key => (PHOTOS[key] || PHOTOS.sunset).svg.replace(/@/g, 'p' + (photoN++) + '_');
+
+/* ================= seed data ================= */
+function seed(){
+  const now = Date.now(), M = 6e4, H = 36e5;
+  const m = (from, type, extra, t) => Object.assign({id:uid(), from, type, t}, extra);
+  return {
+    v:1,
+    me:{name:'林知夏', mark:'夏', wxid:'zhixia_0614', sign:'慢慢来，比较快。', color:'#A9B8A6', region:'浙江 杭州'},
+    wallet:1288.5,
+    settings:{wall:'cream', look:'system'},
+    contacts:{
+      shen:{name:'沈砚', mark:'砚', py:'S', color:'#8C9AAE', wxid:'shenyan_1123', region:'浙江 杭州', sign:'在路上。'},
+      mom:{name:'妈妈', mark:'妈', py:'M', color:'#D9A48E', wxid:'sz_hongmei', region:'江苏 苏州', sign:'家和万事兴'},
+      yiyi:{name:'宋一一', mark:'一', py:'S', color:'#D8BA8A', wxid:'yiyi_song', region:'浙江 杭州', sign:'今天也要好好吃饭'},
+      kk:{name:'可可', mark:'可', py:'K', color:'#C99AA4', wxid:'coco_kk', region:'上海 徐汇', sign:'可可爱爱，没有脑袋'},
+      ali:{name:'阿梨', mark:'梨', py:'A', color:'#AEB98E', wxid:'ali_pear', region:'浙江 宁波', sign:'起不来的早八人'},
+      chen:{name:'陈屿', mark:'屿', py:'C', color:'#93AEB5', wxid:'chenyu_island', region:'浙江 舟山', sign:'潮水退了就去捡贝壳'},
+      xu:{name:'许老师', mark:'许', py:'X', color:'#9C958E', wxid:'xu_wenxueyuan', region:'浙江 杭州', sign:'文学院 · 现当代文学'},
+      file:{name:'文件传输助手', mark:'', py:'W', color:'#A9B8A6', glyph:'folder', sys:true},
+    },
+    chats:[
+      {id:'c_shen', type:'single', with:'shen', pinned:true, muted:false, unread:2, msgs:[
+        m('shen','text',{text:'昨晚那场雨好大，你带伞了吗'}, now-DAY-3*H),
+        m('me','text',{text:'没带…一路跑回去的，鞋全湿了'}, now-DAY-3*H+2*M),
+        m('shen','voice',{dur:6, tx:'下次下雨你给我发消息，我去接你。别逞强。', played:true}, now-DAY-3*H+3*M),
+        m('me','text',{text:'知道啦～'}, now-DAY-3*H+4*M),
+        m('sys','system',{text:'"沈砚" 拍了拍我'}, now-DAY-3*H+5*M),
+        m('shen','image',{img:'sunset'}, now-5*H),
+        m('shen','text',{text:'下班路上拍的，像不像你上次说的那种橘子汽水色'}, now-5*H+M),
+        m('me','text',{text:'像！！你怎么这么会拍'}, now-5*H+3*M),
+        m('sys','recall',{text:'你撤回了一条消息', reedit:'其实我也想去看'}, now-5*H+4*M),
+        m('shen','transfer',{amount:25, note:'赔你的奶茶', status:'pending'}, now-2*H),
+        m('shen','text',{text:'今晚有空吗？新开了一家云南菜'}, now-8*M),
+        m('shen','text',{text:'离你公司很近，七点我来接你'}, now-7*M),
+      ]},
+      {id:'g_302', type:'group', name:'302 不熄灯', members:['me','yiyi','kk','ali'], pinned:false, muted:false, unread:6, msgs:[
+        m('yiyi','text',{text:'家人们 周六去不去爬山'}, now-3*H),
+        m('kk','text',{text:'去！！我要吃山顶的烤肠'}, now-3*H+M),
+        m('ali','sticker',{emo:'🙈'}, now-3*H+2*M),
+        m('ali','text',{text:'我起不来…'}, now-3*H+2*M),
+        m('yiyi','image',{img:'mountain'}, now-3*H+4*M),
+        m('yiyi','text',{text:'就这个，五点出发看日出'}, now-3*H+4*M),
+        m('kk','redpacket',{amount:6.66, wish:'周末快乐！手慢无', opened:false}, now-40*M),
+        m('ali','text',{text:'谢谢可可老板🥹'}, now-39*M),
+        m('yiyi','text',{text:'@林知夏 你呢你呢，别装死'}, now-20*M),
+      ]},
+      {id:'c_mom', type:'single', with:'mom', pinned:false, muted:false, unread:0, msgs:[
+        m('mom','text',{text:'杭州这两天降温，多穿点'}, now-DAY-6*H),
+        m('mom','voice',{dur:14, tx:'你那件羽绒服放在衣柜最上面，我给你叠好了的，记得拿出来晒一晒。', played:true}, now-DAY-6*H+M),
+        m('me','text',{text:'知道了妈，我今天就拿出来'}, now-DAY-5*H),
+        m('mom','transfer',{amount:200, note:'买件厚外套', status:'pending'}, now-DAY-5*H+2*M),
+        m('mom','text',{text:'收一下，别跟妈客气'}, now-DAY-5*H+2*M),
+      ]},
+      {id:'c_xu', type:'single', with:'xu', pinned:false, muted:false, unread:0, msgs:[
+        m('xu','text',{text:'知夏，论文初稿这周五之前发我邮箱。'}, now-2*DAY),
+        m('me','text',{text:'好的许老师，我周四晚上发您。'}, now-2*DAY+10*M),
+        m('xu','text',{text:'好。注意引文格式。'}, now-2*DAY+12*M),
+      ]},
+      {id:'c_chen', type:'single', with:'chen', pinned:false, muted:true, unread:1, msgs:[
+        m('chen','location',{name:'东沙古镇', addr:'浙江省舟山市岱山县东沙镇'}, now-3*DAY),
+        m('chen','text',{text:'下个月来这儿拍海，一起？'}, now-3*DAY+M),
+        m('me','call',{kind:'voice', text:'通话时长 12:07'}, now-3*DAY+30*M),
+        m('chen','image',{img:'sea'}, now-3*DAY+50*M),
+        m('chen','text',{text:'那就说定了，船票我来订'}, now-3*DAY+51*M),
+      ]},
+      {id:'c_file', type:'single', with:'file', pinned:false, muted:false, unread:0, msgs:[
+        m('me','image',{img:'coffee'}, now-4*DAY),
+        m('me','text',{text:'书单：《我与地坛》《额尔古纳河右岸》《云边有个小卖部》'}, now-4*DAY+M),
+      ]},
+    ],
+    moments:[
+      {id:uid(), from:'shen', t:now-5*H+20*M, text:'下班路上。', imgs:['sunset'], likes:['yiyi','chen'], comments:[{from:'yiyi', text:'这颜色绝了'}, {from:'shen', to:'yiyi', text:'运气好'}]},
+      {id:uid(), from:'mom', t:now-DAY, text:'阳台的菊花开了，今年开得特别好', imgs:['flower'], likes:[], comments:[]},
+      {id:uid(), from:'yiyi', t:now-2*DAY, text:'论文写不完的第 n 天，靠咖啡续命', imgs:['coffee','city'], likes:['kk','ali','me'], comments:[{from:'kk', text:'抱抱一一'}]},
+      {id:uid(), from:'me', t:now-6*DAY, text:'猫猫今天也很可爱', imgs:['cat'], likes:['shen','mom','yiyi'], comments:[{from:'mom', text:'天冷了给猫也垫个毯子'}]},
+      {id:uid(), from:'chen', t:now-8*DAY, text:'踩点。下个月见。', imgs:['sea','mountain','sunset'], likes:['shen'], comments:[]},
+    ],
+    diary:[
+      {id:uid(), date:dayOff(-1), weather:'多云', mood:'开心', title:'橘子汽水色', body:'下班的时候沈砚发来一张晚霞，橘子汽水一样的颜色。\n\n我盯着看了很久，才想起来那是上个月随口说过的一句话。原来有人会把你随口说的话记很久。\n\n晚上把羽绒服从柜子顶上拿了下来，有妈妈叠的时候留下的樟脑味。'},
+      {id:uid(), date:dayOff(-3), weather:'阴', mood:'平静', title:'降温', body:'一夜之间就冷了。\n\n早上去图书馆的路上买了一杯热拿铁，坐在靠窗的位置改了一上午论文。第二章终于顺下来了。'},
+      {id:uid(), date:dayOff(-6), weather:'小雨', mood:'烦躁', title:'卡住的一天', body:'论文卡在第三章，写了删，删了写。\n\n去楼下转了一圈，雨不大，空气里有桂花最后的一点香。回来以后把大纲重排了一遍，好像好一点了。'},
+      {id:uid(), date:dayOff(-12), weather:'晴', mood:'期待', title:'海边的计划', body:'陈屿说下个月去东沙拍海。\n\n我已经开始想要带哪件外套、哪台相机。要早起看日出，所以前一晚一定要早睡。写在这里，监督自己。'},
+    ],
+    events:[
+      {id:uid(), date:dayOff(-2), time:'15:00', title:'取快递', note:'菜鸟驿站 3 号柜', color:'#A9A29B'},
+      {id:uid(), date:dayOff(0), time:'19:00', title:'和沈砚吃云南菜', note:'公司楼下', color:'#D78C7A'},
+      {id:uid(), date:dayOff(0), time:'21:30', title:'普拉提', note:'', color:'#9DB39A'},
+      {id:uid(), date:dayOff(1), time:'14:00', title:'组会', note:'文学院 302', color:'#93A8C4'},
+      {id:uid(), date:dayOff(4), time:'23:59', title:'论文初稿截止', note:'发许老师邮箱', color:'#D78C7A'},
+      {id:uid(), date:dayOff(5), time:'05:00', title:'302 爬山看日出', note:'', color:'#D9B27E'},
+      {id:uid(), date:dayOff(13), time:'', title:'妈妈生日', note:'记得提前订花', color:'#C99AA4'},
+    ],
+    memos:[
+      {id:uid(), t:now-2*H, text:'周末采购\n牛奶、燕麦、猫砂、洗衣液\n给妈妈的生日礼物再看看'},
+      {id:uid(), t:now-2*DAY, text:'论文修改意见\n1. 第二章引文补全\n2. 结论再收一收\n3. 摘要英文版重写'},
+      {id:uid(), t:now-9*DAY, text:'想去的地方\n东沙古镇 / 景迈山 / 阿那亚'},
+    ],
+    txns:[
+      {t:now-2*DAY, title:'便利店', amount:-18.5},
+      {t:now-4*DAY, title:'零钱充值', amount:500},
+      {t:now-5*DAY, title:'转账给-宋一一', amount:-32},
+    ],
+  };
+}
+
+const KEY = 'xiaoshouji.ins.v1';
+let S = null;
+try { S = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e) { S = null; }
+if (!S || S.v !== 1) S = seed();
+let saveT;
+function save(){ clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }, 150); }
+
+/* ================= data helpers ================= */
+const person = id => id === 'me' ? S.me : S.contacts[id];
+const nameOf = id => { const p = person(id); return p ? (p.remark || p.name) : '未知'; };
+function av(id, size=48, cls=''){
+  const p = person(id);
+  if (!p) return `<span class="av ${cls}" style="--s:${size}px;background:var(--wx-sub)">?</span>`;
+  const inner = p.glyph ? ic(P[p.glyph]) : esc(p.mark || (p.name||'?').slice(0,1));
+  return `<span class="av ${cls}" data-uid="${id}" style="--s:${size}px;background:${esc(p.color)}">${inner}</span>`;
+}
+function chatAv(c, size=48){
+  if (c.type !== 'group') return av(c.with, size);
+  const ms = c.members.slice(0,4);
+  return `<span class="av gav" style="--s:${size}px">${ms.map(id => av(id, size/2-3)).join('')}</span>`;
+}
+const chatName = c => c.type === 'group' ? c.name : nameOf(c.with);
+const getChat = id => S.chats.find(c => c.id === id);
+function preview(m){
+  switch(m.type){
+    case 'text': return m.text;
+    case 'image': return '[图片]';
+    case 'voice': return `[语音] ${m.dur}"`;
+    case 'sticker': return '[动画表情]';
+    case 'redpacket': return '[红包] ' + m.wish;
+    case 'transfer': return m.receipt ? '[转账] 已收款' : '[转账] ' + (m.status === 'received' ? '已收款' : '请收款');
+    case 'location': return '[位置] ' + m.name;
+    case 'card': return '[个人名片] ' + nameOf(m.uid);
+    case 'call': return (m.kind === 'video' ? '[视频通话] ' : '[语音通话] ') + m.text;
+    default: return m.text || '';
+  }
+}
+function totalUnread(){ return S.chats.reduce((s,c) => s + (c.muted ? 0 : (c.unread||0)), 0); }
+function findSingle(uid){ return S.chats.find(c => c.type === 'single' && c.with === uid); }
+function ensureChat(uid){
+  let c = findSingle(uid);
+  if (!c){ c = {id:'c_'+uid+'_'+uid.length, type:'single', with:uid, pinned:false, muted:false, unread:0, msgs:[]}; S.chats.push(c); save(); }
+  return c;
+}
+function addTxn(title, amount){ S.txns.unshift({t:Date.now(), title, amount}); S.wallet = Math.round((S.wallet + amount)*100)/100; }
+
+/* ================= chrome: stack / overlays ================= */
+const screen = $('#screen'), layers = $('#layers'), home = $('#home'), sb = $('#sb'), homeBar = $('#homeBar');
+const stack = [];
+let overlaySb = null;
+function mkPage(cls, sbVar){ const el = document.createElement('div'); el.className = 'page ' + cls; return {el, sb:sbVar}; }
+function push(p, anim='slide'){
+  p.anim = anim;
+  p.el.classList.add('in-' + anim);
+  layers.appendChild(p.el);
+  const prev = stack[stack.length-1];
+  stack.push(p);
+  p.refresh && p.refresh();
+  void p.el.offsetWidth;
+  p.el.classList.remove('in-' + anim);
+  if (prev && anim === 'slide') prev.el.classList.add('behind');
+  home.classList.add('dim');
+  syncChrome();
+  p.mounted && p.mounted();
+}
+function pop(){
+  closeTransient();
+  const p = stack.pop(); if (!p) return;
+  p.leave && p.leave();
+  p.el.style.pointerEvents = 'none';
+  p.el.classList.add('in-' + p.anim);
+  setTimeout(() => p.el.remove(), 380);
+  const top = stack[stack.length-1];
+  if (top){ top.el.classList.remove('behind'); top.refresh && top.refresh(); }
+  else { home.classList.remove('dim'); renderHome(); }
+  syncChrome();
+}
+function goHome(){
+  closeTransient();
+  if (!stack.length) return;
+  const all = stack.splice(0);
+  all.forEach((p, i) => {
+    p.leave && p.leave();
+    if (i === all.length-1){ p.el.style.pointerEvents='none'; p.el.classList.remove('behind'); p.el.classList.add('in-app'); setTimeout(() => p.el.remove(), 380); }
+    else p.el.remove();
+  });
+  home.classList.remove('dim'); renderHome(); syncChrome();
+}
+function syncChrome(){
+  const top = stack[stack.length-1];
+  const v = overlaySb || (top ? top.sb : '--home-ink');
+  sb.style.color = `var(${v})`;
+  homeBar.style.color = `var(${v})`;
+}
+function refreshAll(){ stack.forEach(p => p.refresh && p.refresh()); if (!stack.length) renderHome(); }
+homeBar.addEventListener('click', goHome);
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (screen.querySelector('.mask, .call, .viewer')) { closeTransient(true); return; }
+  if (stack.length) pop();
+});
+
+/* transient: popmenus, bubble menus */
+function closeTransient(all){
+  screen.querySelectorAll('.popmenu, .bmenu, .mo-pop').forEach(n => n.remove());
+  if (all){ const m = screen.querySelector('.mask'); if (m && m._close) m._close(); const v = screen.querySelector('.viewer'); if (v) v.remove(); }
+}
+let toastT;
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1600); }
+
+function overlay(build){
+  closeTransient();
+  const mask = document.createElement('div'); mask.className = 'mask';
+  screen.appendChild(mask);
+  const box = build();
+  screen.appendChild(box);
+  void box.offsetWidth;
+  mask.classList.add('show'); box.classList.add('show');
+  const close = () => { mask.classList.remove('show'); box.classList.remove('show'); setTimeout(() => { mask.remove(); box.remove(); }, 300); };
+  mask._close = close;
+  mask.addEventListener('click', close);
+  return {box, close};
+}
+function sheet({title, items}){
+  const o = overlay(() => {
+    const el = document.createElement('div'); el.className = 'sheet';
+    el.innerHTML = (title ? `<div class="sheet-h">${esc(title)}</div>` : '') +
+      `<div class="sheet-body">${items.map((it,i) => `<button class="sheet-item ${it.danger?'danger':''}" data-i="${i}" style="${!title && i===0 ? 'border-top:0':''}">${esc(it.label)}</button>`).join('')}</div>` +
+      `<div class="sheet-gap"></div><button class="sheet-item" data-i="-1" style="border-top:0">取消</button>`;
+    return el;
+  });
+  o.box.addEventListener('click', e => {
+    const b = e.target.closest('[data-i]'); if (!b) return;
+    o.close(); const it = items[+b.dataset.i]; if (it && it.act) setTimeout(it.act, 10);
+  });
+  return o;
+}
+function confirmSheet(title, label, act){ sheet({title, items:[{label, danger:true, act}]}); }
+function modal(html, bind){
+  const o = overlay(() => { const el = document.createElement('div'); el.className = 'modal'; el.innerHTML = html; return el; });
+  bind && bind(o.box, o.close);
+  return o;
+}
+function formModal({title, fields, ok='确定', okCls='pri', submit}){
+  modal(`<h3>${esc(title)}</h3>` + fields.map(f => `<div class="f-label">${esc(f.label)}</div>` + (f.multi ? `<textarea class="f-input" id="fm-${f.id}" placeholder="${esc(f.ph||'')}">${esc(f.value||'')}</textarea>` : `<input class="f-input" id="fm-${f.id}" type="${f.type||'text'}" ${f.step?`step="${f.step}"`:''} inputmode="${f.type==='number'?'decimal':'text'}" placeholder="${esc(f.ph||'')}" value="${esc(f.value||'')}" maxlength="${f.max||60}">`)).join('') +
+    `<div class="f-err" data-ref="err"></div><div class="f-row"><button class="btn" data-x>取消</button><button class="btn ${okCls}" data-ok>${esc(ok)}</button></div>`,
+  (box, close) => {
+    const first = box.querySelector('.f-input'); setTimeout(() => first && first.focus(), 260);
+    box.querySelector('[data-x]').onclick = close;
+    const go = () => {
+      const v = {}; fields.forEach(f => v[f.id] = box.querySelector('#fm-'+f.id).value.trim());
+      const err = submit(v);
+      if (err) box.querySelector('[data-ref=err]').textContent = err; else close();
+    };
+    box.querySelector('[data-ok]').onclick = go;
+    box.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); go(); } });
+  });
+}
+function viewImage(key){
+  closeTransient();
+  const v = document.createElement('div'); v.className = 'viewer';
+  v.innerHTML = photo(key) + `<p>${esc((PHOTOS[key]||{}).name || '')}</p>`;
+  v.onclick = () => { v.remove(); overlaySb = null; syncChrome(); };
+  screen.appendChild(v); overlaySb = '--on-wall'; syncChrome();
+}
+let bannerT;
+function banner(chat, m){
+  const b = $('#banner');
+  const who = chat.type === 'group' ? `${nameOf(m.from)}: ` : '';
+  b.innerHTML = `${chatAv(chat, 38)}<div><div class="bt"><span>微信 · ${esc(chatName(chat))}</span><span>现在</span></div><div class="bm">${esc(who + preview(m))}</div></div>`;
+  b.classList.add('show');
+  b.onclick = () => { b.classList.remove('show'); openChatFromAnywhere(chat.id); };
+  clearTimeout(bannerT); bannerT = setTimeout(() => b.classList.remove('show'), 3600);
+}
+function bindLong(root, sel, fn){
+  let timer = null, sx = 0, sy = 0, target = null, fired = false;
+  const cancel = () => { clearTimeout(timer); timer = null; if (target) target.classList.remove('pressing'); target = null; };
+  root.addEventListener('pointerdown', e => {
+    fired = false;
+    const t = e.target.closest(sel); if (!t || !root.contains(t) || e.button > 0) return;
+    target = t; sx = e.clientX; sy = e.clientY; t.classList.add('pressing');
+    timer = setTimeout(() => { fired = true; const tt = target; cancel(); fn(tt); }, 480);
+  });
+  root.addEventListener('pointermove', e => { if (target && (Math.abs(e.clientX-sx) > 8 || Math.abs(e.clientY-sy) > 8)) cancel(); });
+  ['pointerup','pointercancel','pointerleave'].forEach(ev => root.addEventListener(ev, cancel));
+  root.addEventListener('contextmenu', e => { const t = e.target.closest(sel); if (t && root.contains(t)) { e.preventDefault(); cancel(); fn(t); } });
+  root.addEventListener('click', e => { if (fired){ fired = false; e.stopPropagation(); e.preventDefault(); } }, true);
+}
+function posMenu(menu, anchor){
+  const sr = screen.getBoundingClientRect(), ar = anchor.getBoundingClientRect();
+  screen.appendChild(menu);
+  const mw = menu.offsetWidth, mh = menu.offsetHeight;
+  let left = ar.left - sr.left + ar.width/2 - mw/2;
+  left = Math.max(8, Math.min(left, sr.width - mw - 8));
+  let top = ar.top - sr.top - mh - 8;
+  if (top < 96) top = ar.bottom - sr.top + 8;
+  menu.style.left = left + 'px'; menu.style.top = top + 'px';
+}
+screen.addEventListener('pointerdown', e => {
+  if (!e.target.closest('.bmenu, .popmenu, .mo-pop, [data-act=addmenu], .mo-act')) closeTransient();
+}, true);
+
+/* ================= home ================= */
+const EN_WEEK = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const EN_MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function renderHome(){
+  const now = new Date(), today = ymd(now);
+  const upcoming = S.events.filter(e => e.date > today || (e.date === today && (e.time || '99') >= hm(now))).sort((a,b) => (a.date+(a.time||'00')).localeCompare(b.date+(b.time||'00'))).slice(0,3);
+  const lastDy = [...S.diary].sort((a,b) => b.date.localeCompare(a.date))[0];
+  const ur = totalUnread();
+  const wall = ['cream','blush','sage','mist','night'].includes(S.settings.wall) ? S.settings.wall : 'cream';
+  screen.dataset.wall = wall;
+  const pm = [...S.moments].filter(m => m.imgs.length).sort((a,b) => b.t - a.t)[0];
+  const pol = pm ? {img:pm.imgs[0], cap:(pm.text || PHOTOS[pm.imgs[0]].name).slice(0,12)} : {img:'sunset', cap:'今天也要开心'};
+  home.innerHTML = `
+    <div class="wall ${wall === 'night' ? 'night' : ''}" style="background:var(--wall-${wall})"></div>
+    <div class="home-grid">
+      <div class="w-clock"><div><div class="t" data-ref="clock">${hm(now)}</div><div class="d">${EN_WEEK[now.getDay()]}, ${EN_MON[now.getMonth()]} ${now.getDate()}<span>${now.getMonth()+1}月${now.getDate()}日</span></div></div>
+        <div class="wt">${esc((S.me.region||'杭州').split(' ').pop())} · 多云<b>14°</b></div></div>
+      <button class="polar" data-app="album" aria-label="打开相册"><div class="ph">${photo(pol.img)}</div><div class="cap">${esc(pol.cap)} ♡</div></button>
+      <div class="quad">${appIcon('memo','备忘录')}${appIcon('album','相册')}${appIcon('wallet','钱包')}${appIcon('settings','设置')}</div>
+      <button class="w w-ev" data-app="calendar"><div class="hd"><span class="eng">upcoming</span><small>${upcoming.length ? upcoming.length + ' 项日程' : ''}</small></div>
+        ${upcoming.length ? upcoming.map(e => `<span class="it"><i style="background:${esc(e.color)}"></i><span>${esc(e.title)}</span><em>${e.date === today ? '今天' : cnDate(e.date).split(' ')[0]} ${esc(e.time || '全天')}</em></span>`).join('') : '<span class="it"><i style="background:currentColor;opacity:.3"></i><span>没有安排，好好休息</span><em></em></span>'}
+      </button>
+      ${lastDy ? `<button class="w w-dy" data-app="diary"><span class="seal">${esc(lastDy.mood.slice(0,1))}</span><span class="tt"><span class="eng" style="margin-right:8px">dear diary</span>${esc(lastDy.title || '无题')}</span><span class="ex">${esc(cnDate(lastDy.date))} · ${esc(lastDy.body.replace(/\n+/g,' '))}</span></button>` : ''}
+    </div>
+    <div class="pager"><i></i><i></i></div>
+    <div class="dock">${appIcon('wechat','微信', ur)}${appIcon('diary','日记')}${appIcon('calendar','日历')}${appIcon('camera','相机')}</div>`;
+}
+function appIcon(k, label, badge){
+  const d = new Date();
+  const g = path => `<span class="ai">${ic(path)}</span>`;
+  const inner = {
+    wechat: g('<path d="M12 4.6c4.6 0 8.2 3 8.2 6.8s-3.6 6.8-8.2 6.8c-.9 0-1.8-.1-2.6-.4l-3.7 1.7.9-3.1c-1.8-1.3-2.8-3-2.8-5 0-3.8 3.6-6.8 8.2-6.8z"/><path d="M8.6 11.4h.01M12 11.4h.01M15.4 11.4h.01" stroke-width="2.2"/>'),
+    diary: g('<path d="M6.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v15H8a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M6.5 18.5A1.5 1.5 0 0 1 8 17h10.5M10 8h5M10 11h3.5"/>'),
+    calendar:`<span class="ai ai-cal"><small>${['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()]}</small><b>${d.getDate()}</b></span>`,
+    memo: g('<path d="M6 4h12v16H6z"/><path d="M9 9h6M9 12.5h6M9 16h3.5"/>'),
+    album: g('<rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-4.5-4.5-8.5 8"/>'),
+    settings: g(P.gear),
+    wallet: g(P.wallet),
+    camera: g('<path d="M4 8h3.2l1.8-2.6h6l1.8 2.6H20v11H4z"/><circle cx="12" cy="13.2" r="3.4"/>'),
+  }[k];
+  return `<button class="app" data-app="${k}">${inner}<span class="an">${label}</span>${badge ? `<span class="bd">${badge > 99 ? '99+' : badge}</span>` : ''}</button>`;
+}
+home.addEventListener('click', e => {
+  const a = e.target.closest('[data-app]'); if (!a) return;
+  openApp(a.dataset.app);
+});
+function openApp(k){
+  const f = {wechat:pageWechat, diary:pageDiary, calendar:pageCalendar, memo:pageMemos, album:pageAlbum, settings:pageSettings, wallet:pageWallet, camera:null}[k];
+  if (k === 'camera'){ const fl = $('#flash'); fl.classList.add('on'); setTimeout(() => fl.classList.remove('on'), 60); toast('已拍下一张照片，存进了相册'); S.shots = (S.shots||0) + 1; S.album = S.album || []; S.album.unshift({img: rand(Object.keys(PHOTOS)), t:Date.now(), src:'相机'}); save(); return; }
+  if (f) push(f(), 'app');
+}
+setInterval(() => {
+  const now = new Date();
+  $('#sbTime').textContent = `${now.getHours()}:${pad(now.getMinutes())}`;
+  const c = home.querySelector('[data-ref=clock]'); if (c) c.textContent = hm(now);
+}, 10000);
+$('#sbTime').textContent = `${new Date().getHours()}:${pad(new Date().getMinutes())}`;
+
+/* ================= WeChat: main tabs ================= */
+function pageWechat(){
+  const p = mkPage('wx', '--wx-text'); p.tab = 'chats';
+  const el = p.el;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回桌面">${I.back}</button></div><div class="nav-t" data-ref="title"></div><div class="nav-r" data-ref="right"></div></header>
+    <div class="wx-body" data-ref="body"></div><nav class="wx-tabs" data-ref="tabs"></nav>`;
+  const R = refs(el);
+  let rendered = null;
+  p.refresh = () => {
+    const ur = totalUnread();
+    const tabs = [['chats','微信','chat'],['contacts','通讯录','book'],['discover','发现','compass'],['me','我','me']];
+    R.tabs.innerHTML = tabs.map(([k,l,i]) => `<button class="tab ${p.tab===k?'on':''}" data-tab="${k}">${ic(P[i],26)}<span>${l}</span>${k==='chats'&&ur?`<span class="bd">${ur>99?'99+':ur}</span>`:''}</button>`).join('');
+    R.title.innerHTML = p.tab === 'chats' ? (ur ? `微信(${ur})` : '微信') : {contacts:'通讯录', discover:'发现', me:''}[p.tab];
+    R.right.innerHTML = p.tab === 'chats' || p.tab === 'contacts' ? `<button class="ib" data-act="addmenu" aria-label="更多">${I.plusc}</button>` : '';
+    el.querySelector('.nav').style.background = p.tab === 'me' ? 'var(--wx-card)' : '';
+    if (p.tab === 'chats'){
+      if (rendered !== 'chats'){ R.body.innerHTML = `<label class="wx-search">${sm('search')}<input id="wxSearch" placeholder="搜索" autocomplete="off"></label><div data-ref="list"></div>`; rendered = 'chats'; }
+      renderChatList();
+    } else {
+      rendered = p.tab;
+      R.body.innerHTML = p.tab === 'contacts' ? contactsHtml() : p.tab === 'discover' ? discoverHtml() : meHtml();
+    }
+  };
+  function renderChatList(){
+    const q = (R.body.querySelector('#wxSearch')?.value || '').trim().toLowerCase();
+    const list = R.body.querySelector('[data-ref=list]');
+    let chats = [...S.chats].sort((a,b) => (b.pinned - a.pinned) || (lastT(b) - lastT(a)));
+    if (q) chats = chats.filter(c => chatName(c).toLowerCase().includes(q) || c.msgs.some(m => (m.text||'').toLowerCase().includes(q)));
+    list.innerHTML = chats.length ? chats.map(c => {
+      const last = c.msgs[c.msgs.length-1];
+      const typing = TYPING.get(c.id);
+      let pv = last ? preview(last) : '';
+      if (last && c.type === 'group' && last.from !== 'me' && last.from !== 'sys') pv = nameOf(last.from) + ': ' + pv;
+      const at = c.unread && c.msgs.slice(-c.unread).some(m => (m.text||'').includes('@' + S.me.name));
+      const draft = c.draft && !typing;
+      return `<div class="cl-item ${c.pinned?'pinned':''}" data-chat="${c.id}">
+        <div class="cl-av">${chatAv(c, 48)}${c.unread ? (c.muted ? '<span class="dt"></span>' : `<span class="bd">${c.unread>99?'99+':c.unread}</span>`) : ''}</div>
+        <div class="cl-main"><div class="cl-top"><span class="cl-name">${esc(chatName(c))}</span><span class="cl-time">${last ? fmtList(last.t) : ''}</span></div>
+        <div class="cl-bot"><span class="cl-last">${typing ? `<span class="ty">${c.type==='group' ? esc(nameOf(typing)) + ' ' : ''}正在输入…</span>` : (at ? '<span class="at">[有人@我]</span>' : '') + (draft ? `<span class="at">[草稿]</span> ${esc(c.draft)}` : (c.muted && c.unread > 1 ? `[${c.unread}条] ` : '') + esc(pv))}</span>${c.muted ? ic(P.bell,15) : ''}</div></div></div>`;
+    }).join('') : `<div class="empty">${q ? '没有找到相关聊天' : '还没有聊天<br>点右上角 ＋ 添加朋友'}</div>`;
+  }
+  const lastT = c => c.msgs.length ? c.msgs[c.msgs.length-1].t : 0;
+  function contactsHtml(){
+    const ids = Object.keys(S.contacts).filter(id => !S.contacts[id].sys);
+    const groups = {};
+    ids.forEach(id => { const k = (S.contacts[id].py || '#').toUpperCase(); (groups[k] = groups[k] || []).push(id); });
+    const keys = Object.keys(groups).sort((a,b) => a === '#' ? 1 : b === '#' ? -1 : a.localeCompare(b));
+    return `<div class="group" style="margin-bottom:0">
+      <button class="row" style="--indent:58px" data-act="addfriend"><span class="ri" style="background:#D8B494">${ic(P.adduser)}</span><span class="lbl">新的朋友</span></button>
+      <button class="row" style="--indent:58px" data-act="groups"><span class="ri" style="background:#A9B8A6">${ic(P.users)}</span><span class="lbl">群聊</span></button>
+      <button class="row" style="--indent:58px" data-act="file"><span class="ri" style="background:#9AAABB">${ic(P.folder)}</span><span class="lbl">文件传输助手</span></button></div>` +
+      keys.map(k => `<div class="idx">${k}</div><div class="group" style="margin-bottom:0">${groups[k].sort((a,b)=>nameOf(a).localeCompare(nameOf(b),'zh')).map(id => `<button class="row" style="--indent:66px;min-height:60px" data-profile="${id}">${av(id,38)}<span class="lbl">${esc(nameOf(id))}</span></button>`).join('')}</div>`).join('') +
+      `<div class="empty" style="padding:22px">${ids.length} 位朋友</div>`;
+  }
+  function discoverHtml(){
+    const lm = [...S.moments].sort((a,b)=>b.t-a.t)[0];
+    return `<div style="height:8px"></div><div class="group"><button class="row" data-act="moments"><span class="ri" style="background:#C9AE95">${ic(P.moments)}</span><span class="lbl">朋友圈</span>${lm ? av(lm.from, 30) : ''}<span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="scan"><span class="ri" style="background:#9AAABB">${ic(P.scan)}</span><span class="lbl">扫一扫</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="shake"><span class="ri" style="background:#93A8C4">${ic(P.shake)}</span><span class="lbl">摇一摇</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="nearby"><span class="ri" style="background:#D9B27E">${ic(P.pin)}</span><span class="lbl">附近</span><span class="chev">${sm('chev')}</span></button></div>`;
+  }
+  function meHtml(){
+    return `<button class="me-card" data-act="editme">${av('me',64)}<div style="flex:1;min-width:0"><div class="nm">${esc(S.me.name)}</div><div class="id">微信号：${esc(S.me.wxid)}</div><div class="sg">${esc(S.me.sign||'')}</div></div><span class="chev" style="color:var(--wx-sub)">${sm('chev')}</span></button>
+      <div class="group"><button class="row" data-act="wallet"><span class="ri" style="background:#A9B8A6">${ic(P.wallet)}</span><span class="lbl">服务</span><span class="val">零钱 ¥${money(S.wallet)}</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="fav"><span class="ri" style="background:#D9B27E">${ic(P.fav)}</span><span class="lbl">收藏</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="moments"><span class="ri" style="background:#93A8C4">${ic(P.image)}</span><span class="lbl">朋友圈</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="album"><span class="ri" style="background:#C99AA4">${ic(P.camera)}</span><span class="lbl">相册</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="settings"><span class="ri" style="background:#9AAABB">${ic(P.gear)}</span><span class="lbl">设置</span><span class="chev">${sm('chev')}</span></button></div>`;
+  }
+  el.addEventListener('input', e => { if (e.target.id === 'wxSearch') renderChatList(); });
+  el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-tab],[data-chat],[data-profile]'); if (!t) return;
+    if (t.dataset.tab){ p.tab = t.dataset.tab; p.refresh(); R.body.scrollTop = 0; return; }
+    if (t.dataset.chat) return openChat(t.dataset.chat);
+    if (t.dataset.profile) return push(pageProfile(t.dataset.profile));
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'addmenu') addMenu(t);
+    else if (a === 'addfriend') push(pageAddFriend());
+    else if (a === 'groups') push(pageGroupList());
+    else if (a === 'file') openChat(ensureChat('file').id);
+    else if (a === 'moments') push(pageMoments());
+    else if (a === 'scan') toast('小手机没有摄像头权限，扫不了码');
+    else if (a === 'shake'){ const ph = $('.phone'); ph.classList.remove('shake'); void ph.offsetWidth; ph.classList.add('shake'); setTimeout(() => toast('没有找到同一时刻摇晃手机的人'), 900); }
+    else if (a === 'nearby') toast('附近暂时没有人');
+    else if (a === 'editme') push(pageEditMe());
+    else if (a === 'wallet') push(pageWallet());
+    else if (a === 'fav') toast('收藏夹还是空的');
+    else if (a === 'album') push(pageAlbum());
+    else if (a === 'settings') push(pageSettings());
+  });
+  bindLong(el, '.cl-item', item => {
+    const c = getChat(item.dataset.chat); if (!c) return;
+    sheet({title: chatName(c), items:[
+      {label: c.pinned ? '取消置顶' : '置顶该聊天', act(){ c.pinned = !c.pinned; save(); p.refresh(); }},
+      {label: c.unread ? '标为已读' : '标为未读', act(){ c.unread = c.unread ? 0 : 1; save(); p.refresh(); }},
+      {label: c.muted ? '开启新消息提醒' : '消息免打扰', act(){ c.muted = !c.muted; save(); p.refresh(); }},
+      {label:'删除该聊天', danger:true, act(){ confirmSheet('删除后，将清空该聊天的消息记录', '删除', () => { S.chats = S.chats.filter(x => x !== c); save(); p.refresh(); }); }},
+    ]});
+  });
+  return p;
+}
+function addMenu(anchor){
+  if (screen.querySelector('.popmenu')) { closeTransient(); return; }
+  const m = document.createElement('div'); m.className = 'popmenu';
+  m.innerHTML = `<button data-m="group">${ic(P.chat,20)}发起群聊</button><button data-m="friend">${ic(P.adduser,20)}添加朋友</button><button data-m="scan">${ic(P.scan,20)}扫一扫</button><button data-m="pay">${ic(P.wallet,20)}收付款</button>`;
+  screen.appendChild(m);
+  m.addEventListener('click', e => {
+    const b = e.target.closest('[data-m]'); if (!b) return; m.remove();
+    ({group:() => push(pageNewGroup()), friend:() => push(pageAddFriend()), scan:() => toast('小手机没有摄像头权限，扫不了码'), pay:() => push(pageWallet())})[b.dataset.m]();
+  });
+}
+function openChatFromAnywhere(id){
+  const top = stack[stack.length-1];
+  if (top && top.chatId === id) return;
+  if (!stack.some(p => p.el.classList.contains('wx') && p.tab)) { goHome(); push(pageWechat(), 'app'); }
+  else { while (stack.length && !stack[stack.length-1].tab) { const p = stack.pop(); p.leave && p.leave(); p.el.remove(); } stack[stack.length-1].el.classList.remove('behind'); }
+  openChat(id);
+}
+
+/* ================= WeChat: chat ================= */
+const TYPING = new Map();
+const TIMERS = new Map();
+const EMOJI = '😀 😁 😂 🤣 😊 😍 🥰 😘 😜 🤔 🙄 😴 😭 😤 😡 🥺 🤗 🙈 😎 🤤 😳 😅 🙃 😇 🫠 🥹 👍 👌 🙏 👏 💪 🎉 ❤️ 💔 🌹 ☕ 🍜 🍰 🌙 ☀️'.split(' ');
+const STICKERS = '🫠 🥺 😤 🙈 💤 🍵 🎉 🐱 🫶 👀 🌚 🐶'.split(' ');
+const PLACES = [{name:'西湖文化广场', addr:'浙江省杭州市拱墅区中山北路 482 号'},{name:'浙江图书馆', addr:'浙江省杭州市西湖区曙光路 73 号'},{name:'湖滨银泰 in77', addr:'浙江省杭州市上城区东坡路 7 号'},{name:'云南菜·山野', addr:'浙江省杭州市西湖区文三路 259 号'}];
+
+function openChat(id){
+  const chat = getChat(id); if (!chat) return;
+  chat.unread = 0; save();
+  const p = mkPage('wx chat-page', '--wx-text'); p.chatId = id;
+  p.mode = 'text'; p.panel = null; p.quote = null; p.stkTab = false;
+  const el = p.el;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib back" data-act="pop" aria-label="返回">${I.back}<span data-ref="backn"></span></button></div><div class="nav-t" data-ref="title"></div><div class="nav-r"><button class="ib" data-act="info" aria-label="聊天信息">${I.more}</button></div></header>
+    <div class="chat-scroll" data-ref="scroll"><div data-ref="msgs"></div><div data-ref="typing"></div></div>
+    <div class="chat-bar" data-ref="bar">
+      <div class="quote-chip" data-ref="qchip" hidden><span data-ref="qtext"></span><button class="ib sm" data-act="unquote" aria-label="取消引用">${sm('close',14)}</button></div>
+      <div class="bar-row">
+        <button class="ib" data-act="mode" data-ref="modeBtn" aria-label="切换语音">${I.voice}</button>
+        <textarea class="ci" id="ci-${esc(id)}" data-ref="input" rows="1" enterkeyhint="send" aria-label="输入消息"></textarea>
+        <button class="hold" data-ref="hold" hidden>按住 说话</button>
+        <button class="ib" data-act="emoji" data-ref="emoBtn" aria-label="表情">${I.smile}</button>
+        <button class="ib" data-act="plus" data-ref="plusBtn" aria-label="更多功能">${I.plusc}</button>
+        <button class="send" data-act="send" data-ref="sendBtn" hidden>发送</button>
+      </div>
+      <div class="panel" data-ref="emoPanel" hidden><div class="p-tabs"><button data-act="emotab" data-k="0" class="on">表情</button><button data-act="emotab" data-k="1">贴纸</button></div><div class="emo-grid" data-ref="emoGrid"></div></div>
+      <div class="panel" data-ref="plusPanel" hidden><div class="plus-grid">
+        ${[['album','相册','image'],['camera','拍摄','camera'],['video','视频通话','video'],['audio','语音通话','phone'],['loc','位置','pin'],['rp','红包','rp'],['tf','转账','tf'],['card','个人名片','card']].map(([k,l,i]) => `<button data-plus="${k}"><span>${ic(P[i])}</span>${l}</button>`).join('')}
+      </div></div>
+    </div>`;
+  const R = refs(el);
+  R.input.value = chat.draft || '';
+  const nearBottom = () => R.scroll.scrollHeight - R.scroll.scrollTop - R.scroll.clientHeight < 80;
+  const toBottom = () => { R.scroll.scrollTop = R.scroll.scrollHeight; };
+  function header(){
+    const typing = TYPING.get(id);
+    const t = chatName(chat) + (chat.type === 'group' ? `(${chat.members.length})` : '');
+    R.title.innerHTML = (typing && chat.type === 'single') ? '对方正在输入…' : esc(t) + (chat.muted ? ` <span style="opacity:.5;vertical-align:-2px">${sm('bell',14)}</span>` : '');
+    const others = S.chats.filter(c => c.id !== id).reduce((s,c) => s + (c.muted ? 0 : c.unread||0), 0);
+    R.backn.textContent = others ? others : '';
+  }
+  function renderMsgs(stick){
+    const keep = stick || nearBottom();
+    let html = '', last = 0;
+    chat.msgs.forEach((m, i) => {
+      if (m.t - last > 5*6e4) html += `<div class="msg-time">${fmtMsg(m.t)}</div>`;
+      last = m.t;
+      html += msgHtml(chat, m, i);
+    });
+    if (!chat.msgs.length) html = `<div class="msg-sys" style="padding-top:30px">${chat.with === 'file' ? '在手机和电脑之间传文件，或者给自己留个言' : '还没有消息，打个招呼吧'}</div>`;
+    R.msgs.innerHTML = html;
+    const typing = TYPING.get(id);
+    R.typing.innerHTML = typing ? `<div class="typing" title="${esc(nameOf(typing))} 正在输入"><i></i><i></i><i></i></div>` : '';
+    if (keep) toBottom();
+  }
+  p.refresh = () => { chat.unread = 0; header(); renderMsgs(); };
+  p.onIncoming = () => { header(); renderMsgs(); };
+  p.mounted = () => { toBottom(); };
+  p.leave = () => { chat.draft = R.input.value.trim() ? R.input.value : ''; save(); };
+
+  /* input / panels */
+  function autosize(){ R.input.style.height = '40px'; R.input.style.height = Math.min(110, R.input.scrollHeight) + 'px'; }
+  function syncBtns(){ const has = R.input.value.trim().length > 0 && p.mode === 'text'; R.sendBtn.hidden = !has; R.plusBtn.hidden = has; }
+  function setPanel(k){
+    p.panel = p.panel === k ? null : k;
+    R.emoPanel.hidden = p.panel !== 'emoji'; R.plusPanel.hidden = p.panel !== 'plus';
+    R.bar.classList.toggle('open', !!p.panel);
+    R.emoBtn.innerHTML = p.panel === 'emoji' ? I.kbd : I.smile;
+    if (p.panel){ R.input.blur(); if (p.mode === 'voice') setMode('text', true); }
+    if (p.panel === 'emoji') renderEmo();
+    toBottom();
+  }
+  function renderEmo(){
+    R.emoGrid.className = 'emo-grid' + (p.stkTab ? ' stk' : '');
+    R.emoGrid.innerHTML = p.stkTab ? STICKERS.map(s => `<button data-stk="${s}">${s}</button>`).join('') : EMOJI.map(s => `<button data-emo="${s}">${s}</button>`).join('');
+    el.querySelectorAll('[data-act=emotab]').forEach(b => b.classList.toggle('on', (b.dataset.k === '1') === p.stkTab));
+  }
+  function setMode(m, silent){
+    p.mode = m;
+    R.input.hidden = m === 'voice'; R.hold.hidden = m !== 'voice';
+    R.modeBtn.innerHTML = m === 'voice' ? I.kbd : I.voice;
+    if (m === 'voice' && p.panel && !silent) setPanel(p.panel);
+    if (m === 'text' && !silent) R.input.focus();
+    syncBtns();
+  }
+  function setQuote(m){
+    p.quote = m ? {name: m.from === 'me' ? S.me.name : nameOf(m.from), text: preview(m)} : null;
+    R.qchip.hidden = !p.quote;
+    if (p.quote){ R.qtext.textContent = `${p.quote.name}：${p.quote.text}`; R.input.focus(); }
+  }
+  R.input.addEventListener('input', () => { autosize(); syncBtns(); });
+  R.input.addEventListener('focus', () => { if (p.panel) setPanel(p.panel); setTimeout(toBottom, 250); });
+  R.input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing){ e.preventDefault(); sendText(); } });
+
+  function send(m){
+    Object.assign(m, {id:uid(), from:'me', t:Date.now()});
+    chat.msgs.push(m); chat.draft = ''; save();
+    renderMsgs(true); header();
+    scheduleReply(chat, m);
+  }
+  function sendText(){
+    const v = R.input.value.trim(); if (!v) return;
+    const m = {type:'text', text:v}; if (p.quote) m.quote = p.quote;
+    R.input.value = ''; autosize(); setQuote(null); syncBtns();
+    send(m);
+  }
+
+  /* hold to talk */
+  let rec = null;
+  R.hold.addEventListener('pointerdown', e => {
+    e.preventDefault(); try { R.hold.setPointerCapture(e.pointerId); } catch(_){}
+    R.hold.classList.add('active'); R.hold.textContent = '松开 发送';
+    const box = document.createElement('div'); box.className = 'rec';
+    box.innerHTML = `<div class="lv">${'<i></i>'.repeat(7)}</div><div class="sec" data-s>0"</div><div data-h>手指上滑，取消发送</div>`;
+    box.querySelectorAll('.lv i').forEach((n,i) => n.style.animationDelay = (i*0.11) + 's');
+    screen.appendChild(box);
+    rec = {start:Date.now(), y:e.clientY, box, cancel:false, iv:setInterval(() => { const s = Math.floor((Date.now()-rec.start)/1000); box.querySelector('[data-s]').textContent = s + '"'; if (s >= 59) finishRec(); }, 200)};
+  });
+  R.hold.addEventListener('pointermove', e => {
+    if (!rec) return; const c = rec.y - e.clientY > 60;
+    if (c !== rec.cancel){ rec.cancel = c; rec.box.classList.toggle('cancel', c); rec.box.querySelector('[data-h]').textContent = c ? '松开手指，取消发送' : '手指上滑，取消发送'; R.hold.textContent = c ? '松开 取消' : '松开 发送'; }
+  });
+  const finishRec = () => {
+    if (!rec) return; const r = rec; rec = null;
+    clearInterval(r.iv); r.box.remove(); R.hold.classList.remove('active'); R.hold.textContent = '按住 说话';
+    const dur = Math.round((Date.now() - r.start)/1000);
+    if (r.cancel) return;
+    if (dur < 1) return toast('说话时间太短');
+    send({type:'voice', dur, tx: rand(['在干嘛呀','我到楼下了，你下来吧','你猜我现在在哪','今天好冷啊，手都冻僵了','哈哈哈哈你听我说','想你了，就发个语音']), played:true});
+  };
+  R.hold.addEventListener('pointerup', finishRec);
+  R.hold.addEventListener('pointercancel', () => { if (rec) { rec.cancel = true; finishRec(); } });
+
+  /* avatar click / double-click */
+  let avT = null;
+  el.addEventListener('dblclick', e => {
+    const a = e.target.closest('.msg > .av'); if (!a) return;
+    clearTimeout(avT); avT = null; pat(a.dataset.uid);
+  });
+  function pat(uidp){
+    const who = uidp === 'me' ? '自己' : `"${nameOf(uidp)}"`;
+    chat.msgs.push({id:uid(), from:'sys', type:'system', text:`我拍了拍${who}`, t:Date.now()}); save();
+    renderMsgs(true);
+    R.msgs.querySelectorAll(`.msg > .av[data-uid="${uidp}"]`).forEach(n => { n.classList.remove('pat'); void n.offsetWidth; n.classList.add('pat'); });
+    if (uidp !== 'me' && Math.random() < .5 && chat.with !== 'file'){
+      setTimeout(() => addIncoming(chat, {id:uid(), from:'sys', type:'system', text:`"${nameOf(uidp)}" 拍了拍我`, t:Date.now()}), 1400);
+    }
+  }
+
+  el.addEventListener('click', e => {
+    const av_ = e.target.closest('.msg > .av');
+    if (av_){ clearTimeout(avT); const u = av_.dataset.uid; avT = setTimeout(() => { avT = null; push(pageProfile(u)); }, 260); return; }
+    const t = e.target.closest('[data-act],[data-emo],[data-stk],[data-plus]');
+    if (!t){ if (e.target.closest('.chat-scroll') && p.panel) setPanel(p.panel); return; }
+    if (t.dataset.emo){ const s = R.input.selectionStart ?? R.input.value.length; R.input.value = R.input.value.slice(0,s) + t.dataset.emo + R.input.value.slice(R.input.selectionEnd ?? s); syncBtns(); autosize(); if (!R.sendBtn.hidden) {} return; }
+    if (t.dataset.stk){ send({type:'sticker', emo:t.dataset.stk}); return; }
+    if (t.dataset.plus) return plusAct(t.dataset.plus);
+    const row = t.closest('.msg'); const m = row ? chat.msgs[+row.dataset.i] : null;
+    switch (t.dataset.act){
+      case 'pop': pop(); break;
+      case 'info': push(pageChatInfo(chat)); break;
+      case 'mode': setMode(p.mode === 'voice' ? 'text' : 'voice'); break;
+      case 'emoji': setPanel('emoji'); break;
+      case 'plus': setPanel('plus'); break;
+      case 'emotab': p.stkTab = t.dataset.k === '1'; renderEmo(); break;
+      case 'send': sendText(); break;
+      case 'unquote': setQuote(null); break;
+      case 'reedit': { const mm = chat.msgs[+t.dataset.i]; if (mm){ setMode('text', true); R.input.value = mm.reedit; autosize(); syncBtns(); R.input.focus(); } break; }
+      case 'voice': playVoice(t, m); break;
+      case 'img': viewImage(m.img); break;
+      case 'rp': openRedPacket(chat, m, () => renderMsgs()); break;
+      case 'tf': openTransfer(chat, m, () => renderMsgs(true)); break;
+      case 'card': push(pageProfile(m.uid)); break;
+      case 'loc': toast(`${m.name}\n${m.addr}`); break;
+      case 'call': startCall(chat, m.kind); break;
+    }
+  });
+  function playVoice(b, m){
+    if (b.classList.contains('playing')){ b.classList.remove('playing'); clearTimeout(b._t); return; }
+    R.msgs.querySelectorAll('.b-voice.playing').forEach(n => { n.classList.remove('playing'); clearTimeout(n._t); });
+    b.classList.add('playing');
+    if (!m.played){ m.played = true; save(); const d = b.parentElement.querySelector('.v-dot'); if (d) d.remove(); }
+    b._t = setTimeout(() => b.classList.remove('playing'), m.dur*1000);
+  }
+  function plusAct(k){
+    if (k === 'album') return pickPhoto(key => send({type:'image', img:key}));
+    if (k === 'camera'){ const fl = $('#flash'); fl.classList.add('on'); setTimeout(() => fl.classList.remove('on'), 60); setTimeout(() => send({type:'image', img:rand(Object.keys(PHOTOS))}), 300); return; }
+    if (k === 'video' || k === 'audio'){ if (chat.type === 'group' || chat.with === 'file') return toast('这里不能发起通话'); return startCall(chat, k === 'video' ? 'video' : 'voice'); }
+    if (k === 'loc') return sheet({title:'发送位置', items: PLACES.map(pl => ({label:pl.name, act:() => send({type:'location', ...pl})}))});
+    if (k === 'card') return sheet({title:'选择要发送的名片', items:Object.keys(S.contacts).filter(i => !S.contacts[i].sys && i !== chat.with).map(i => ({label:nameOf(i), act:() => send({type:'card', uid:i})}))});
+    if (k === 'rp') return formModal({title: chat.type === 'group' ? '发红包到群聊' : '发红包', ok:'塞钱进红包', okCls:'red', fields:[{id:'amt', label:`金额（元，零钱 ¥${money(S.wallet)}）`, type:'number', step:'0.01', ph:'0.00'},{id:'wish', label:'祝福语', ph:'恭喜发财，大吉大利', max:24}], submit(v){
+      const a = Math.round(parseFloat(v.amt)*100)/100;
+      if (!(a > 0)) return '请输入红包金额';
+      if (a > 200) return '单个红包金额不能超过 200 元';
+      if (a > S.wallet) return '零钱余额不足';
+      addTxn('发出红包', -a);
+      send({type:'redpacket', amount:a, wish:v.wish || '恭喜发财，大吉大利', opened:false});
+    }});
+    if (k === 'tf'){
+      if (chat.type === 'group') return toast('群聊里请发红包');
+      if (chat.with === 'file') return toast('不能给文件传输助手转账');
+      return formModal({title:`转账给 ${nameOf(chat.with)}`, ok:'转账', fields:[{id:'amt', label:`金额（元，零钱 ¥${money(S.wallet)}）`, type:'number', step:'0.01', ph:'0.00'},{id:'note', label:'转账说明（选填）', ph:'添加转账说明', max:20}], submit(v){
+        const a = Math.round(parseFloat(v.amt)*100)/100;
+        if (!(a > 0)) return '请输入转账金额';
+        if (a > S.wallet) return '零钱余额不足';
+        addTxn('转账给-' + nameOf(chat.with), -a);
+        send({type:'transfer', amount:a, note:v.note, status:'pending'});
+      }});
+    }
+  }
+
+  /* long press menu on bubbles */
+  bindLong(el, '.msg [data-press]', node => {
+    const row = node.closest('.msg'); const i = +row.dataset.i; const m = chat.msgs[i]; if (!m) return;
+    const opts = [];
+    if (m.type === 'text') opts.push(['copy','复制']);
+    if (m.type === 'voice') opts.push(['tx', m.showTx ? '收起文字' : '转文字']);
+    if (['text','image','voice','sticker','location','card'].includes(m.type)) opts.push(['quote','引用']);
+    if (m.from === 'me' && !['redpacket','transfer','call'].includes(m.type)) opts.push(['recall','撤回']);
+    opts.push(['del','删除']);
+    const icons = {copy:'copy', tx:'text', quote:'quote', recall:'undo', del:'trash'};
+    const menu = document.createElement('div'); menu.className = 'bmenu';
+    menu.innerHTML = opts.map(([k,l]) => `<button data-k="${k}">${ic(P[icons[k]])}<span>${l}</span></button>`).join('');
+    posMenu(menu, node);
+    menu.addEventListener('click', ev => {
+      const b = ev.target.closest('[data-k]'); if (!b) return; menu.remove();
+      const k = b.dataset.k;
+      if (k === 'copy'){
+        try { navigator.clipboard.writeText(m.text).then(() => toast('已复制'), () => toast('复制失败，可以在输入框里手动粘贴')); } catch(_) { toast('复制失败'); }
+      } else if (k === 'tx'){ m.showTx = !m.showTx; save(); renderMsgs(); }
+      else if (k === 'quote'){ setMode('text', true); setQuote(m); }
+      else if (k === 'recall'){
+        chat.msgs[i] = {id:m.id, from:'sys', type:'recall', text:'你撤回了一条消息', reedit: m.type === 'text' ? m.text : '', t:m.t}; save(); renderMsgs();
+      } else if (k === 'del'){
+        confirmSheet('删除这条消息？只会在你的手机上删除', '删除', () => { chat.msgs.splice(i,1); save(); renderMsgs(); });
+      }
+    });
+  });
+
+  setMode('text', true); syncBtns(); autosize();
+  push(p);
+  return p;
+}
+
+function msgHtml(chat, m, i){
+  if (m.type === 'system') return `<div class="msg-sys">${esc(m.text)}</div>`;
+  if (m.type === 'recall') return `<div class="msg-sys">${esc(m.text)}${m.reedit ? ` <button data-act="reedit" data-i="${i}">重新编辑</button>` : ''}</div>`;
+  const mine = m.from === 'me';
+  let b = '', after = '';
+  switch (m.type){
+    case 'text': b = `<div class="bubble tail" data-press>${esc(m.text)}</div>`; break;
+    case 'sticker': b = `<div class="b-stk" data-press>${esc(m.emo)}</div>`; break;
+    case 'image': b = `<div class="b-img" data-press data-act="img">${photo(m.img)}</div>`; break;
+    case 'voice':
+      b = `<div class="bubble tail b-voice" data-press data-act="voice" style="width:${Math.min(210, 64 + m.dur*5)}px">${VWAVE}<span>${m.dur}"</span></div>${!mine && !m.played ? '<span class="v-dot"></span>' : ''}`;
+      if (m.showTx) after = `<div class="v-tx">${esc(m.tx || '（没有识别到文字）')}</div>`;
+      break;
+    case 'call': b = `<div class="bubble tail b-call" data-press data-act="call">${m.kind === 'video' ? sm('video',18) : sm('phone',18)}<span>${esc(m.text)}</span></div>`; break;
+    case 'redpacket':
+      b = `<div class="b-rp tail ${m.opened?'done':''}" data-press data-act="rp"><div class="cd-top"><span class="rp-ico"></span><div><div class="ttl">${esc(m.wish)}</div>${m.opened ? `<small>${mine ? '已被领取' : '已领取'}</small>` : ''}</div></div><div class="cd-bot">红包</div></div>`; break;
+    case 'transfer': {
+      const done = m.receipt || m.status === 'received';
+      const sub = m.receipt ? '已收款' : m.status === 'received' ? '已被接收' : (mine ? '你发起了一笔转账' : '请收款');
+      b = `<div class="b-tf tail ${done?'done':''}" data-press data-act="tf"><div class="cd-top"><span class="tf-ico">${done ? ic(P.check) : ic(P.tf)}</span><div><div class="ttl">¥${money(m.amount)}</div><small>${esc(m.note && !m.receipt ? m.note : sub)}</small></div></div><div class="cd-bot">转账</div></div>`; break;
+    }
+    case 'location': b = `<div class="b-loc" data-press data-act="loc"><div class="lt"><b>${esc(m.name)}</b><small>${esc(m.addr)}</small></div><div class="map">${ic(P.pin,30,'fill="currentColor" stroke="var(--wx-other)"')}</div></div>`; break;
+    case 'card': b = `<div class="b-card" data-press data-act="card"><div class="cd-top">${av(m.uid,42)}<div><div class="ttl">${esc(nameOf(m.uid))}</div></div></div><div class="cd-bot">个人名片</div></div>`; break;
+    default: b = `<div class="bubble tail">${esc(m.text||'')}</div>`;
+  }
+  const nm = chat.type === 'group' && !mine ? `<div class="msg-name">${esc(nameOf(m.from))}</div>` : '';
+  const q = m.quote ? `<div class="quote">${esc(m.quote.name)}：${esc(m.quote.text)}</div>` : '';
+  return `<div class="msg ${mine?'me':''}" data-i="${i}">${av(m.from, 40)}<div class="msg-main">${nm}<div class="bw">${b}</div>${after}${q}</div></div>`;
+}
+
+function pickPhoto(cb){
+  const o = overlay(() => {
+    const el = document.createElement('div'); el.className = 'sheet';
+    el.innerHTML = `<div class="sheet-h">选择一张照片</div><div class="sheet-body"><div class="pick">${Object.keys(PHOTOS).map(k => `<button data-k="${k}" aria-label="${esc(PHOTOS[k].name)}">${photo(k)}</button>`).join('')}</div></div><div class="sheet-gap" style="margin-top:14px"></div><button class="sheet-item" data-x style="border-top:0">取消</button>`;
+    return el;
+  });
+  o.box.addEventListener('click', e => { const b = e.target.closest('[data-k],[data-x]'); if (!b) return; o.close(); if (b.dataset.k) cb(b.dataset.k); });
+}
+
+/* ================= replies ================= */
+const PERSONA = {
+  shen:{base:['嗯，我在听。','好。','然后呢？','你说得对。','知道了，听你的。','等我下班。','嗯嗯','我也是这么想的'], kw:[
+    [/吃|饭|饿|云南|菜/, ['那七点我来接你？','我订好位置了，靠窗。','你想吃什么都行，我请。']],
+    [/累|困|加班|烦/, ['辛苦了，早点回来。','要不要给你点杯热的？','别太晚，到家说一声。']],
+    [/想你|想见|见面/, ['我也是。','那我现在过来？','……我也想你。']],
+    [/哈哈|嘿嘿|hhh/i, ['笑什么呢','傻。','你开心就好']],
+    [/晚安|睡了|睡觉/, ['晚安，好梦。','睡吧，明天见。']],
+    [/冷|降温|下雨|雨/, ['多穿点，别感冒。','带伞了吗？我去接你。']],
+    [/在吗|在不在|干嘛/, ['在。','刚开完会，怎么了？','在想你啊。']],
+  ]},
+  mom:{base:['好的','注意身体啊','钱够不够用？','有空给家里打个电话','妈妈知道了','你爸也问你好','吃饭了没？'], kw:[
+    [/冷|降温|衣服|外套/, ['羽绒服拿出来没有？','要不要我再给你寄两件毛衣']],
+    [/钱|转账|收/, ['收了就好，别省着','妈妈不缺钱，你自己留着']],
+    [/想|回家|放假/, ['想家了就回来，给你做糖醋排骨','什么时候放假？']],
+    [/论文|学习|忙/, ['别熬夜，身体最重要','慢慢来，妈相信你']],
+  ]},
+  yiyi:{base:['哈哈哈哈哈哈','真的假的！','冲！','我笑死','不愧是你','这个我必须转发','啊啊啊啊'], kw:[[/爬山|周六|去/, ['那就这么定了！','五点集合，谁迟到谁请早饭']]]},
+  kk:{base:['好耶','可可在此！','我也要！','冲冲冲','+1','贴贴'], kw:[[/红包|谢谢/, ['不客气～','下次你发！']]]},
+  ali:{base:['我起不来…','我先睡了','好的好的','+1','收到','我再想想'], kw:[]},
+  chen:{base:['可以啊','那就这么定了','我带相机','海边风大，记得带外套','嗯，我来安排'], kw:[[/海|东沙|船|拍/, ['船票我订了，早上八点那班','带上你那台胶片机']]]},
+  xu:{base:['好的。','收到。','按时提交。','有问题邮件联系。','嗯，可以。'], kw:[[/论文|初稿|修改/, ['先把结构理顺，细节后面再改。','引文格式统一用 GB/T 7714。']]], slow:true},
+  _:{base:['嗯嗯','好的呀','哈哈','真的吗？','我刚看到消息','在呢','好嘞'], kw:[]},
+};
+function genReply(rid, trig){
+  const per = PERSONA[rid] || PERSONA._;
+  if (trig.type === 'image') return {type:'text', text:rand(['好看！','这是哪儿？','拍得真好','发我原图'])};
+  if (trig.type === 'voice') return {type:'text', text:rand(['我刚听了','嗯嗯好','听到啦','等下回你'])};
+  if (trig.type === 'sticker') return Math.random() < .5 ? {type:'sticker', emo:rand(STICKERS)} : {type:'text', text:rand(['哈哈哈','可爱','？？'])};
+  if (trig.type === 'location') return {type:'text', text:rand(['收到，我过去找你','好，我看看怎么走','离我挺近的'])};
+  if (trig.type === 'card') return {type:'text', text:'好，我加一下'};
+  if (trig.type === 'call') return {type:'text', text:rand(['刚才信号不太好','嗯，那就这么说定了','好，挂啦'])};
+  const txt = trig.text || '';
+  for (const [re, arr] of per.kw) if (re.test(txt)) return {type:'text', text:rand(arr)};
+  if (/[?？]$/.test(txt) && Math.random() < .5) return {type:'text', text:rand(['让我想想','应该是吧','你觉得呢？','嗯，是的'])};
+  return {type:'text', text:rand(per.base)};
+}
+function setTyping(chat, rid){ if (rid) TYPING.set(chat.id, rid); else TYPING.delete(chat.id); refreshChatViews(chat); }
+function refreshChatViews(chat){
+  stack.forEach(p => { if (p.chatId === chat.id) p.onIncoming(); else if (p.tab) p.refresh(); });
+}
+function addIncoming(chat, m){
+  chat.msgs.push(m);
+  const top = stack[stack.length-1];
+  const viewing = top && top.chatId === chat.id;
+  if (!viewing && m.from !== 'sys'){ chat.unread = (chat.unread||0) + 1; if (!chat.muted) banner(chat, m); }
+  save();
+  refreshChatViews(chat);
+  if (!stack.length) renderHome();
+}
+function scheduleReply(chat, trig){
+  if (chat.with === 'file') return;
+  (TIMERS.get(chat.id) || []).forEach(clearTimeout);
+  const timers = []; TIMERS.set(chat.id, timers);
+  TYPING.delete(chat.id);
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const members = chat.type === 'group' ? chat.members.filter(x => x !== 'me') : [chat.with];
+  const responders = chat.type === 'group' ? [...members].sort(() => Math.random() - .5).slice(0, 1 + (Math.random() < .5 ? 1 : 0)) : [chat.with];
+  let at = 900;
+  responders.forEach(rid => {
+    if (!person(rid)) return;
+    const slow = (PERSONA[rid] || {}).slow;
+    // side effects for money
+    if (trig.type === 'redpacket' && trig.from === 'me'){
+      later(() => { trig.opened = true; addIncoming(chat, {id:uid(), from:'sys', type:'system', text:`${nameOf(rid)}领取了你的红包`, t:Date.now()}); }, at + 600);
+      at += 900;
+    }
+    if (trig.type === 'transfer' && trig.from === 'me' && chat.type === 'single'){
+      later(() => { trig.status = 'received'; addIncoming(chat, {id:uid(), from:rid, type:'transfer', amount:trig.amount, receipt:true, t:Date.now()}); }, at + 900);
+      at += 1200;
+    }
+    const n = Math.random() < .3 ? 2 : 1;
+    for (let k = 0; k < n; k++){
+      let r = genReply(rid, trig);
+      if (trig.type === 'redpacket' && k === 0) r = {type:'text', text:rand(['谢谢老板！','红包收到啦～','哇，谢谢！'])};
+      if (trig.type === 'transfer' && k === 0) r = {type:'text', text:rand(['收到啦，谢谢','这么客气干嘛','好，收下了'])};
+      const typeAt = at + (slow ? 2500 : 0);
+      const dur = 900 + Math.min(2600, (r.text || '').length * 110);
+      later(() => setTyping(chat, rid), typeAt);
+      at = typeAt + dur;
+      later(() => { setTyping(chat, null); addIncoming(chat, Object.assign(r, {id:uid(), from:rid, t:Date.now()})); }, at);
+      at += 500;
+    }
+  });
+}
+
+/* ================= money ================= */
+function openRedPacket(chat, m, after){
+  const mine = m.from === 'me';
+  if (m.opened || mine){
+    return modal(`<div class="rp-res">${av(m.from,44)}<b style="font-size:15px">${esc(mine ? S.me.name : nameOf(m.from))}的红包</b><p>${esc(m.wish)}</p><div class="amt">${money(m.amount)}<small>元</small></div><p>${mine ? (m.opened ? '红包已被领取' : '等待对方领取') : '已存入零钱，可直接消费'}</p></div><div class="f-row"><button class="btn" data-x>关闭</button></div>`, (b, close) => b.querySelector('[data-x]').onclick = close);
+  }
+  const o = overlay(() => {
+    const el = document.createElement('div'); el.className = 'rp-open';
+    el.innerHTML = `<button class="ib x" data-x aria-label="关闭">${I.close}</button><div class="from">${av(m.from,26)}<span>${esc(nameOf(m.from))}发出的红包</span></div><div class="wish">${esc(m.wish)}</div><button class="rp-kai" data-kai>開</button><div class="more">看看大家的手气</div>`;
+    return el;
+  });
+  o.box.querySelector('[data-x]').onclick = o.close;
+  o.box.querySelector('[data-kai]').onclick = e => {
+    e.currentTarget.classList.add('spin');
+    setTimeout(() => {
+      o.close();
+      m.opened = true; addTxn(nameOf(m.from) + '的红包', m.amount);
+      chat.msgs.push({id:uid(), from:'sys', type:'system', text:`你领取了${nameOf(m.from)}的红包`, t:Date.now()}); save();
+      after();
+      setTimeout(() => openRedPacket(chat, m, after), 320);
+    }, 900);
+  };
+}
+function openTransfer(chat, m, after){
+  const mine = m.from === 'me';
+  if (m.receipt || m.status === 'received' || mine){
+    const st = m.receipt ? '已收款' : m.status === 'received' ? (mine ? '对方已收款' : '你已收款') : '待对方确认收款';
+    return modal(`<div class="rp-res"><span class="tf-ico" style="width:56px;height:56px;color:var(--tf)">${ic(P.check,28)}</span><b style="font-size:15px">${st}</b><div class="amt" style="color:var(--sheet-text)">¥${money(m.amount)}</div><p>${esc(m.note || '')}</p><p>${fmtMsg(m.t)}</p></div><div class="f-row"><button class="btn" data-x>关闭</button></div>`, (b, close) => b.querySelector('[data-x]').onclick = close);
+  }
+  modal(`<div class="rp-res"><span class="tf-ico" style="width:56px;height:56px;color:var(--tf)">${ic(P.tf,28)}</span><b style="font-size:15px">待你收款</b><div class="amt" style="color:var(--sheet-text)">¥${money(m.amount)}</div><p>${esc(m.note || '转账')} · 来自 ${esc(nameOf(m.from))}</p></div><div class="f-row"><button class="btn" data-x>稍后</button><button class="btn pri" data-ok>收款</button></div>`, (b, close) => {
+    b.querySelector('[data-x]').onclick = close;
+    b.querySelector('[data-ok]').onclick = () => {
+      close(); m.status = 'received'; addTxn(nameOf(m.from) + '的转账', m.amount);
+      chat.msgs.push({id:uid(), from:'me', type:'transfer', amount:m.amount, receipt:true, t:Date.now()}); save();
+      after(); toast('已收款，存入零钱');
+    };
+  });
+}
+
+/* ================= calls ================= */
+function startCall(chat, kind){
+  closeTransient();
+  const rid = chat.with;
+  const el = document.createElement('div'); el.className = 'call';
+  el.innerHTML = `<div class="bgav" style="background:${esc(person(rid).color)}"></div>
+    ${kind === 'video' ? `<div class="self">${av('me',56)}</div>` : ''}
+    ${av(rid, 96)}<div class="nm">${esc(nameOf(rid))}</div><div class="st" data-st>${kind === 'video' ? '正在等待对方接受邀请…' : '正在呼叫…'}</div>
+    <div class="call-btns">
+      <button data-c="mute"><span>${ic(P.mic,28)}</span>${kind === 'video' ? '麦克风已开' : '静音'}</button>
+      <button class="hang" data-c="hang"><span>${ic(P.phone,30)}</span>${'挂断'}</button>
+      <button data-c="third"><span>${ic(kind === 'video' ? P.flip : P.speaker,28)}</span>${kind === 'video' ? '翻转镜头' : '免提'}</button>
+    </div>`;
+  screen.appendChild(el); overlaySb = '--on-color'; syncChrome();
+  let start = 0, iv = null;
+  const st = el.querySelector('[data-st]');
+  const conn = setTimeout(() => { start = Date.now(); iv = setInterval(() => { const s = Math.floor((Date.now()-start)/1000); st.textContent = `${pad(Math.floor(s/60))}:${pad(s%60)}`; }, 250); st.textContent = '00:00'; }, 2400);
+  el.addEventListener('click', e => {
+    const b = e.target.closest('[data-c]'); if (!b) return;
+    if (b.dataset.c === 'hang'){
+      clearTimeout(conn); clearInterval(iv);
+      const s = start ? Math.max(1, Math.floor((Date.now()-start)/1000)) : 0;
+      st.textContent = '通话结束';
+      setTimeout(() => {
+        el.remove(); overlaySb = null; syncChrome();
+        const m = {id:uid(), from:'me', type:'call', kind, text: s ? `通话时长 ${pad(Math.floor(s/60))}:${pad(s%60)}` : '已取消', t:Date.now()};
+        chat.msgs.push(m); save(); refreshChatViews(chat);
+        if (s) scheduleReply(chat, m);
+      }, 500);
+    } else {
+      b.classList.toggle('on');
+      if (b.dataset.c === 'mute') b.querySelector('span').innerHTML = ic(b.classList.contains('on') ? P.micoff : P.mic, 28);
+    }
+  });
+}
+
+/* ================= profile / chat info / forms ================= */
+function pageProfile(id){
+  const p = mkPage('wx', '--wx-text');
+  const el = p.el;
+  p.refresh = () => {
+    const c = person(id); if (!c){ el.innerHTML = ''; return; }
+    const isMe = id === 'me';
+    const imgs = S.moments.filter(mo => mo.from === id).flatMap(mo => mo.imgs).slice(0,4);
+    el.innerHTML = `<header class="nav" style="background:var(--wx-card)"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t"></div><div class="nav-r">${isMe || c.sys ? '' : `<button class="ib" data-act="more" aria-label="更多">${I.more}</button>`}</div></header>
+      <div class="wx-body">
+        <div class="prof">${av(id,64)}<div style="min-width:0"><div class="nm">${esc(isMe ? c.name : nameOf(id))}</div><div class="ln">${c.remark ? `昵称：${esc(c.name)}<br>` : ''}${c.wxid ? `微信号：${esc(c.wxid)}<br>` : ''}${c.region ? `地区：${esc(c.region)}` : ''}</div></div></div>
+        ${c.sys ? '' : `<div class="group">
+          ${isMe ? '' : `<button class="row" style="--indent:16px" data-act="remark"><span class="lbl">备注和标签</span><span class="val">${esc(c.remark||'')}</span><span class="chev">${sm('chev')}</span></button>`}
+          <button class="row" style="--indent:16px;min-height:72px" data-act="moments"><span class="lbl" style="flex:none;width:80px">朋友圈</span><span class="thumbs" style="flex:1">${imgs.map(k => `<div>${photo(k)}</div>`).join('') || '<span class="val">暂无</span>'}</span><span class="chev">${sm('chev')}</span></button>
+          <div class="row" style="--indent:16px;cursor:default"><span class="lbl" style="flex:none;width:80px">个性签名</span><span class="val" style="max-width:none;flex:1;white-space:normal">${esc(c.sign || '这个人很懒，什么也没写')}</span></div>
+        </div>`}
+        ${isMe ? '' : `<div class="group"><button class="bigbtn" data-act="msg">${ic(P.chat,20)}发消息</button>${c.sys ? '' : `<button class="bigbtn" data-act="call">${ic(P.video,20)}音视频通话</button>`}</div>`}
+      </div>`;
+  };
+  el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    const a = t.dataset.act, c = person(id);
+    if (a === 'pop') pop();
+    else if (a === 'msg'){ const chat = ensureChat(id); const prev = stack[stack.length-2]; if (prev && prev.chatId === chat.id) pop(); else openChat(chat.id); }
+    else if (a === 'call') sheet({items:[{label:'视频通话', act:() => startCall(ensureChat(id), 'video')},{label:'语音通话', act:() => startCall(ensureChat(id), 'voice')}]});
+    else if (a === 'moments') push(pageMoments(id));
+    else if (a === 'remark') remarkModal(id, p);
+    else if (a === 'more') sheet({items:[
+      {label:'设置备注', act:() => remarkModal(id, p)},
+      {label:'推荐给朋友', act:() => sheet({title:'把名片发给', items:S.chats.filter(ch => ch.with !== id).map(ch => ({label:chatName(ch), act(){ ch.msgs.push({id:uid(), from:'me', type:'card', uid:id, t:Date.now()}); save(); toast('已发送'); }}))})},
+      {label:'删除联系人', danger:true, act:() => confirmSheet(`将联系人"${nameOf(id)}"删除，同时删除与该联系人的聊天记录`, '删除联系人', () => { S.chats = S.chats.filter(ch => ch.with !== id); S.chats.forEach(ch => { if (ch.members) ch.members = ch.members.filter(x => x !== id); }); delete S.contacts[id]; S.moments = S.moments.filter(mo => mo.from !== id); save(); goBackTo(pp => pp.tab); })},
+    ]});
+  });
+  return p;
+}
+function goBackTo(pred){ while (stack.length && !pred(stack[stack.length-1])) pop(); if (stack.length) stack[stack.length-1].refresh(); }
+function remarkModal(id, p){
+  formModal({title:'设置备注', fields:[{id:'r', label:`给"${person(id).name}"设置备注名`, value:person(id).remark||'', ph:'备注名', max:16}], submit(v){ person(id).remark = v.r; save(); p.refresh(); }});
+}
+function pageChatInfo(chat){
+  const p = mkPage('wx', '--wx-text');
+  const el = p.el;
+  p.refresh = () => {
+    const isG = chat.type === 'group';
+    const mem = isG ? chat.members : [chat.with];
+    el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t">${isG ? `聊天信息(${mem.length})` : '聊天信息'}</div><div class="nav-r"></div></header>
+      <div class="wx-body">
+        <div class="members">${mem.map(id => `<button data-profile="${id}">${av(id,52)}<span>${esc(id === 'me' ? S.me.name : nameOf(id))}</span></button>`).join('')}${chat.with === 'file' ? '' : `<button data-act="addm"><span class="addm">${I.plus}</span><span>添加</span></button>`}</div>
+        ${isG ? `<div class="group"><button class="row" style="--indent:16px" data-act="gname"><span class="lbl">群聊名称</span><span class="val">${esc(chat.name)}</span><span class="chev">${sm('chev')}</span></button></div>` : ''}
+        <div class="group">
+          <div class="row" style="--indent:16px;cursor:default"><span class="lbl">消息免打扰</span><button class="sw ${chat.muted?'on':''}" data-act="mute" aria-label="消息免打扰" aria-pressed="${chat.muted}"></button></div>
+          <div class="row" style="--indent:16px;cursor:default"><span class="lbl">置顶聊天</span><button class="sw ${chat.pinned?'on':''}" data-act="pin" aria-label="置顶聊天" aria-pressed="${chat.pinned}"></button></div>
+        </div>
+        <div class="group"><button class="row center" data-act="clear">清空聊天记录</button></div>
+        ${isG ? `<div class="group"><button class="row center" data-act="quit">删除并退出</button></div>` : ''}
+      </div>`;
+  };
+  el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-profile]'); if (!t) return;
+    if (t.dataset.profile) return push(pageProfile(t.dataset.profile));
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'mute'){ chat.muted = !chat.muted; save(); p.refresh(); }
+    else if (a === 'pin'){ chat.pinned = !chat.pinned; save(); p.refresh(); }
+    else if (a === 'gname') formModal({title:'修改群聊名称', fields:[{id:'n', label:'群聊名称', value:chat.name, max:20}], submit(v){ if (!v.n) return '群名不能为空'; chat.name = v.n; chat.msgs.push({id:uid(), from:'sys', type:'system', text:`你修改群名为"${v.n}"`, t:Date.now()}); save(); p.refresh(); }});
+    else if (a === 'clear') confirmSheet('确定清空和这个聊天的所有消息？', '清空', () => { chat.msgs = []; save(); toast('已清空'); });
+    else if (a === 'quit') confirmSheet('删除并退出后，将不再接收此群聊信息', '删除并退出', () => { S.chats = S.chats.filter(c => c !== chat); save(); goBackTo(pp => pp.tab); });
+    else if (a === 'addm'){
+      const cand = Object.keys(S.contacts).filter(id => !S.contacts[id].sys && !(chat.members || [chat.with]).includes(id));
+      if (!cand.length) return toast('没有可以添加的朋友了');
+      sheet({title:'添加群成员', items:cand.map(id => ({label:nameOf(id), act(){
+        if (chat.type === 'group'){ chat.members.push(id); chat.msgs.push({id:uid(), from:'sys', type:'system', text:`你邀请"${nameOf(id)}"加入了群聊`, t:Date.now()}); save(); p.refresh(); }
+        else { const g = createGroup(['me', chat.with, id]); goBackTo(pp => pp.tab); openChat(g.id); }
+      }}))});
+    }
+  });
+  return p;
+}
+function createGroup(members, name){
+  const g = {id:'g_'+uid(), type:'group', name: name || members.filter(x => x !== 'me').map(nameOf).slice(0,3).join('、'), members, pinned:false, muted:false, unread:0,
+    msgs:[{id:uid(), from:'sys', type:'system', text:`你邀请${members.filter(x => x !== 'me').map(x => `"${nameOf(x)}"`).join('、')}加入了群聊`, t:Date.now()}]};
+  S.chats.push(g); save(); return g;
+}
+function pageNewGroup(){
+  const p = mkPage('wx', '--wx-text'); const sel = new Set();
+  const el = p.el;
+  const ids = Object.keys(S.contacts).filter(id => !S.contacts[id].sys);
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="txtbtn" data-act="pop">取消</button></div><div class="nav-t">选择联系人</div><div class="nav-r"><button class="pbtn" data-act="ok" data-ref="ok" disabled>完成</button></div></header>
+    <div class="wx-body"><label class="wx-search" style="margin-top:8px"><span style="flex:none">群名</span><input id="ng-name" placeholder="选填，不填会用成员名字" maxlength="20"></label>
+    ${ids.map(id => `<button class="sel-row" data-id="${id}"><span class="ck">${sm('check',14)}</span>${av(id,40)}<span>${esc(nameOf(id))}</span></button>`).join('')}</div>`;
+  const R = refs(el);
+  el.addEventListener('click', e => {
+    const r = e.target.closest('[data-id]'); if (r){ const id = r.dataset.id; sel.has(id) ? sel.delete(id) : sel.add(id); r.classList.toggle('on', sel.has(id)); R.ok.disabled = sel.size < 2; R.ok.textContent = sel.size ? `完成(${sel.size})` : '完成'; return; }
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') pop();
+    if (t.dataset.act === 'ok'){ const g = createGroup(['me', ...sel], el.querySelector('#ng-name').value.trim()); pop(); openChat(g.id); }
+  });
+  return p;
+}
+function pageGroupList(){
+  const p = mkPage('wx', '--wx-text');
+  p.refresh = () => {
+    const gs = S.chats.filter(c => c.type === 'group');
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t">群聊</div><div class="nav-r"><button class="ib" data-act="new" aria-label="发起群聊">${I.plus}</button></div></header>
+      <div class="wx-body">${gs.length ? `<div class="group">${gs.map(g => `<button class="row" style="--indent:66px;min-height:62px" data-chat="${g.id}">${chatAv(g,40)}<span class="lbl">${esc(g.name)}</span><span class="val">${g.members.length}人</span></button>`).join('')}</div>` : '<div class="empty">还没有群聊</div>'}</div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-chat]'); if (!t) return;
+    if (t.dataset.chat) return openChat(t.dataset.chat);
+    if (t.dataset.act === 'pop') pop(); else push(pageNewGroup());
+  });
+  return p;
+}
+const COLORS = ['#8C9AAE','#A9B8A6','#D9A48E','#D8BA8A','#C99AA4','#AEB98E','#93AEB5','#B3A6C2','#9C958E','#D78C7A'];
+function pageAddFriend(){
+  const p = mkPage('wx', '--wx-text'); let color = rand(COLORS);
+  const el = p.el;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="txtbtn" data-act="pop">取消</button></div><div class="nav-t">添加朋友</div><div class="nav-r"><button class="pbtn" data-act="ok">完成</button></div></header>
+    <div class="wx-body"><div class="empty" style="padding:18px 20px 10px;text-align:left">添加一位新朋友，之后就能在小手机里和 TA 聊天。</div>
+    <div class="form">
+      <label><span>名字</span><input id="af-name" placeholder="例如：周以安" maxlength="12"></label>
+      <label><span>头像字</span><input id="af-mark" placeholder="默认取名字第一个字" maxlength="2"></label>
+      <label><span>首字母</span><input id="af-py" placeholder="用于通讯录排序，例如 Z" maxlength="1"></label>
+      <label><span>地区</span><input id="af-region" placeholder="选填" maxlength="16"></label>
+      <label><span>签名</span><input id="af-sign" placeholder="选填" maxlength="30"></label>
+    </div>
+    <div class="group"><div class="idx" style="background:none;padding-top:12px">头像颜色</div><div class="swatches" data-ref="sw"></div></div>
+    <div class="empty" data-ref="err" style="padding:10px;color:var(--danger)"></div></div>`;
+  const R = refs(el);
+  const drawSw = () => R.sw.innerHTML = COLORS.map(c => `<button data-c="${c}" class="${c===color?'on':''}" style="background:${c}" aria-label="颜色 ${c}"></button>`).join('');
+  drawSw();
+  el.addEventListener('click', e => {
+    const s = e.target.closest('[data-c]'); if (s){ color = s.dataset.c; drawSw(); return; }
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') return pop();
+    const v = k => el.querySelector('#af-'+k).value.trim();
+    const name = v('name'); if (!name){ R.err.textContent = '请填写名字'; return; }
+    const id = 'u' + uid();
+    S.contacts[id] = {name, mark: v('mark') || name.slice(0,1), py: (v('py') || '#').toUpperCase(), color, region: v('region'), sign: v('sign'), wxid: 'wxid_' + id.slice(1,7)};
+    const c = ensureChat(id);
+    c.msgs.push({id:uid(), from:'sys', type:'system', text:`你已添加了${name}，现在可以开始聊天了。`, t:Date.now()});
+    save(); pop(); openChat(c.id);
+  });
+  return p;
+}
+function pageEditMe(){
+  const p = mkPage('wx', '--wx-text'); let color = S.me.color;
+  const el = p.el;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="txtbtn" data-act="pop">取消</button></div><div class="nav-t">个人信息</div><div class="nav-r"><button class="pbtn" data-act="ok">保存</button></div></header>
+    <div class="wx-body"><div style="height:8px"></div><div class="form">
+      <label><span>名字</span><input id="em-name" value="${esc(S.me.name)}" maxlength="12"></label>
+      <label><span>头像字</span><input id="em-mark" value="${esc(S.me.mark||'')}" maxlength="2"></label>
+      <label><span>微信号</span><input id="em-wxid" value="${esc(S.me.wxid)}" maxlength="20"></label>
+      <label><span>地区</span><input id="em-region" value="${esc(S.me.region||'')}" maxlength="16"></label>
+      <label><span>签名</span><input id="em-sign" value="${esc(S.me.sign||'')}" maxlength="30"></label>
+    </div><div class="group"><div class="idx" style="background:none;padding-top:12px">头像颜色</div><div class="swatches" data-ref="sw"></div></div></div>`;
+  const R = refs(el);
+  const drawSw = () => R.sw.innerHTML = COLORS.map(c => `<button data-c="${c}" class="${c===color?'on':''}" style="background:${c}" aria-label="颜色 ${c}"></button>`).join('');
+  drawSw();
+  el.addEventListener('click', e => {
+    const s = e.target.closest('[data-c]'); if (s){ color = s.dataset.c; drawSw(); return; }
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') return pop();
+    const v = k => el.querySelector('#em-'+k).value.trim();
+    if (!v('name')) return toast('名字不能为空');
+    Object.assign(S.me, {name:v('name'), mark:v('mark') || v('name').slice(-1), wxid:v('wxid') || S.me.wxid, region:v('region'), sign:v('sign'), color});
+    save(); toast('已保存'); pop();
+  });
+  return p;
+}
+function pageWallet(){
+  const p = mkPage('wx', '--wx-text');
+  p.refresh = () => {
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t">零钱</div><div class="nav-r"></div></header>
+      <div class="wx-body"><div class="wallet-card"><span style="opacity:.85;font-size:13px">我的零钱（元）</span><span class="amt">${money(S.wallet)}</span><span style="opacity:.75;font-size:12px">示例余额，仅在小手机里使用</span></div>
+      <div class="idx">零钱明细</div>
+      ${S.txns.length ? S.txns.slice(0,40).map(x => `<div class="txn"><div><div>${esc(x.title)}</div><small>${fmtMsg(x.t)}</small></div><b class="${x.amount > 0 ? 'plus' : ''}">${x.amount > 0 ? '+' : ''}${money(x.amount)}</b></div>`).join('') : '<div class="empty">暂无明细</div>'}
+      <div class="foot"><button class="btn pri" data-act="topup">充值 100 元</button></div></div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') pop();
+    if (t.dataset.act === 'topup'){ addTxn('零钱充值', 100); save(); p.refresh(); toast('已充值 100 元'); }
+  });
+  return p;
+}
+
+/* ================= moments ================= */
+function pageMoments(onlyId){
+  const p = mkPage('wx', '--wx-text');
+  const el = p.el; let cmTarget = null;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t">${onlyId ? esc(onlyId === 'me' ? S.me.name : nameOf(onlyId)) : '朋友圈'}</div><div class="nav-r">${onlyId ? '' : `<button class="ib" data-act="post" aria-label="发朋友圈">${I.camera}</button>`}</div></header>
+    <div class="wx-body" data-ref="body" style="background:var(--wx-card)"></div>
+    <div class="mo-bar" data-ref="bar" hidden><input id="mo-input" data-ref="input" placeholder="评论" maxlength="100"><button class="pbtn" data-act="cm">发送</button></div>`;
+  const R = refs(el);
+  p.refresh = () => {
+    const owner = onlyId || 'me';
+    const posts = S.moments.filter(m => !onlyId || m.from === onlyId).sort((a,b) => b.t - a.t);
+    R.body.innerHTML = `<div class="mo-cover"><div class="who"><b>${esc(owner === 'me' ? S.me.name : nameOf(owner))}</b>${av(owner,68)}</div></div>` +
+      (posts.length ? posts.map(postHtml).join('') : '<div class="empty">还没有发过朋友圈</div>') + '<div style="height:30px"></div>';
+  };
+  function postHtml(m){
+    const n = m.imgs.length;
+    return `<div class="mo-post" data-post="${m.id}">${av(m.from,42)}<div class="mo-c">
+      <button class="mo-name" data-profile="${m.from}">${esc(m.from === 'me' ? S.me.name : nameOf(m.from))}</button>
+      ${m.text ? `<div class="mo-text">${esc(m.text)}</div>` : '<div style="height:6px"></div>'}
+      ${n ? `<div class="mo-imgs ${n===1?'one':n===2||n===4?'two':''}">${m.imgs.map(k => `<div data-img="${k}">${photo(k)}</div>`).join('')}</div>` : ''}
+      <div class="mo-meta"><span>${fmtAgo(m.t)}${m.from === 'me' ? ` · <button data-act="delpost" style="border:0;background:none;color:var(--wx-link);font-size:12px;padding:0">删除</button>` : ''}</span><button class="mo-act" data-act="pop2" aria-label="点赞或评论">${ic('<circle cx="8" cy="12" r="1.6" fill="currentColor"/><circle cx="16" cy="12" r="1.6" fill="currentColor"/>',18)}</button></div>
+      ${m.likes.length || m.comments.length ? `<div class="mo-fb">${m.likes.length ? `<div class="mo-likes">${sm('heart',13)}<span>${m.likes.map(x => esc(x === 'me' ? S.me.name : nameOf(x))).join('，')}</span></div>` : ''}${m.comments.map((c,ci) => `<div class="mo-cm" data-ci="${ci}"><b>${esc(c.from === 'me' ? S.me.name : nameOf(c.from))}</b>${c.to ? `回复<b>${esc(c.to === 'me' ? S.me.name : nameOf(c.to))}</b>` : ''}：${esc(c.text)}</div>`).join('')}</div>` : ''}
+    </div></div>`;
+  }
+  el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-img],[data-profile],.mo-cm'); if (!t) return;
+    if (t.dataset.img) return viewImage(t.dataset.img);
+    if (t.dataset.profile) return push(pageProfile(t.dataset.profile));
+    const post = S.moments.find(m => m.id === t.closest('[data-post]')?.dataset.post);
+    if (t.classList.contains('mo-cm')){ const c = post.comments[+t.dataset.ci]; if (c.from !== 'me') openComment(post, c.from); return; }
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'post') push(pageCompose(p));
+    else if (a === 'delpost') confirmSheet('删除这条朋友圈？', '删除', () => { S.moments = S.moments.filter(m => m !== post); save(); p.refresh(); });
+    else if (a === 'pop2'){
+      if (t.parentElement.querySelector('.mo-pop')) { closeTransient(); return; }
+      closeTransient();
+      const liked = post.likes.includes('me');
+      const pp = document.createElement('div'); pp.className = 'mo-pop';
+      pp.innerHTML = `<button data-act="like">${sm('heart',15)}${liked ? '取消' : '赞'}</button><button data-act="cmt">${sm('comment',15)}评论</button>`;
+      t.parentElement.appendChild(pp);
+    }
+    else if (a === 'like'){ const i = post.likes.indexOf('me'); i >= 0 ? post.likes.splice(i,1) : post.likes.push('me'); save(); p.refresh(); }
+    else if (a === 'cmt'){ closeTransient(); openComment(post, null); }
+    else if (a === 'cm') sendComment();
+  });
+  function openComment(post, to){
+    cmTarget = {post, to}; R.bar.hidden = false;
+    R.input.placeholder = to ? `回复${nameOf(to)}：` : '评论'; R.input.focus();
+  }
+  function sendComment(){
+    const v = R.input.value.trim(); if (!v || !cmTarget) return;
+    const {post, to} = cmTarget;
+    post.comments.push({from:'me', to: to || undefined, text:v}); save();
+    R.input.value = ''; R.bar.hidden = true; cmTarget = null; p.refresh();
+    if (post.from !== 'me' && Math.random() < .8){
+      setTimeout(() => { post.comments.push({from:post.from, to:'me', text:rand(['哈哈是吧','谢谢～','下次带你一起','嗯嗯！','你也是'])}); save(); stack.includes(p) && p.refresh(); }, 2500);
+    }
+  }
+  R.input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.isComposing){ e.preventDefault(); sendComment(); } });
+  R.input.addEventListener('blur', () => setTimeout(() => { if (!R.input.value.trim() && document.activeElement !== R.input) { R.bar.hidden = true; cmTarget = null; } }, 200));
+  return p;
+}
+function pageCompose(mp){
+  const p = mkPage('wx', '--wx-text'); const sel = [];
+  const el = p.el;
+  el.innerHTML = `<header class="nav" style="background:var(--wx-card)"><div class="nav-l"><button class="txtbtn" data-act="pop">取消</button></div><div class="nav-t"></div><div class="nav-r"><button class="pbtn" data-act="ok" data-ref="ok" disabled>发表</button></div></header>
+    <div class="compose"><textarea id="cp-text" data-ref="tx" placeholder="这一刻的想法…" maxlength="500"></textarea><div class="hint">选择照片（最多 9 张）</div><div class="pick" data-ref="pick">${Object.keys(PHOTOS).map(k => `<button data-k="${k}" aria-label="${esc(PHOTOS[k].name)}">${photo(k)}</button>`).join('')}</div></div>`;
+  const R = refs(el);
+  const upd = () => R.ok.disabled = !(R.tx.value.trim() || sel.length);
+  R.tx.addEventListener('input', upd);
+  el.addEventListener('click', e => {
+    const k = e.target.closest('[data-k]');
+    if (k){ const i = sel.indexOf(k.dataset.k); if (i >= 0) sel.splice(i,1); else if (sel.length < 9) sel.push(k.dataset.k); k.classList.toggle('on', sel.includes(k.dataset.k)); upd(); return; }
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') return pop();
+    const post = {id:uid(), from:'me', t:Date.now(), text:R.tx.value.trim(), imgs:[...sel], likes:[], comments:[]};
+    S.moments.push(post); save(); pop();
+    const friends = Object.keys(S.contacts).filter(i => !S.contacts[i].sys).sort(() => Math.random() - .5);
+    friends.slice(0, 3).forEach((f, i) => setTimeout(() => { post.likes.push(f); save(); stack.includes(mp) && mp.refresh(); }, 2000 + i*1600));
+    setTimeout(() => { if (friends[0]) { post.comments.push({from:friends[0], text:rand(['好好看！','这是在哪？','羡慕了','可以可以'])}); save(); stack.includes(mp) && mp.refresh(); } }, 6000);
+  });
+  return p;
+}
+
+/* ================= Diary ================= */
+const WEATHERS = ['晴','多云','阴','小雨','大雨','雪','有风','雾'];
+const MOODS = ['开心','平静','期待','想念','疲惫','难过','烦躁','感动'];
+function pageDiary(){
+  const p = mkPage('dy', '--d-ink');
+  p.refresh = () => {
+    const list = [...S.diary].sort((a,b) => b.date.localeCompare(a.date));
+    const ym = ymd(new Date()).slice(0,7);
+    const groups = {};
+    list.forEach(d => (groups[d.date.slice(0,7)] = groups[d.date.slice(0,7)] || []).push(d));
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回桌面">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"></div></header>
+      <div class="dy-body"><div class="dy-hero"><div><h1>日记</h1><p>已经写了 ${list.length} 篇 · 本月 ${list.filter(d => d.date.startsWith(ym)).length} 篇</p></div><button class="dy-new" data-act="new" aria-label="写日记">${I.edit}</button></div>
+      ${list.length ? Object.keys(groups).map(k => `<div class="dy-month">${k.slice(0,4)} 年 ${+k.slice(5)} 月</div>` + groups[k].map(d => { const dt = parseYmd(d.date); return `<button class="dy-card" data-id="${d.id}"><div class="dy-date"><b>${pad(dt.getDate())}</b><small>周${WEEK[dt.getDay()]}</small></div><div><div class="tt">${esc(d.title || '无题')}</div><div class="ex">${esc(d.body.replace(/\n+/g,' '))}</div><div class="mt"><span>${esc(d.weather)}</span><span class="md">${esc(d.mood)}</span></div></div></button>`; }).join('')).join('') : '<div class="dy-empty">今天发生了什么？<br>点右上角的笔，写下第一篇</div>'}
+      </div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-id]'); if (!t) return;
+    if (t.dataset.id) return push(pageDiaryView(t.dataset.id));
+    if (t.dataset.act === 'pop') pop(); else push(pageDiaryEdit(null));
+  });
+  return p;
+}
+function pageDiaryView(id){
+  const p = mkPage('dy', '--d-ink');
+  p.refresh = () => {
+    const d = S.diary.find(x => x.id === id); if (!d) return;
+    const dt = parseYmd(d.date);
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"></div></header>
+      <div class="dy-body"><article class="dy-sheet"><div class="meta">${dt.getFullYear()} 年 ${dt.getMonth()+1} 月 ${dt.getDate()} 日 · 星期${WEEK[dt.getDay()]} · ${esc(d.weather)}</div><span class="seal">${esc(d.mood)}</span><h2>${esc(d.title || '无题')}</h2><div class="txt">${esc(d.body)}</div></article>
+      <div class="dy-acts"><button data-act="edit">修改</button><button class="del" data-act="del">删除</button></div></div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'edit') push(pageDiaryEdit(id));
+    else if (a === 'del') confirmSheet('删除这篇日记？删除后不能恢复', '删除', () => { S.diary = S.diary.filter(x => x.id !== id); save(); pop(); });
+  });
+  return p;
+}
+function pageDiaryEdit(id, date){
+  const p = mkPage('dy', '--d-ink');
+  const d = id ? S.diary.find(x => x.id === id) : null;
+  const st = {weather: d ? d.weather : '晴', mood: d ? d.mood : '平静'};
+  const el = p.el;
+  el.innerHTML = `<header class="nav"><div class="nav-l"><button class="txtbtn" data-act="pop" style="color:var(--d-sub)">取消</button></div><div class="nav-t">${d ? '修改日记' : '写日记'}</div><div class="nav-r"><button class="save" data-act="save">保存</button></div></header>
+    <div class="dy-body"><div class="dy-form">
+      <div class="lb">日期</div><input type="date" id="de-date" value="${d ? d.date : (date || ymd(new Date()))}">
+      <div class="lb">天气</div><div class="chips" data-ref="w">${WEATHERS.map(w => `<button class="chip" data-w="${w}">${w}</button>`).join('')}</div>
+      <div class="lb">心情</div><div class="chips" data-ref="m">${MOODS.map(w => `<button class="chip" data-m="${w}">${w}</button>`).join('')}</div>
+      <div class="lb">标题</div><input class="ti" id="de-title" placeholder="给今天起个名字" maxlength="24" value="${esc(d ? d.title : '')}">
+      <div class="lb">正文</div><textarea id="de-body" placeholder="今天……">${esc(d ? d.body : '')}</textarea>
+    </div></div>`;
+  const R = refs(el);
+  const sync = () => { R.w.querySelectorAll('[data-w]').forEach(b => b.classList.toggle('on', b.dataset.w === st.weather)); R.m.querySelectorAll('[data-m]').forEach(b => b.classList.toggle('on', b.dataset.m === st.mood)); };
+  sync();
+  el.addEventListener('click', e => {
+    const w = e.target.closest('[data-w]'); if (w){ st.weather = w.dataset.w; sync(); return; }
+    const m = e.target.closest('[data-m]'); if (m){ st.mood = m.dataset.m; sync(); return; }
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') return pop();
+    const body = el.querySelector('#de-body').value.trim();
+    if (!body) return toast('写点什么再保存吧');
+    const rec = {date: el.querySelector('#de-date').value || ymd(new Date()), title: el.querySelector('#de-title').value.trim(), body, weather:st.weather, mood:st.mood};
+    if (d) Object.assign(d, rec); else S.diary.push(Object.assign({id:uid()}, rec));
+    save(); toast('已保存'); pop();
+  });
+  return p;
+}
+
+/* ================= Calendar ================= */
+const FEST = {'01-01':'元旦','02-14':'情人节','03-08':'妇女节','04-01':'愚人节','05-01':'劳动节','05-04':'青年节','06-01':'儿童节','07-01':'建党节','08-01':'建军节','09-10':'教师节','10-01':'国庆节','10-31':'万圣夜','11-11':'双十一','12-24':'平安夜','12-25':'圣诞节'};
+const EVCOLORS = ['#D78C7A','#D9B27E','#9DB39A','#93A8C4','#C99AA4','#A9A29B'];
+function pageCalendar(){
+  const p = mkPage('cal', '--c-text');
+  const now = new Date();
+  p.y = now.getFullYear(); p.m = now.getMonth(); p.sel = ymd(now);
+  p.refresh = () => {
+    const today = ymd(new Date());
+    const first = new Date(p.y, p.m, 1);
+    const off = (first.getDay() + 6) % 7;
+    const cells = [];
+    for (let i = 0; i < 42; i++){ const d = new Date(p.y, p.m, 1 - off + i); cells.push(d); }
+    const rows = cells.slice(35).every(d => d.getMonth() !== p.m) ? 35 : 42;
+    const evBy = {}; S.events.forEach(e => (evBy[e.date] = evBy[e.date] || []).push(e));
+    const dyBy = {}; S.diary.forEach(d => dyBy[d.date] = d);
+    const evs = (evBy[p.sel] || []).sort((a,b) => (a.time||'').localeCompare(b.time||''));
+    const sd = parseYmd(p.sel), dy = dyBy[p.sel];
+    const diff = Math.round((sod(sd) - sod(new Date()))/DAY);
+    const rel = diff === 0 ? '今天' : diff === 1 ? '明天' : diff === -1 ? '昨天' : diff > 0 ? `${diff} 天后` : `${-diff} 天前`;
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回桌面">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"><button class="txtbtn" data-act="today">今天</button></div></header>
+      <div class="cal-head"><h1><small>${p.y} 年</small>${p.m+1} 月</h1><div class="arr"><button class="ib" data-act="prev" aria-label="上个月">${I.back}</button><button class="ib" data-act="next" aria-label="下个月">${I.chev}</button></div></div>
+      <div class="cal-week">${['一','二','三','四','五','六','日'].map(w => `<span>${w}</span>`).join('')}</div>
+      <div class="cal-grid">${cells.slice(0, rows).map(d => {
+        const k = ymd(d), e = evBy[k] || [], f = FEST[k.slice(5)];
+        const cls = [d.getMonth() !== p.m ? 'out' : '', k === today ? 'today' : '', k === p.sel ? 'sel' : '', (d.getDay() % 6 === 0) ? 'we' : ''].join(' ');
+        return `<button class="cd ${cls}" data-d="${k}"><span class="n">${d.getDate()}</span><span class="lb">${f ? f : ''}</span><span class="ds">${e.slice(0,3).map(x => `<i style="background:${esc(x.color)}"></i>`).join('')}${dyBy[k] ? '<i style="background:var(--c-sub);border-radius:1px"></i>' : ''}</span></button>`;
+      }).join('')}</div>
+      <div class="cal-ag"><div class="h"><b>${sd.getMonth()+1}月${sd.getDate()}日 星期${WEEK[sd.getDay()]}</b><span>${rel}${FEST[p.sel.slice(5)] ? ' · ' + FEST[p.sel.slice(5)] : ''}</span></div>
+        ${evs.map(e => `<button class="ev" data-ev="${e.id}"><span class="tm">${esc(e.time || '全天')}</span><i style="background:${esc(e.color)}"></i><div><b>${esc(e.title)}</b>${e.note ? `<small>${esc(e.note)}</small>` : ''}</div></button>`).join('')}
+        ${dy ? `<button class="cal-dy" data-dy="${dy.id}"><span class="seal" style="position:static;width:40px;height:40px;font-size:15px;flex:none;transform:rotate(-10deg);border-color:var(--c-accent);color:var(--c-accent)">${esc(dy.mood.slice(0,2))}</span><div style="min-width:0"><div class="tt">${esc(dy.title || '无题')}</div><small>这天写了日记 · ${esc(dy.weather)}</small></div></button>` : ''}
+        ${!evs.length && !dy ? `<div style="color:var(--c-sub);font-size:13px;padding:6px 2px">这天没有安排</div>` : ''}
+        <button class="cal-add" data-act="add">＋ 新建日程</button>
+        ${!dy && p.sel <= today ? `<button class="cal-add" data-act="writedy" style="border-style:dotted;color:var(--c-sub);border-color:var(--c-sub)">写这天的日记</button>` : ''}
+      </div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-d],[data-ev],[data-dy]'); if (!t) return;
+    if (t.dataset.d){ p.sel = t.dataset.d; const d = parseYmd(p.sel); p.y = d.getFullYear(); p.m = d.getMonth(); p.refresh(); return; }
+    if (t.dataset.ev) return eventSheet(S.events.find(x => x.id === t.dataset.ev), p);
+    if (t.dataset.dy) return push(pageDiaryView(t.dataset.dy));
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'prev' || a === 'next'){ const d = new Date(p.y, p.m + (a === 'next' ? 1 : -1), 1); p.y = d.getFullYear(); p.m = d.getMonth(); p.refresh(); }
+    else if (a === 'today'){ const d = new Date(); p.y = d.getFullYear(); p.m = d.getMonth(); p.sel = ymd(d); p.refresh(); }
+    else if (a === 'add') eventForm(null, p);
+    else if (a === 'writedy') push(pageDiaryEdit(null, p.sel));
+  });
+  return p;
+}
+function eventSheet(ev, p){
+  sheet({title:`${ev.title} · ${ev.time || '全天'}${ev.note ? '\n' + ev.note : ''}`, items:[
+    {label:'编辑日程', act:() => eventForm(ev, p)},
+    {label:'删除日程', danger:true, act(){ S.events = S.events.filter(x => x !== ev); save(); p.refresh(); toast('已删除'); }},
+  ]});
+}
+function eventForm(ev, p){
+  let color = ev ? ev.color : EVCOLORS[0];
+  modal(`<h3>${ev ? '编辑日程' : '新建日程'}</h3>
+    <div class="f-label">标题</div><input class="f-input" id="ev-title" maxlength="30" placeholder="例如：和朋友看电影" value="${esc(ev ? ev.title : '')}">
+    <div class="f-row"><div style="flex:1;display:flex;flex-direction:column;gap:12px"><div class="f-label">日期</div><input class="f-input" id="ev-date" type="date" value="${ev ? ev.date : p.sel}"></div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px"><div class="f-label">时间（不填为全天）</div><input class="f-input" id="ev-time" type="time" value="${ev ? ev.time : ''}"></div></div>
+    <div class="f-label">备注</div><input class="f-input" id="ev-note" maxlength="40" placeholder="地点、提醒……" value="${esc(ev ? ev.note : '')}">
+    <div class="f-label">颜色</div><div class="colors">${EVCOLORS.map(c => `<button data-c="${c}" style="background:${c}" class="${c===color?'on':''}" aria-label="颜色 ${c}"></button>`).join('')}</div>
+    <div class="f-err" data-ref="err"></div>
+    <div class="f-row"><button class="btn" data-x>取消</button><button class="btn cal-pri" data-ok>保存</button></div>`, (b, close) => {
+    setTimeout(() => b.querySelector('#ev-title').focus(), 260);
+    b.addEventListener('click', e => {
+      const c = e.target.closest('[data-c]'); if (c){ color = c.dataset.c; b.querySelectorAll('[data-c]').forEach(x => x.classList.toggle('on', x === c)); }
+    });
+    b.querySelector('[data-x]').onclick = close;
+    b.querySelector('[data-ok]').onclick = () => {
+      const title = b.querySelector('#ev-title').value.trim();
+      if (!title){ b.querySelector('[data-ref=err]').textContent = '请填写日程标题'; return; }
+      const rec = {title, date:b.querySelector('#ev-date').value || p.sel, time:b.querySelector('#ev-time').value, note:b.querySelector('#ev-note').value.trim(), color};
+      if (ev) Object.assign(ev, rec); else S.events.push(Object.assign({id:uid()}, rec));
+      save(); close(); p.sel = rec.date; const d = parseYmd(rec.date); p.y = d.getFullYear(); p.m = d.getMonth(); p.refresh(); toast('已保存');
+    };
+  });
+}
+
+/* ================= Memo ================= */
+function pageMemos(){
+  const p = mkPage('memo', '--m-text');
+  p.refresh = () => {
+    const list = [...S.memos].sort((a,b) => b.t - a.t);
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回桌面">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"></div></header>
+      <h1>备忘录</h1><div style="flex:1;overflow-y:auto;padding-bottom:110px">
+      ${list.length ? `<div class="memo-list">${list.map(m => { const [h, ...rest] = m.text.split('\n'); return `<button class="memo-it" data-id="${m.id}"><b>${esc(h || '新备忘录')}</b><small>${fmtList(m.t)}　${esc(rest.join(' ') || '无附加文本')}</small></button>`; }).join('')}</div>` : '<div class="empty" style="color:var(--m-sub)">还没有备忘录</div>'}
+      <div style="text-align:center;color:var(--m-sub);font-size:12px;padding:12px">${list.length} 个备忘录</div></div>
+      <button class="memo-new" data-act="new" aria-label="新建备忘录">${I.edit}</button>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-id]'); if (!t) return;
+    if (t.dataset.id) return push(pageMemoEdit(t.dataset.id));
+    if (t.dataset.act === 'pop') pop();
+    else { const m = {id:uid(), t:Date.now(), text:''}; S.memos.push(m); push(pageMemoEdit(m.id, true)); }
+  });
+  return p;
+}
+function pageMemoEdit(id, fresh){
+  const p = mkPage('memo', '--m-text');
+  const m = S.memos.find(x => x.id === id);
+  p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}<span style="font-size:15px">备忘录</span></button></div><div class="nav-t"></div><div class="nav-r"><button class="txtbtn" data-act="done" style="font-weight:600">完成</button></div></header>
+    <textarea class="memo-ed" id="memo-${esc(id)}" placeholder="第一行会作为标题">${esc(m.text)}</textarea>
+    <div class="memo-foot"><span data-ref="st">${fresh ? '新备忘录' : '编辑于 ' + fmtMsg(m.t)}</span><button class="ib" data-act="del" aria-label="删除">${I.trash}</button></div>`;
+  const ta = p.el.querySelector('textarea'), st = p.el.querySelector('[data-ref=st]');
+  ta.addEventListener('input', () => { m.text = ta.value; m.t = Date.now(); st.textContent = '已自动保存'; save(); });
+  p.mounted = () => { if (fresh) setTimeout(() => ta.focus(), 350); };
+  p.leave = () => { if (!m.text.trim()) { S.memos = S.memos.filter(x => x !== m); save(); } };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act]'); if (!t) return;
+    if (t.dataset.act === 'pop') pop();
+    else if (t.dataset.act === 'done'){ ta.blur(); toast('已保存'); }
+    else confirmSheet('删除这个备忘录？', '删除', () => { m.text = ''; pop(); });
+  });
+  return p;
+}
+
+/* ================= Album ================= */
+function pageAlbum(){
+  const p = mkPage('set', '--s-text');
+  p.refresh = () => {
+    const items = [];
+    (S.album || []).forEach(a => items.push(a));
+    S.chats.forEach(c => c.msgs.forEach(m => { if (m.type === 'image') items.push({img:m.img, t:m.t, src:'微信 · ' + chatName(c)}); }));
+    S.moments.forEach(mo => mo.imgs.forEach(k => items.push({img:k, t:mo.t, src:'朋友圈 · ' + (mo.from === 'me' ? S.me.name : nameOf(mo.from))})));
+    items.sort((a,b) => b.t - a.t);
+    p.items = items;
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回桌面">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"></div></header>
+      <h1>相册</h1><div class="set-body"><div class="alb-h">最近项目 · ${items.length} 张</div><div class="alb">${items.map((it,i) => `<button data-i="${i}" aria-label="${esc(it.src)}">${photo(it.img)}</button>`).join('')}</div></div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-i]'); if (!t) return;
+    if (t.dataset.i){ const it = p.items[+t.dataset.i]; viewImage(it.img); const v = screen.querySelector('.viewer p'); if (v) v.textContent = `${PHOTOS[it.img].name} · ${it.src}`; return; }
+    pop();
+  });
+  return p;
+}
+
+/* ================= Settings ================= */
+const WALLS = [['cream','奶油'],['blush','脏粉'],['sage','鼠尾草'],['mist','雾蓝'],['night','可可']];
+const HOST_THEME = document.documentElement.getAttribute('data-theme');
+function applyLook(){
+  const l = S.settings.look, r = document.documentElement;
+  if (l === 'light' || l === 'dark') r.setAttribute('data-theme', l);
+  else if (HOST_THEME) r.setAttribute('data-theme', HOST_THEME); else r.removeAttribute('data-theme');
+}
+function pageSettings(){
+  const p = mkPage('set', '--s-text');
+  p.refresh = () => {
+    p.el.innerHTML = `<header class="nav"><div class="nav-l"><button class="ib" data-act="pop" aria-label="返回">${I.back}</button></div><div class="nav-t"></div><div class="nav-r"></div></header>
+      <h1>设置</h1><div class="set-body">
+      <div class="sg"><button class="row" style="min-height:78px;--indent:16px" data-act="me">${av('me',54)}<span class="lbl"><b style="font-size:18px;font-weight:600">${esc(S.me.name)}</b><br><span style="font-size:13px;color:var(--s-sub)">${esc(S.me.sign || '编辑个人资料')}</span></span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="sg-h">桌面壁纸</div>
+      <div class="sg"><div class="walls">${WALLS.map(([k,l]) => `<button data-wall="${k}" class="${S.settings.wall===k?'on':''}" style="background:var(--wall-${k})" aria-label="${l}"><small>${l}</small></button>`).join('')}</div></div>
+      <div class="sg-h">外观</div>
+      <div class="sg"><div class="seg">${[['system','跟随系统'],['light','浅色'],['dark','深色']].map(([k,l]) => `<button data-look="${k}" class="${S.settings.look===k?'on':''}">${l}</button>`).join('')}</div></div>
+      <div class="sg-h">数据</div>
+      <div class="sg">
+        <div class="row" style="--indent:16px;cursor:default"><span class="lbl">聊天</span><span class="val">${S.chats.length} 个 · ${S.chats.reduce((s,c)=>s+c.msgs.length,0)} 条消息</span></div>
+        <div class="row" style="--indent:16px;cursor:default"><span class="lbl">日记 / 日程 / 备忘</span><span class="val">${S.diary.length} / ${S.events.length} / ${S.memos.length}</span></div>
+        <button class="row" style="--indent:16px;color:var(--danger)" data-act="reset"><span class="lbl">恢复示例数据</span></button>
+      </div>
+      <div style="text-align:center;color:var(--s-sub);font-size:12px;line-height:1.8;padding:4px 20px">小手机 · 所有内容只保存在这个浏览器里</div>
+      </div>`;
+  };
+  p.el.addEventListener('click', e => {
+    const t = e.target.closest('[data-act],[data-wall],[data-look]'); if (!t) return;
+    if (t.dataset.wall){ S.settings.wall = t.dataset.wall; save(); p.refresh(); renderHome(); return; }
+    if (t.dataset.look){ S.settings.look = t.dataset.look; save(); applyLook(); p.refresh(); return; }
+    const a = t.dataset.act;
+    if (a === 'pop') pop();
+    else if (a === 'me') push(pageEditMe());
+    else if (a === 'reset') confirmSheet('会清除你在小手机里的所有改动，换回示例内容', '恢复示例数据', () => {
+      TIMERS.forEach(ts => ts.forEach(clearTimeout)); TIMERS.clear(); TYPING.clear();
+      S = seed(); save(); applyLook(); goHome(); toast('已恢复示例数据');
+    });
+  });
+  return p;
+}
+
+/* ================= boot ================= */
+applyLook();
+renderHome();
+syncChrome();
+// a gentle first message so the phone feels alive
+setTimeout(() => {
+  const c = getChat('c_shen');
+  if (!c || S.greeted) return;
+  S.greeted = true;
+  addIncoming(c, {id:uid(), from:'shen', type:'text', text:'到公司了吗？', t:Date.now()});
+}, 4000);
+})();
+</script>
