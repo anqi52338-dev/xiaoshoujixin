@@ -2,72 +2,74 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=ZCOOL+KuaiLe&display=swap">
 <style>
 /* Layout: one phone centred on a sage desk; a short guide sits beside it on wide screens. Each app inside the phone keeps its own palette. */
 :root{
   --ui:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
-  --hand:"Ma Shan Zheng","Kaiti SC","STKaiti","KaiTi",serif;
-  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
-  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --hand:"ZCOOL KuaiLe","Yuanti SC","YouYuan","PingFang SC",sans-serif;
+  --serif:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --display:"Fredoka","Varela Round","Arial Rounded MT Bold",sans-serif;
 
-  --page:#EFEBE6; --page-ink:#3B3632; --page-sub:#8C847C; --page-line:#DCD5CD;
-  --bezel:#2A2725; --hw:#000000; --on-color:#FFFFFF; --on-wall:#FFFFFF; --on-pri:#FFFFFF;
-  --ink-dark:#3B3632; --ink-light:#F6F1EA; --home-ink:var(--ink-dark);
-  --glass:rgba(255,255,255,.55); --glass-line:rgba(255,255,255,.85); --tile:#FFFFFF; --tile-ink:#3B3632;
+  --page:#FDEEF3; --page-ink:#6B4756; --page-sub:#B08A9A; --page-line:#F6D5E1;
+  --bezel:#FFFFFF; --hw:#2B1F25; --on-color:#FFFFFF; --on-wall:#FFFFFF; --on-pri:#FFFFFF;
+  --ink-dark:#6B4756; --ink-light:#FFF1F6; --home-ink:var(--ink-dark);
+  --glass:rgba(255,255,255,.5); --glass-line:rgba(255,255,255,.95); --tile:#FFFFFF; --tile-ink:#6B4756;
+  --mac-pink:#FFC8DA; --mac-mint:#BDEBD9; --mac-lav:#DCCDF7; --mac-lemon:#FFEDB0; --mac-sky:#C6E4FA; --mac-peach:#FFD5C4;
+  --mac-pink-ink:#D9628D; --mac-mint-ink:#3E9C7C; --mac-lav-ink:#8366C7; --mac-lemon-ink:#BB8A14; --mac-sky-ink:#3F86BF; --mac-peach-ink:#D9724F;
 
-  --wx-bg:#F6F3EF; --wx-bar:#FBF9F7; --wx-card:#FFFFFF; --wx-pin:#F3EEE8; --wx-text:#2E2A27; --wx-sub:#9A928A;
-  --wx-line:#ECE6DF; --wx-green:#3B3632; --wx-me:#E7DCCE; --wx-me-text:#2E2A27; --wx-other:#FFFFFF;
-  --wx-link:#8A6F5A; --wx-input:#FFFFFF; --wx-quote:#F1ECE6; --wx-red:#E07C69; --wx-press:rgba(59,54,50,.06);
-  --rp:#DF8270; --rp-deep:#C96B5A; --rp-done:#EFC6BA; --gold:#F6DDB0; --gold-ink:#7A5230; --tf:#E0A574; --tf-done:#F0D6BD;
-  --map:#EFEAE2; --map-line:#E0D8CC; --menu:#3B3632; --call:#2A2623; --call-sub:#B6ADA4;
+  --wx-bg:#FFF5F8; --wx-bar:#FFFAFC; --wx-card:#FFFFFF; --wx-pin:#FFEEF4; --wx-text:#5A3A47; --wx-sub:#B4949F;
+  --wx-line:#FBE3EC; --wx-green:#F48BB0; --wx-me:#FFCFDF; --wx-me-text:#5A3A47; --wx-other:#FFFFFF;
+  --wx-link:#D9628D; --wx-input:#FFFFFF; --wx-quote:#FFEEF4; --wx-red:#FF6F9C; --wx-press:rgba(244,139,176,.1);
+  --rp:#FF8FA9; --rp-deep:#F0738F; --rp-done:#FFD0DB; --gold:#FFE7A3; --gold-ink:#B5651D; --tf:#FFB98F; --tf-done:#FFE0CB;
+  --map:#EAF7F1; --map-line:#D3EEE3; --menu:#6B4756; --call:#3A2A33; --call-sub:#E2C6D2;
 
-  --sheet:#FFFDFB; --sheet-gap:#F3EFEA; --sheet-line:#EEE8E1; --sheet-text:#2E2A27; --sheet-sub:#9A928A;
-  --field:#F4F0EB; --mask:rgba(40,34,30,.38); --danger:#CF5F4E; --toast:rgba(46,42,39,.88); --banner:rgba(255,253,250,.95);
+  --sheet:#FFFBFD; --sheet-gap:#FFF0F5; --sheet-line:#FBE6EE; --sheet-text:#5A3A47; --sheet-sub:#B4949F;
+  --field:#FFF0F5; --mask:rgba(107,71,86,.3); --danger:#F0607F; --toast:rgba(107,71,86,.88); --banner:rgba(255,250,252,.95);
 
-  --d-paper:#F6F1EA; --d-card:#FFFDF9; --d-line:#E8DFD3; --d-ink:#3B3632; --d-sub:#9A8F83; --d-seal:#C27A68; --d-chip:#F1EAE1;
-  --c-bg:#FBF9F6; --c-text:#2E2A27; --c-sub:#A0978E; --c-accent:#C4826F; --c-soft:#F3EEE8; --c-line:#ECE6DF;
-  --m-bg:#F8F4EE; --m-card:#FFFFFF; --m-accent:#A8876A; --m-text:#2E2A27; --m-sub:#A0968A; --m-line:#EEE7DD;
-  --s-bg:#F5F2EE; --s-card:#FFFFFF; --s-text:#2E2A27; --s-sub:#9A928A; --s-line:#ECE6DF; --s-accent:#8A6F5A;
+  --d-paper:#FFF6F9; --d-card:#FFFFFF; --d-line:#FBDDE8; --d-ink:#6B4756; --d-sub:#B4949F; --d-seal:#F07AA3; --d-chip:#FFEEF4;
+  --c-bg:#FFFAFC; --c-text:#5A3A47; --c-sub:#B9A0AA; --c-accent:#F07AA3; --c-soft:#FFF0F5; --c-line:#FBE3EC;
+  --m-bg:#FFFCF0; --m-card:#FFFFFF; --m-accent:#E7A92A; --m-text:#5A4632; --m-sub:#B7A27F; --m-line:#F7EDCF;
+  --s-bg:#F8F4FF; --s-card:#FFFFFF; --s-text:#4F4266; --s-sub:#A99DC0; --s-line:#EEE7FA; --s-accent:#9B7FE0;
 
-  --wall-cream:radial-gradient(70% 45% at 85% 8%,#FFFFFF 0%,transparent 70%),radial-gradient(80% 55% at 0% 100%,#E9DCCB 0%,transparent 70%),linear-gradient(175deg,#F8F3EC 0%,#F1E9DF 55%,#EADFD1 100%);
-  --wall-blush:radial-gradient(70% 45% at 80% 5%,#FFF6F2 0%,transparent 70%),radial-gradient(90% 60% at 10% 95%,#E8C8C0 0%,transparent 70%),linear-gradient(175deg,#F7ECE7 0%,#F0DDD6 60%,#E6CCC4 100%);
-  --wall-sage:radial-gradient(70% 45% at 80% 5%,#F7F8F2 0%,transparent 70%),radial-gradient(90% 60% at 0% 100%,#C9D2C0 0%,transparent 70%),linear-gradient(175deg,#EEF0E8 0%,#E1E6D9 60%,#D3DACA 100%);
-  --wall-mist:radial-gradient(70% 45% at 80% 5%,#F7F8FA 0%,transparent 70%),radial-gradient(90% 60% at 0% 100%,#C8CFD8 0%,transparent 70%),linear-gradient(175deg,#EEF0F3 0%,#E0E4EA 60%,#D2D8E0 100%);
-  --wall-night:radial-gradient(80% 50% at 75% 15%,#4A4038 0%,transparent 70%),linear-gradient(180deg,#2B2622 0%,#211D1A 60%,#181513 100%);
+  --wall-pink:radial-gradient(60% 40% at 85% 10%,#FFFFFF 0%,transparent 70%),radial-gradient(70% 50% at 0% 60%,#FFD9E6 0%,transparent 70%),radial-gradient(80% 50% at 100% 100%,#E8D9FF 0%,transparent 70%),linear-gradient(170deg,#FFF0F5 0%,#FFE1EC 55%,#FFD3E3 100%);
+  --wall-mint:radial-gradient(60% 40% at 85% 10%,#FFFFFF 0%,transparent 70%),radial-gradient(80% 50% at 0% 100%,#FFE3EE 0%,transparent 70%),linear-gradient(170deg,#F0FBF6 0%,#DDF4EA 60%,#CBEEDF 100%);
+  --wall-lav:radial-gradient(60% 40% at 85% 10%,#FFFFFF 0%,transparent 70%),radial-gradient(80% 50% at 0% 100%,#FFE0EC 0%,transparent 70%),linear-gradient(170deg,#F7F2FF 0%,#E9DFFF 60%,#DCCDF7 100%);
+  --wall-lemon:radial-gradient(60% 40% at 85% 10%,#FFFFFF 0%,transparent 70%),radial-gradient(80% 50% at 0% 100%,#FFDCE8 0%,transparent 70%),linear-gradient(170deg,#FFFCEF 0%,#FFF3C9 60%,#FFE9A8 100%);
+  --wall-night:radial-gradient(70% 45% at 80% 12%,#7A4E7E 0%,transparent 70%),radial-gradient(70% 50% at 0% 90%,#5A3E78 0%,transparent 70%),linear-gradient(180deg,#3A2845 0%,#2C1F38 60%,#221829 100%);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --page:#171513; --page-ink:#E4DDD5; --page-sub:#8C847C; --page-line:#2E2A27;
-    --bezel:#0A0908; --on-pri:#1E1B19;
-    --wx-bg:#141211; --wx-bar:#1C1A18; --wx-card:#1E1C1A; --wx-pin:#262320; --wx-text:#ECE6DF; --wx-sub:#8A827A;
-    --wx-line:#2C2926; --wx-green:#E7DCCE; --wx-me:#4A423B; --wx-me-text:#F3ECE4; --wx-other:#2A2724;
-    --wx-link:#C9AE95; --wx-input:#2A2724; --wx-quote:#262320; --wx-press:rgba(255,255,255,.06);
-    --rp:#C46F5F; --rp-deep:#A85A4B; --rp-done:#6E4A42; --tf:#C08A5C; --tf-done:#6A5340;
-    --map:#2A2622; --map-line:#38332D; --menu:#4A443F;
-    --sheet:#211E1C; --sheet-gap:#161413; --sheet-line:#2F2B28; --sheet-text:#ECE6DF; --sheet-sub:#8A827A;
-    --field:#2C2926; --mask:rgba(0,0,0,.6); --danger:#E7826F; --banner:rgba(42,39,36,.95);
-    --d-paper:#1A1816; --d-card:#23201D; --d-line:#332E29; --d-ink:#E6DED4; --d-sub:#958B80; --d-seal:#DB8E7A; --d-chip:#2D2925;
-    --c-bg:#141211; --c-text:#F0EAE3; --c-sub:#8E857C; --c-accent:#DE9C88; --c-soft:#1E1B19; --c-line:#2C2926;
-    --m-bg:#161412; --m-card:#211E1B; --m-accent:#D1AE8C; --m-text:#EDE5DA; --m-sub:#8F8579; --m-line:#2E2A25;
-    --s-bg:#121110; --s-card:#1E1C1A; --s-text:#F0EAE3; --s-sub:#8E857C; --s-line:#2C2926; --s-accent:#D1AE8C;
+    --page:#1E1519; --page-ink:#F6DCE6; --page-sub:#A8828F; --page-line:#3A2830;
+    --bezel:#3A2A31; --on-pri:#2A1820;
+    --wx-bg:#1A1316; --wx-bar:#22181C; --wx-card:#251B20; --wx-pin:#2E2127; --wx-text:#F6E6EC; --wx-sub:#9C7F89;
+    --wx-line:#33252B; --wx-green:#F7A3C0; --wx-me:#6E3D52; --wx-me-text:#FFEAF1; --wx-other:#2F2329;
+    --wx-link:#F7A3C0; --wx-input:#2F2329; --wx-quote:#2E2127; --wx-press:rgba(247,163,192,.1);
+    --rp:#D96A85; --rp-deep:#BC566F; --rp-done:#6A3E4A; --tf:#D9915F; --tf-done:#6A4C3A;
+    --map:#22302B; --map-line:#2F403A; --menu:#5A3E4A;
+    --sheet:#271C21; --sheet-gap:#1C1418; --sheet-line:#36272E; --sheet-text:#F6E6EC; --sheet-sub:#9C7F89;
+    --field:#33252B; --mask:rgba(0,0,0,.55); --danger:#FF8FA9; --banner:rgba(48,34,40,.95);
+    --d-paper:#1E1619; --d-card:#281D22; --d-line:#3A2A31; --d-ink:#F4E0E8; --d-sub:#A38693; --d-seal:#F7A3C0; --d-chip:#33252B;
+    --c-bg:#1A1316; --c-text:#F6E6EC; --c-sub:#9C7F89; --c-accent:#F7A3C0; --c-soft:#241A1F; --c-line:#33252B;
+    --m-bg:#1A1710; --m-card:#25211A; --m-accent:#F3C55A; --m-text:#F2E9D6; --m-sub:#9A8E73; --m-line:#332D21;
+    --s-bg:#16131D; --s-card:#221D2C; --s-text:#EEE7FA; --s-sub:#9A90AE; --s-line:#2F2840; --s-accent:#C4B0F5;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-    --page:#171513; --page-ink:#E4DDD5; --page-sub:#8C847C; --page-line:#2E2A27;
-    --bezel:#0A0908; --on-pri:#1E1B19;
-    --wx-bg:#141211; --wx-bar:#1C1A18; --wx-card:#1E1C1A; --wx-pin:#262320; --wx-text:#ECE6DF; --wx-sub:#8A827A;
-    --wx-line:#2C2926; --wx-green:#E7DCCE; --wx-me:#4A423B; --wx-me-text:#F3ECE4; --wx-other:#2A2724;
-    --wx-link:#C9AE95; --wx-input:#2A2724; --wx-quote:#262320; --wx-press:rgba(255,255,255,.06);
-    --rp:#C46F5F; --rp-deep:#A85A4B; --rp-done:#6E4A42; --tf:#C08A5C; --tf-done:#6A5340;
-    --map:#2A2622; --map-line:#38332D; --menu:#4A443F;
-    --sheet:#211E1C; --sheet-gap:#161413; --sheet-line:#2F2B28; --sheet-text:#ECE6DF; --sheet-sub:#8A827A;
-    --field:#2C2926; --mask:rgba(0,0,0,.6); --danger:#E7826F; --banner:rgba(42,39,36,.95);
-    --d-paper:#1A1816; --d-card:#23201D; --d-line:#332E29; --d-ink:#E6DED4; --d-sub:#958B80; --d-seal:#DB8E7A; --d-chip:#2D2925;
-    --c-bg:#141211; --c-text:#F0EAE3; --c-sub:#8E857C; --c-accent:#DE9C88; --c-soft:#1E1B19; --c-line:#2C2926;
-    --m-bg:#161412; --m-card:#211E1B; --m-accent:#D1AE8C; --m-text:#EDE5DA; --m-sub:#8F8579; --m-line:#2E2A25;
-    --s-bg:#121110; --s-card:#1E1C1A; --s-text:#F0EAE3; --s-sub:#8E857C; --s-line:#2C2926; --s-accent:#D1AE8C;
+    --page:#1E1519; --page-ink:#F6DCE6; --page-sub:#A8828F; --page-line:#3A2830;
+    --bezel:#3A2A31; --on-pri:#2A1820;
+    --wx-bg:#1A1316; --wx-bar:#22181C; --wx-card:#251B20; --wx-pin:#2E2127; --wx-text:#F6E6EC; --wx-sub:#9C7F89;
+    --wx-line:#33252B; --wx-green:#F7A3C0; --wx-me:#6E3D52; --wx-me-text:#FFEAF1; --wx-other:#2F2329;
+    --wx-link:#F7A3C0; --wx-input:#2F2329; --wx-quote:#2E2127; --wx-press:rgba(247,163,192,.1);
+    --rp:#D96A85; --rp-deep:#BC566F; --rp-done:#6A3E4A; --tf:#D9915F; --tf-done:#6A4C3A;
+    --map:#22302B; --map-line:#2F403A; --menu:#5A3E4A;
+    --sheet:#271C21; --sheet-gap:#1C1418; --sheet-line:#36272E; --sheet-text:#F6E6EC; --sheet-sub:#9C7F89;
+    --field:#33252B; --mask:rgba(0,0,0,.55); --danger:#FF8FA9; --banner:rgba(48,34,40,.95);
+    --d-paper:#1E1619; --d-card:#281D22; --d-line:#3A2A31; --d-ink:#F4E0E8; --d-sub:#A38693; --d-seal:#F7A3C0; --d-chip:#33252B;
+    --c-bg:#1A1316; --c-text:#F6E6EC; --c-sub:#9C7F89; --c-accent:#F7A3C0; --c-soft:#241A1F; --c-line:#33252B;
+    --m-bg:#1A1710; --m-card:#25211A; --m-accent:#F3C55A; --m-text:#F2E9D6; --m-sub:#9A8E73; --m-line:#332D21;
+    --s-bg:#16131D; --s-card:#221D2C; --s-text:#EEE7FA; --s-sub:#9A90AE; --s-line:#2F2840; --s-accent:#C4B0F5;
     color-scheme:dark;
 }
 [hidden]{display:none!important}
@@ -82,13 +84,13 @@ input,textarea{font:inherit}
 /* ---------- stage ---------- */
 .stage{height:100%;display:flex;align-items:center;justify-content:center;gap:56px;padding-block:20px;box-sizing:border-box}
 .guide{width:260px;flex:none;display:flex;flex-direction:column;gap:14px}
-.guide h1{margin:0;font-family:var(--display),var(--serif);font-weight:400;font-size:40px;letter-spacing:.02em;color:var(--page-ink);text-wrap:balance}
+.guide h1{margin:0;font-family:var(--hand);font-weight:400;font-size:42px;letter-spacing:.04em;color:var(--page-ink);text-wrap:balance}
 .guide p{margin:0;color:var(--page-sub);line-height:1.7}
 .guide ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--page-line);padding-top:14px}
 .guide li{display:grid;grid-template-columns:52px 1fr;gap:8px;line-height:1.6;color:var(--page-ink)}
 .guide li b{font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--page-sub);padding-top:2px}
 .phone{height:min(860px,100%);aspect-ratio:400/860;max-width:100%;background:var(--bezel);border-radius:56px;padding:11px;box-sizing:border-box;position:relative;flex:none;
-  box-shadow:0 0 0 1.5px #4A4541 inset,0 30px 60px -24px rgba(60,45,35,.4),0 12px 24px -12px rgba(60,45,35,.25)}
+  box-shadow:0 0 0 1.5px #FFE1EC inset,0 0 0 6px rgba(255,200,218,.35),0 30px 60px -24px rgba(217,98,141,.35),0 12px 24px -12px rgba(217,98,141,.25)}
 .screen{position:relative;width:100%;height:100%;border-radius:46px;overflow:hidden;background:var(--hw);container-type:size;isolation:isolate;-webkit-user-select:none;user-select:none}
 .island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:98px;height:29px;border-radius:20px;background:var(--hw);z-index:60;pointer-events:none}
 @media (max-width:900px){.guide{display:none}}
@@ -125,53 +127,73 @@ input,textarea{font:inherit}
 .back span{font-size:15px;font-variant-numeric:tabular-nums}
 .txtbtn{border:0;background:none;font-size:16px;padding:6px 10px;border-radius:8px}
 
-/* ---------- home (ins style) ---------- */
+/* ---------- home (macaron) ---------- */
 .home{position:absolute;inset:0;color:var(--home-ink);transition:transform .38s cubic-bezier(.2,.8,.2,1),filter .38s}
-.screen[data-wall=night]{--home-ink:var(--ink-light);--glass:rgba(255,255,255,.1);--glass-line:rgba(255,255,255,.16);--tile:rgba(255,255,255,.12);--tile-ink:#F6F1EA}
-.home.dim{transform:scale(.94);filter:brightness(.82)}
-.wall{position:absolute;inset:0;background:var(--wall-cream)}
-.wall::before{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;background-image:radial-gradient(rgba(120,100,80,.18) .6px,transparent .7px);background-size:3px 3px}
-.wall.night::after{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 68% 8%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 84% 30%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 40% 26%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 12% 44%,#fff 50%,transparent 51%);opacity:.5}
-.home-grid{position:absolute;top:62px;left:22px;right:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px 12px}
-.w{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1);border-radius:22px;padding:14px 16px;box-sizing:border-box;box-shadow:0 0 0 .5px var(--glass-line) inset,0 8px 24px -14px rgba(80,60,45,.35);text-align:left;border:0;color:inherit}
-.w-clock{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding:4px 4px 0}
-.w-clock .t{font:400 72px/0.85 var(--display);letter-spacing:-.01em;font-variant-numeric:lining-nums tabular-nums}
-.w-clock .d{font:italic 400 15px/1 var(--display);margin-top:10px;letter-spacing:.02em;opacity:.8}
-.w-clock .d span{font:12px/1 var(--ui);font-style:normal;letter-spacing:.12em;margin-left:6px;opacity:.85}
-.w-clock .wt{text-align:right;font-size:11px;line-height:1.6;letter-spacing:.08em;opacity:.75;padding-bottom:2px}
-.w-clock .wt b{display:block;font:300 34px/1 var(--display);letter-spacing:0}
-.eng{font:italic 400 13px/1 var(--display);letter-spacing:.02em;opacity:.7}
-.polar{grid-column:span 2;position:relative;background:#FFFFFF;padding:9px 9px 0;border-radius:4px;box-shadow:0 10px 26px -12px rgba(80,60,45,.45),0 1px 2px rgba(80,60,45,.12);transform:rotate(-3deg);border:0;cursor:pointer;display:flex;flex-direction:column;align-self:center;max-width:100%}
-.polar .ph{aspect-ratio:1;overflow:hidden;line-height:0;border-radius:2px}
-.polar .ph svg{width:100%;height:100%;filter:saturate(.8) contrast(.95) sepia(.12)}
-.polar .cap{font:17px/1 var(--hand);color:#5A514A;text-align:center;padding:9px 0 11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.polar::before{content:"";position:absolute;top:-9px;left:50%;width:58px;height:18px;margin-left:-29px;background:rgba(232,214,196,.85);transform:rotate(4deg);box-shadow:0 1px 2px rgba(0,0,0,.06);z-index:1}
+.screen[data-wall=night]{--home-ink:var(--ink-light);--glass:rgba(255,255,255,.12);--glass-line:rgba(255,255,255,.22)}
+.home.dim{transform:scale(.94);filter:brightness(.9) saturate(.9)}
+.wall{position:absolute;inset:0;background:var(--wall-pink)}
+.wall::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 18% 22%,rgba(255,255,255,.7) 0 3px,transparent 4px),radial-gradient(circle at 78% 46%,rgba(255,255,255,.6) 0 2px,transparent 3px),radial-gradient(circle at 34% 72%,rgba(255,255,255,.55) 0 4px,transparent 5px),radial-gradient(circle at 88% 82%,rgba(255,255,255,.6) 0 2.5px,transparent 3.5px),radial-gradient(circle at 60% 12%,rgba(255,255,255,.7) 0 2px,transparent 3px);opacity:.9}
+.wall.night::after{content:"";position:absolute;inset:0;background-image:radial-gradient(1.4px 1.4px at 20% 12%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 68% 8%,#fff 50%,transparent 51%),radial-gradient(1.6px 1.6px at 84% 30%,#FFD3E3 50%,transparent 51%),radial-gradient(1px 1px at 40% 26%,#fff 50%,transparent 51%),radial-gradient(1.4px 1.4px at 12% 44%,#E8D9FF 50%,transparent 51%);opacity:.8}
+.deco{position:absolute;inset:0;pointer-events:none;color:var(--mac-pink-ink)}
+.deco span{position:absolute;font-size:14px;opacity:.55;animation:twinkle 3.2s ease-in-out infinite}
+.deco span:nth-child(2){animation-delay:.8s}.deco span:nth-child(3){animation-delay:1.6s}.deco span:nth-child(4){animation-delay:2.2s}
+@keyframes twinkle{0%,100%{transform:scale(1) rotate(0);opacity:.55}50%{transform:scale(1.25) rotate(12deg);opacity:.9}}
+@media (prefers-reduced-motion:reduce){.deco span{animation:none}}
+.home-grid{position:absolute;top:60px;left:20px;right:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px 12px}
+.w{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-radius:28px;padding:14px 16px;box-sizing:border-box;box-shadow:0 0 0 1.5px var(--glass-line) inset,0 10px 24px -14px rgba(217,98,141,.45);text-align:left;border:0;color:inherit}
+.w-clock{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px}
+.w-clock .t{font:600 58px/0.95 var(--display);letter-spacing:.01em;font-variant-numeric:tabular-nums;color:var(--mac-pink-ink)}
+.screen[data-wall=night] .w-clock .t{color:#FFC8DA}
+.w-clock .d{font:500 14px/1 var(--display);margin-top:8px;letter-spacing:.02em;opacity:.8}
+.w-clock .d span{font:12px/1 var(--ui);margin-left:6px;opacity:.85}
+.w-clock .wt{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;line-height:1.4;opacity:.85;background:rgba(255,255,255,.55);border-radius:20px;padding:8px 12px}
+.screen[data-wall=night] .w-clock .wt{background:rgba(255,255,255,.1)}
+.w-clock .wt b{font:600 24px/1 var(--display)}
+.w-clock .wt i{font-style:normal;font-size:22px;line-height:1}
+.eng{font:500 13px/1 var(--display);letter-spacing:.04em;color:var(--mac-pink-ink)}
+.screen[data-wall=night] .eng{color:#FFC8DA}
+.polar{grid-column:span 2;position:relative;background:#FFFFFF;padding:9px 9px 0;border-radius:14px;box-shadow:0 12px 26px -12px rgba(217,98,141,.5);transform:rotate(-4deg);border:0;cursor:pointer;display:flex;flex-direction:column;align-self:center;max-width:100%}
+.polar .ph{aspect-ratio:1;overflow:hidden;line-height:0;border-radius:9px}
+.polar .ph svg{width:100%;height:100%;filter:saturate(.85) brightness(1.06) hue-rotate(-8deg)}
+.polar .cap{font:16px/1 var(--hand);color:#D9628D;text-align:center;padding:9px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.polar::before{content:"";position:absolute;top:-10px;left:50%;width:62px;height:20px;margin-left:-31px;border-radius:4px;transform:rotate(5deg);z-index:1;opacity:.9;background:repeating-linear-gradient(45deg,#FFC8DA 0 6px,#FFE3EC 6px 12px)}
+.polar::after{content:"♡";position:absolute;right:-8px;bottom:22px;width:28px;height:28px;border-radius:50%;background:#FFC8DA;color:#FFFFFF;display:grid;place-items:center;font-size:15px;transform:rotate(14deg);box-shadow:0 4px 10px -4px rgba(217,98,141,.6)}
 .quad{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;align-content:center}
 .w-ev{grid-column:1/-1;display:flex;flex-direction:column;gap:8px;cursor:pointer;min-width:0}
 .w-ev .hd{display:flex;justify-content:space-between;align-items:baseline}
-.w-ev .hd small{font-size:11px;letter-spacing:.1em;opacity:.6}
-.w-ev .it{display:grid;grid-template-columns:7px 1fr auto;gap:10px;align-items:center;font-size:13px;line-height:1.35;min-width:0}
-.w-ev .it i{width:7px;height:7px;border-radius:50%}
+.w-ev .hd small{font-size:11px;letter-spacing:.06em;opacity:.6}
+.w-ev .it{display:grid;grid-template-columns:10px 1fr auto;gap:10px;align-items:center;font-size:13px;line-height:1.35;min-width:0;background:rgba(255,255,255,.55);border-radius:14px;padding:7px 10px}
+.screen[data-wall=night] .w-ev .it{background:rgba(255,255,255,.08)}
+.w-ev .it i{width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
 .w-ev .it span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.w-ev .it em{font-style:normal;opacity:.6;font-size:11px;font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.w-dy{grid-column:1/-1;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
-.w-dy .seal{position:static;grid-row:span 2;width:44px;height:44px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font:19px/1 var(--hand);transform:rotate(-10deg);opacity:.75}
-.w-dy .tt{font:19px/1.2 var(--hand);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-ev .it em{font-style:normal;opacity:.6;font-size:11px;font-variant-numeric:tabular-nums}
+.w-dy{grid-column:1/-1;cursor:pointer;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center}
+.w-dy .seal{position:static;grid-row:span 2;width:44px;height:44px;border-radius:50%;border:0;background:var(--mac-lav);color:var(--mac-lav-ink);display:grid;place-items:center;font:18px/1 var(--hand);transform:rotate(-8deg);opacity:1}
+.w-dy .seal::before{display:none}
+.w-dy .tt{font:17px/1.2 var(--hand);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .w-dy .ex{font-size:12px;opacity:.65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;font-size:11px;position:relative;color:inherit;letter-spacing:.06em}
-.app:active .ai{transform:scale(.94)}
-.ai{width:min(58px,100%);aspect-ratio:1;border-radius:30%;display:grid;place-items:center;background:var(--tile);color:var(--tile-ink);box-shadow:0 6px 16px -10px rgba(80,60,45,.5),0 0 0 .5px rgba(120,100,80,.12) inset;position:relative;overflow:hidden;transition:transform .15s}
-.ai svg{width:48%;height:48%;stroke-width:1.35}
-.ai-cal{display:flex;flex-direction:column;justify-content:center;gap:1px}
-.ai-cal small{color:var(--c-accent);font-size:9px;font-weight:600;line-height:1.2;letter-spacing:.08em}
-.ai-cal b{font:400 27px/1 var(--display)}
-.app .bd{position:absolute;top:-5px;right:calc(50% - 34px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--wx-red);color:var(--on-color);font-size:11px;font-weight:600;display:grid;place-items:center;box-sizing:border-box;z-index:2;box-shadow:0 0 0 2px var(--tile)}
-.dock{position:absolute;left:16px;right:16px;bottom:28px;padding:12px 18px;border-radius:30px;background:var(--glass);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 0 0 .5px var(--glass-line) inset;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;font-size:11px;position:relative;color:inherit;letter-spacing:.04em}
+.app:active .ai{transform:scale(.9) rotate(-3deg)}
+.ai{width:min(58px,100%);aspect-ratio:1;border-radius:36%;display:grid;place-items:center;background:var(--tile);color:var(--tile-ink);box-shadow:0 8px 16px -10px rgba(217,98,141,.55),inset 0 -3px 0 rgba(0,0,0,.04),inset 0 0 0 1.5px rgba(255,255,255,.8);position:relative;overflow:hidden;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.ai::after{content:"";position:absolute;top:8%;left:16%;width:30%;height:16%;border-radius:50%;background:rgba(255,255,255,.65);transform:rotate(-20deg)}
+.ai svg{width:50%;height:50%;stroke-width:1.9;position:relative;z-index:1}
+.t-wechat{background:var(--mac-pink);color:var(--mac-pink-ink)}
+.t-diary{background:var(--mac-lav);color:var(--mac-lav-ink)}
+.t-memo{background:var(--mac-lemon);color:var(--mac-lemon-ink)}
+.t-album{background:var(--mac-sky);color:var(--mac-sky-ink)}
+.t-wallet{background:var(--mac-peach);color:var(--mac-peach-ink)}
+.t-settings{background:var(--mac-mint);color:var(--mac-mint-ink)}
+.t-camera{background:var(--mac-sky);color:var(--mac-sky-ink)}
+.ai-cal{display:flex;flex-direction:column;justify-content:center;gap:0;background:#FFFFFF;color:var(--mac-pink-ink)}
+.ai-cal small{background:var(--mac-pink);color:#FFFFFF;font:600 9px/1 var(--display);letter-spacing:.08em;position:absolute;top:0;left:0;right:0;padding:4px 0;text-align:center;z-index:1}
+.ai-cal b{font:600 26px/1 var(--display);margin-top:12px;position:relative;z-index:1}
+.app .bd{position:absolute;top:-5px;right:calc(50% - 34px);min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--wx-red);color:var(--on-color);font:600 11px/1 var(--display);display:grid;place-items:center;box-sizing:border-box;z-index:2;box-shadow:0 0 0 2px #FFFFFF}
+.dock{position:absolute;left:16px;right:16px;bottom:28px;padding:12px 18px;border-radius:34px;background:var(--glass);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 0 0 1.5px var(--glass-line) inset,0 10px 24px -14px rgba(217,98,141,.45);display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .dock .an{display:none}
-.pager{position:absolute;bottom:134px;left:0;right:0;display:flex;justify-content:center;gap:6px}
-.pager i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.3}.pager i:first-child{opacity:.8}
+.pager{position:absolute;bottom:136px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.pager i{width:6px;height:6px;border-radius:50%;background:var(--mac-pink-ink);opacity:.25}.pager i:first-child{opacity:.8;width:16px;border-radius:3px}
 @container (max-height:760px){.w-dy{display:none}}
-@container (max-height:660px){.w-clock .t{font-size:60px}.pager{display:none}.w-ev .it:nth-of-type(n+3){display:none}}
+@container (max-height:660px){.w-clock .t{font-size:48px}.pager{display:none}.w-ev .it:nth-of-type(n+3){display:none}}
 
 /* ---------- shared overlays ---------- */
 .mask{position:absolute;inset:0;background:var(--mask);z-index:90;opacity:0;transition:opacity .25s}
@@ -393,7 +415,7 @@ textarea.f-input{resize:none;min-height:90px;line-height:1.6}
 .call-btns .hang svg{transform:rotate(135deg)}
 
 /* moments */
-.mo-cover{height:250px;position:relative;margin-bottom:44px;background:linear-gradient(170deg,#EADFD2,#D9C3B0 60%,#C7AA93);flex:none}
+.mo-cover{height:250px;position:relative;margin-bottom:44px;background:radial-gradient(40% 50% at 80% 30%,#FFFFFF 0%,transparent 70%),linear-gradient(160deg,#FFD3E3,#E5D4FF 55%,#C6E4FA);flex:none}
 .mo-cover .who{position:absolute;right:16px;bottom:-26px;display:flex;gap:14px;align-items:flex-start}
 .mo-cover .who b{color:var(--on-color);font-size:18px;margin-top:20px;text-shadow:0 1px 3px rgba(0,0,0,.4)}
 .mo-post{display:flex;gap:10px;padding:16px 16px 14px;border-top:.5px solid var(--wx-line);background:var(--wx-card)}
@@ -441,7 +463,7 @@ textarea.f-input{resize:none;min-height:90px;line-height:1.6}
 .members button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;font-size:11px;color:var(--wx-sub);padding:0;min-width:0}
 .members button span:last-child{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .members .addm{width:52px;height:52px;border-radius:7px;border:1px dashed var(--wx-sub);display:grid;place-items:center}
-.wallet-card{margin:12px;border-radius:14px;background:linear-gradient(150deg,#D9C7B3,#B79C84);color:#FFFFFF;padding:22px 20px;display:flex;flex-direction:column;gap:6px}
+.wallet-card{margin:12px;border-radius:14px;background:linear-gradient(150deg,#FFB3CB,#F48BB0 60%,#C9A6F2);color:#FFFFFF;padding:22px 20px;display:flex;flex-direction:column;gap:6px}
 .wallet-card .amt{font:300 40px/1.1 var(--display);font-variant-numeric:tabular-nums}
 .txn{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--wx-card);gap:10px}
 .txn + .txn{border-top:.5px solid var(--wx-line)}
@@ -579,11 +601,91 @@ textarea.f-input{resize:none;min-height:90px;line-height:1.6}
 .alb button{border:0;padding:0;line-height:0;aspect-ratio:1;overflow:hidden;background:none}
 .alb svg{width:100%;height:100%}
 .alb-h{padding:14px 16px 8px;font-size:13px;color:var(--s-sub)}
+
+/* ---------- macaron / cute overrides ---------- */
+.av{border-radius:50%}
+.gav{border-radius:30%}
+.gav .av{border-radius:50%}
+.tail::before{display:none}
+.bubble{border-radius:18px;border-top-left-radius:6px;padding:9px 14px;box-shadow:0 2px 6px -3px rgba(217,98,141,.25)}
+.msg.me .bubble{border-radius:18px;border-top-right-radius:6px}
+.b-rp,.b-tf,.b-card,.b-loc{border-radius:18px;overflow:hidden;box-shadow:0 4px 10px -6px rgba(217,98,141,.4)}
+.b-img{border-radius:16px}
+.map{border-radius:0}
+.chat-scroll{background-image:radial-gradient(var(--wx-line) 1.2px,transparent 1.4px);background-size:22px 22px}
+.ci,.hold{border-radius:20px}
+.send,.pbtn{border-radius:999px}
+.btn{border-radius:999px}
+.sheet{border-radius:26px 26px 0 0}
+.modal{border-radius:26px}
+.f-input{border-radius:14px}
+.plus-grid span{border-radius:20px}
+.plus-grid button:nth-child(4n+1) span{background:var(--mac-pink);color:var(--mac-pink-ink)}
+.plus-grid button:nth-child(4n+2) span{background:var(--mac-sky);color:var(--mac-sky-ink)}
+.plus-grid button:nth-child(4n+3) span{background:var(--mac-lav);color:var(--mac-lav-ink)}
+.plus-grid button:nth-child(4n) span{background:var(--mac-mint);color:var(--mac-mint-ink)}
+.cl-item{margin:0 10px 6px;border-radius:20px;box-shadow:0 2px 8px -6px rgba(217,98,141,.4)}
+.cl-item + .cl-item::before{display:none}
+.wx-body > [data-ref=list]{padding-top:2px}
+.wx-search{border-radius:999px;margin:4px 12px 10px}
+.group{margin:0 10px 10px;border-radius:20px;overflow:hidden}
+.idx{background:none;padding-left:26px}
+.me-card{width:calc(100% - 20px);margin:0 10px 10px;border-radius:24px}
+.prof{margin:0 10px 10px;border-radius:24px}
+.members{margin:0 10px 10px;border-radius:24px}
+.txn{margin:0 10px}
+.txn:first-of-type{border-radius:16px 16px 0 0}
+.mo-post{border-top:0;margin:0 10px 10px;border-radius:22px}
+.mo-cover{border-radius:0 0 34px 34px;margin-bottom:46px}
+.mo-cover .who .av{box-shadow:0 0 0 3px #FFFFFF}
+.mo-imgs div{border-radius:10px}
+.mo-fb{border-radius:12px}
+.tab.on svg{fill:currentColor;fill-opacity:.25}
+.wx-tabs{border-top:0;box-shadow:0 -6px 18px -14px rgba(217,98,141,.5)}
+.nav-t{font-family:var(--hand);font-weight:400;font-size:18px;letter-spacing:.04em}
+.sw.on{background:var(--wx-green)}
+.chip{border-radius:999px}
+/* diary */
+.dy-hero h1{font-size:36px;color:var(--d-seal)}
+.dy-card{border-radius:22px;box-shadow:0 4px 14px -10px rgba(217,98,141,.5)}
+.dy-date{border-right:1.5px dashed var(--d-line)}
+.dy-date b{font:600 28px/1 var(--display);color:var(--d-seal)}
+.dy-card .tt{font-size:19px}
+.dy-card .ex{font-family:var(--ui)}
+.dy-sheet{border-radius:24px;box-shadow:0 6px 18px -12px rgba(217,98,141,.5)}
+.dy-sheet .txt{font-family:var(--ui)}
+.dy-form textarea{font-family:var(--ui)}
+.dy-form input,.dy-form textarea{border-radius:16px}
+.seal{border-style:dashed}
+.dy-acts button{border-radius:999px}
+.dy .save{background:var(--d-seal);color:var(--on-color)}
+.dy-form .chip.on{background:var(--d-seal);color:var(--on-color)}
+.dy-new{border:0;background:var(--d-seal);color:var(--on-color);box-shadow:0 6px 14px -6px rgba(217,98,141,.6)}
+/* calendar */
+.cal-head h1{font-weight:600;color:var(--c-accent)}
+.cal-head h1 small{color:var(--c-sub)}
+.cd .n{border-radius:14px}
+.cd.sel .n{background:var(--c-accent);color:var(--on-color)}
+.cd.today:not(.sel) .n{background:var(--c-soft)}
+.cal-ag{border-radius:30px 30px 0 0}
+.ev{border-radius:20px}
+.ev i{border-radius:999px;width:6px}
+.cal-add,.cal-dy{border-radius:20px}
+/* memo / settings */
+.memo-list,.sg{border-radius:22px}
+.memo h1,.set h1{font-family:var(--hand);font-weight:400}
+.walls button{border-radius:16px}
+.seg{border-radius:999px}.seg button{border-radius:999px}
+.call-btns span{box-shadow:0 6px 14px -8px rgba(0,0,0,.4)}
+.rp-open{border-radius:28px}
+.rp-kai{font-family:var(--hand);font-weight:400}
+.toast{border-radius:999px;padding:11px 20px}
+.banner{border-radius:24px}
 </style>
 
 <div class="stage">
   <aside class="guide">
-    <h1><i style="font-weight:300">little</i> 小手机</h1>
+    <h1>小手机 <span style="color:var(--mac-pink-ink)">♡</span></h1>
     <p>一台可以真正用起来的迷你手机：微信、日记、日历、备忘录、相册和设置。内容自动保存在当前浏览器。</p>
     <ul>
       <li><b>返回</b><span>点屏幕底部的横条回到桌面，按 Esc 返回上一页</span></li>
@@ -723,18 +825,18 @@ function seed(){
   const m = (from, type, extra, t) => Object.assign({id:uid(), from, type, t}, extra);
   return {
     v:1,
-    me:{name:'林知夏', mark:'夏', wxid:'zhixia_0614', sign:'慢慢来，比较快。', color:'#A9B8A6', region:'浙江 杭州'},
+    me:{name:'林知夏', mark:'夏', wxid:'zhixia_0614', sign:'慢慢来，比较快。', color:'#8ED6BC', region:'浙江 杭州'},
     wallet:1288.5,
-    settings:{wall:'cream', look:'system'},
+    settings:{wall:'pink', look:'system'},
     contacts:{
-      shen:{name:'沈砚', mark:'砚', py:'S', color:'#8C9AAE', wxid:'shenyan_1123', region:'浙江 杭州', sign:'在路上。'},
-      mom:{name:'妈妈', mark:'妈', py:'M', color:'#D9A48E', wxid:'sz_hongmei', region:'江苏 苏州', sign:'家和万事兴'},
-      yiyi:{name:'宋一一', mark:'一', py:'S', color:'#D8BA8A', wxid:'yiyi_song', region:'浙江 杭州', sign:'今天也要好好吃饭'},
-      kk:{name:'可可', mark:'可', py:'K', color:'#C99AA4', wxid:'coco_kk', region:'上海 徐汇', sign:'可可爱爱，没有脑袋'},
-      ali:{name:'阿梨', mark:'梨', py:'A', color:'#AEB98E', wxid:'ali_pear', region:'浙江 宁波', sign:'起不来的早八人'},
-      chen:{name:'陈屿', mark:'屿', py:'C', color:'#93AEB5', wxid:'chenyu_island', region:'浙江 舟山', sign:'潮水退了就去捡贝壳'},
-      xu:{name:'许老师', mark:'许', py:'X', color:'#9C958E', wxid:'xu_wenxueyuan', region:'浙江 杭州', sign:'文学院 · 现当代文学'},
-      file:{name:'文件传输助手', mark:'', py:'W', color:'#A9B8A6', glyph:'folder', sys:true},
+      shen:{name:'沈砚', mark:'砚', py:'S', color:'#9CCBEF', wxid:'shenyan_1123', region:'浙江 杭州', sign:'在路上。'},
+      mom:{name:'妈妈', mark:'妈', py:'M', color:'#F6B49A', wxid:'sz_hongmei', region:'江苏 苏州', sign:'家和万事兴'},
+      yiyi:{name:'宋一一', mark:'一', py:'S', color:'#F3CB6B', wxid:'yiyi_song', region:'浙江 杭州', sign:'今天也要好好吃饭'},
+      kk:{name:'可可', mark:'可', py:'K', color:'#F4A3BF', wxid:'coco_kk', region:'上海 徐汇', sign:'可可爱爱，没有脑袋'},
+      ali:{name:'阿梨', mark:'梨', py:'A', color:'#A9D98F', wxid:'ali_pear', region:'浙江 宁波', sign:'起不来的早八人'},
+      chen:{name:'陈屿', mark:'屿', py:'C', color:'#8FD3D8', wxid:'chenyu_island', region:'浙江 舟山', sign:'潮水退了就去捡贝壳'},
+      xu:{name:'许老师', mark:'许', py:'X', color:'#C3A9E8', wxid:'xu_wenxueyuan', region:'浙江 杭州', sign:'文学院 · 现当代文学'},
+      file:{name:'文件传输助手', mark:'', py:'W', color:'#8ED6BC', glyph:'folder', sys:true},
     },
     chats:[
       {id:'c_shen', type:'single', with:'shen', pinned:true, muted:false, unread:2, msgs:[
@@ -800,13 +902,13 @@ function seed(){
       {id:uid(), date:dayOff(-12), weather:'晴', mood:'期待', title:'海边的计划', body:'陈屿说下个月去东沙拍海。\n\n我已经开始想要带哪件外套、哪台相机。要早起看日出，所以前一晚一定要早睡。写在这里，监督自己。'},
     ],
     events:[
-      {id:uid(), date:dayOff(-2), time:'15:00', title:'取快递', note:'菜鸟驿站 3 号柜', color:'#A9A29B'},
-      {id:uid(), date:dayOff(0), time:'19:00', title:'和沈砚吃云南菜', note:'公司楼下', color:'#D78C7A'},
-      {id:uid(), date:dayOff(0), time:'21:30', title:'普拉提', note:'', color:'#9DB39A'},
-      {id:uid(), date:dayOff(1), time:'14:00', title:'组会', note:'文学院 302', color:'#93A8C4'},
-      {id:uid(), date:dayOff(4), time:'23:59', title:'论文初稿截止', note:'发许老师邮箱', color:'#D78C7A'},
-      {id:uid(), date:dayOff(5), time:'05:00', title:'302 爬山看日出', note:'', color:'#D9B27E'},
-      {id:uid(), date:dayOff(13), time:'', title:'妈妈生日', note:'记得提前订花', color:'#C99AA4'},
+      {id:uid(), date:dayOff(-2), time:'15:00', title:'取快递', note:'菜鸟驿站 3 号柜', color:'#C9B6E6'},
+      {id:uid(), date:dayOff(0), time:'19:00', title:'和沈砚吃云南菜', note:'公司楼下', color:'#FF8FA9'},
+      {id:uid(), date:dayOff(0), time:'21:30', title:'普拉提', note:'', color:'#7FD1B1'},
+      {id:uid(), date:dayOff(1), time:'14:00', title:'组会', note:'文学院 302', color:'#8DBEEB'},
+      {id:uid(), date:dayOff(4), time:'23:59', title:'论文初稿截止', note:'发许老师邮箱', color:'#FF8FA9'},
+      {id:uid(), date:dayOff(5), time:'05:00', title:'302 爬山看日出', note:'', color:'#F7C56B'},
+      {id:uid(), date:dayOff(13), time:'', title:'妈妈生日', note:'记得提前订花', color:'#F4A3BF'},
     ],
     memos:[
       {id:uid(), t:now-2*H, text:'周末采购\n牛奶、燕麦、猫砂、洗衣液\n给妈妈的生日礼物再看看'},
@@ -821,7 +923,7 @@ function seed(){
   };
 }
 
-const KEY = 'xiaoshouji.ins.v1';
+const KEY = 'xiaoshouji.macaron.v1';
 let S = null;
 try { S = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e) { S = null; }
 if (!S || S.v !== 1) S = seed();
@@ -1024,41 +1126,42 @@ screen.addEventListener('pointerdown', e => {
 }, true);
 
 /* ================= home ================= */
-const EN_WEEK = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const EN_WEEK = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const EN_MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function renderHome(){
   const now = new Date(), today = ymd(now);
   const upcoming = S.events.filter(e => e.date > today || (e.date === today && (e.time || '99') >= hm(now))).sort((a,b) => (a.date+(a.time||'00')).localeCompare(b.date+(b.time||'00'))).slice(0,3);
   const lastDy = [...S.diary].sort((a,b) => b.date.localeCompare(a.date))[0];
   const ur = totalUnread();
-  const wall = ['cream','blush','sage','mist','night'].includes(S.settings.wall) ? S.settings.wall : 'cream';
+  const wall = ['pink','mint','lav','lemon','night'].includes(S.settings.wall) ? S.settings.wall : 'pink';
   screen.dataset.wall = wall;
   const pm = [...S.moments].filter(m => m.imgs.length).sort((a,b) => b.t - a.t)[0];
-  const pol = pm ? {img:pm.imgs[0], cap:(pm.text || PHOTOS[pm.imgs[0]].name).slice(0,12)} : {img:'sunset', cap:'今天也要开心'};
+  const pol = pm ? {img:pm.imgs[0], cap:(pm.text || PHOTOS[pm.imgs[0]].name).slice(0,10)} : {img:'sunset', cap:'今天也要开心'};
   home.innerHTML = `
     <div class="wall ${wall === 'night' ? 'night' : ''}" style="background:var(--wall-${wall})"></div>
+    <div class="deco" aria-hidden="true"><span style="top:9%;right:9%">✦</span><span style="top:47%;left:5%;font-size:11px">♡</span><span style="top:62%;right:6%;font-size:12px">✧</span><span style="bottom:20%;left:42%;font-size:10px">✦</span></div>
     <div class="home-grid">
-      <div class="w-clock"><div><div class="t" data-ref="clock">${hm(now)}</div><div class="d">${EN_WEEK[now.getDay()]}, ${EN_MON[now.getMonth()]} ${now.getDate()}<span>${now.getMonth()+1}月${now.getDate()}日</span></div></div>
-        <div class="wt">${esc((S.me.region||'杭州').split(' ').pop())} · 多云<b>14°</b></div></div>
-      <button class="polar" data-app="album" aria-label="打开相册"><div class="ph">${photo(pol.img)}</div><div class="cap">${esc(pol.cap)} ♡</div></button>
+      <div class="w w-clock"><div><div class="t" data-ref="clock">${hm(now)}</div><div class="d">${EN_WEEK[now.getDay()]} · ${EN_MON[now.getMonth()]} ${now.getDate()}<span>${now.getMonth()+1}月${now.getDate()}日 ♡</span></div></div>
+        <div class="wt"><i>☁︎</i><b>14°</b>${esc((S.me.region||'杭州').split(' ').pop())}</div></div>
+      <button class="polar" data-app="album" aria-label="打开相册"><div class="ph">${photo(pol.img)}</div><div class="cap">${esc(pol.cap)}</div></button>
       <div class="quad">${appIcon('memo','备忘录')}${appIcon('album','相册')}${appIcon('wallet','钱包')}${appIcon('settings','设置')}</div>
-      <button class="w w-ev" data-app="calendar"><div class="hd"><span class="eng">upcoming</span><small>${upcoming.length ? upcoming.length + ' 项日程' : ''}</small></div>
-        ${upcoming.length ? upcoming.map(e => `<span class="it"><i style="background:${esc(e.color)}"></i><span>${esc(e.title)}</span><em>${e.date === today ? '今天' : cnDate(e.date).split(' ')[0]} ${esc(e.time || '全天')}</em></span>`).join('') : '<span class="it"><i style="background:currentColor;opacity:.3"></i><span>没有安排，好好休息</span><em></em></span>'}
+      <button class="w w-ev" data-app="calendar"><div class="hd"><span class="eng">✿ to do</span><small>${upcoming.length ? upcoming.length + ' 项日程' : ''}</small></div>
+        ${upcoming.length ? upcoming.map(e => `<span class="it"><i style="background:${esc(e.color)}"></i><span>${esc(e.title)}</span><em>${e.date === today ? '今天' : cnDate(e.date).split(' ')[0]} ${esc(e.time || '全天')}</em></span>`).join('') : '<span class="it"><i style="background:var(--mac-pink)"></i><span>没有安排，好好休息吧</span><em></em></span>'}
       </button>
-      ${lastDy ? `<button class="w w-dy" data-app="diary"><span class="seal">${esc(lastDy.mood.slice(0,1))}</span><span class="tt"><span class="eng" style="margin-right:8px">dear diary</span>${esc(lastDy.title || '无题')}</span><span class="ex">${esc(cnDate(lastDy.date))} · ${esc(lastDy.body.replace(/\n+/g,' '))}</span></button>` : ''}
+      ${lastDy ? `<button class="w w-dy" data-app="diary"><span class="seal">${esc(lastDy.mood.slice(0,1))}</span><span class="tt"><span class="eng" style="margin-right:8px">diary</span>${esc(lastDy.title || '无题')}</span><span class="ex">${esc(cnDate(lastDy.date))} · ${esc(lastDy.body.replace(/\n+/g,' '))}</span></button>` : ''}
     </div>
     <div class="pager"><i></i><i></i></div>
     <div class="dock">${appIcon('wechat','微信', ur)}${appIcon('diary','日记')}${appIcon('calendar','日历')}${appIcon('camera','相机')}</div>`;
 }
 function appIcon(k, label, badge){
   const d = new Date();
-  const g = path => `<span class="ai">${ic(path)}</span>`;
+  const g = path => `<span class="ai t-${k}">${ic(path)}</span>`;
   const inner = {
-    wechat: g('<path d="M12 4.6c4.6 0 8.2 3 8.2 6.8s-3.6 6.8-8.2 6.8c-.9 0-1.8-.1-2.6-.4l-3.7 1.7.9-3.1c-1.8-1.3-2.8-3-2.8-5 0-3.8 3.6-6.8 8.2-6.8z"/><path d="M8.6 11.4h.01M12 11.4h.01M15.4 11.4h.01" stroke-width="2.2"/>'),
-    diary: g('<path d="M6.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v15H8a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M6.5 18.5A1.5 1.5 0 0 1 8 17h10.5M10 8h5M10 11h3.5"/>'),
+    wechat: g('<path d="M12 4.6c4.6 0 8.2 3 8.2 6.8s-3.6 6.8-8.2 6.8c-.9 0-1.8-.1-2.6-.4l-3.7 1.7.9-3.1c-1.8-1.3-2.8-3-2.8-5 0-3.8 3.6-6.8 8.2-6.8z"/><path d="M9.2 10.2h.01M14.8 10.2h.01" stroke-width="2.6"/><path d="M10.2 13a2.4 2.4 0 0 0 3.6 0"/>'),
+    diary: g('<path d="M6.5 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v15H8a1.5 1.5 0 0 1-1.5-1.5z"/><path d="M6.5 18.5A1.5 1.5 0 0 1 8 17h10.5"/><path d="M12.5 13.2s-3-1.8-3-3.6a1.5 1.5 0 0 1 3-.4 1.5 1.5 0 0 1 3 .4c0 1.8-3 3.6-3 3.6z"/>'),
     calendar:`<span class="ai ai-cal"><small>${['SUN','MON','TUE','WED','THU','FRI','SAT'][d.getDay()]}</small><b>${d.getDate()}</b></span>`,
     memo: g('<path d="M6 4h12v16H6z"/><path d="M9 9h6M9 12.5h6M9 16h3.5"/>'),
-    album: g('<rect x="3.5" y="5" width="17" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-4.5-4.5-8.5 8"/>'),
+    album: g('<rect x="3.5" y="5" width="17" height="14" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M20.5 15.5l-4.5-4.5-8.5 8"/>'),
     settings: g(P.gear),
     wallet: g(P.wallet),
     camera: g('<path d="M4 8h3.2l1.8-2.6h6l1.8 2.6H20v11H4z"/><circle cx="12" cy="13.2" r="3.4"/>'),
@@ -1129,26 +1232,26 @@ function pageWechat(){
     ids.forEach(id => { const k = (S.contacts[id].py || '#').toUpperCase(); (groups[k] = groups[k] || []).push(id); });
     const keys = Object.keys(groups).sort((a,b) => a === '#' ? 1 : b === '#' ? -1 : a.localeCompare(b));
     return `<div class="group" style="margin-bottom:0">
-      <button class="row" style="--indent:58px" data-act="addfriend"><span class="ri" style="background:#D8B494">${ic(P.adduser)}</span><span class="lbl">新的朋友</span></button>
-      <button class="row" style="--indent:58px" data-act="groups"><span class="ri" style="background:#A9B8A6">${ic(P.users)}</span><span class="lbl">群聊</span></button>
-      <button class="row" style="--indent:58px" data-act="file"><span class="ri" style="background:#9AAABB">${ic(P.folder)}</span><span class="lbl">文件传输助手</span></button></div>` +
+      <button class="row" style="--indent:58px" data-act="addfriend"><span class="ri" style="background:#FFB38A">${ic(P.adduser)}</span><span class="lbl">新的朋友</span></button>
+      <button class="row" style="--indent:58px" data-act="groups"><span class="ri" style="background:#8ED6BC">${ic(P.users)}</span><span class="lbl">群聊</span></button>
+      <button class="row" style="--indent:58px" data-act="file"><span class="ri" style="background:#9CCBEF">${ic(P.folder)}</span><span class="lbl">文件传输助手</span></button></div>` +
       keys.map(k => `<div class="idx">${k}</div><div class="group" style="margin-bottom:0">${groups[k].sort((a,b)=>nameOf(a).localeCompare(nameOf(b),'zh')).map(id => `<button class="row" style="--indent:66px;min-height:60px" data-profile="${id}">${av(id,38)}<span class="lbl">${esc(nameOf(id))}</span></button>`).join('')}</div>`).join('') +
       `<div class="empty" style="padding:22px">${ids.length} 位朋友</div>`;
   }
   function discoverHtml(){
     const lm = [...S.moments].sort((a,b)=>b.t-a.t)[0];
-    return `<div style="height:8px"></div><div class="group"><button class="row" data-act="moments"><span class="ri" style="background:#C9AE95">${ic(P.moments)}</span><span class="lbl">朋友圈</span>${lm ? av(lm.from, 30) : ''}<span class="chev">${sm('chev')}</span></button></div>
-      <div class="group"><button class="row" data-act="scan"><span class="ri" style="background:#9AAABB">${ic(P.scan)}</span><span class="lbl">扫一扫</span><span class="chev">${sm('chev')}</span></button>
-      <button class="row" data-act="shake"><span class="ri" style="background:#93A8C4">${ic(P.shake)}</span><span class="lbl">摇一摇</span><span class="chev">${sm('chev')}</span></button></div>
-      <div class="group"><button class="row" data-act="nearby"><span class="ri" style="background:#D9B27E">${ic(P.pin)}</span><span class="lbl">附近</span><span class="chev">${sm('chev')}</span></button></div>`;
+    return `<div style="height:8px"></div><div class="group"><button class="row" data-act="moments"><span class="ri" style="background:#F4A3BF">${ic(P.moments)}</span><span class="lbl">朋友圈</span>${lm ? av(lm.from, 30) : ''}<span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="scan"><span class="ri" style="background:#9CCBEF">${ic(P.scan)}</span><span class="lbl">扫一扫</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="shake"><span class="ri" style="background:#8DBEEB">${ic(P.shake)}</span><span class="lbl">摇一摇</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="nearby"><span class="ri" style="background:#F7C56B">${ic(P.pin)}</span><span class="lbl">附近</span><span class="chev">${sm('chev')}</span></button></div>`;
   }
   function meHtml(){
     return `<button class="me-card" data-act="editme">${av('me',64)}<div style="flex:1;min-width:0"><div class="nm">${esc(S.me.name)}</div><div class="id">微信号：${esc(S.me.wxid)}</div><div class="sg">${esc(S.me.sign||'')}</div></div><span class="chev" style="color:var(--wx-sub)">${sm('chev')}</span></button>
-      <div class="group"><button class="row" data-act="wallet"><span class="ri" style="background:#A9B8A6">${ic(P.wallet)}</span><span class="lbl">服务</span><span class="val">零钱 ¥${money(S.wallet)}</span><span class="chev">${sm('chev')}</span></button></div>
-      <div class="group"><button class="row" data-act="fav"><span class="ri" style="background:#D9B27E">${ic(P.fav)}</span><span class="lbl">收藏</span><span class="chev">${sm('chev')}</span></button>
-      <button class="row" data-act="moments"><span class="ri" style="background:#93A8C4">${ic(P.image)}</span><span class="lbl">朋友圈</span><span class="chev">${sm('chev')}</span></button>
-      <button class="row" data-act="album"><span class="ri" style="background:#C99AA4">${ic(P.camera)}</span><span class="lbl">相册</span><span class="chev">${sm('chev')}</span></button></div>
-      <div class="group"><button class="row" data-act="settings"><span class="ri" style="background:#9AAABB">${ic(P.gear)}</span><span class="lbl">设置</span><span class="chev">${sm('chev')}</span></button></div>`;
+      <div class="group"><button class="row" data-act="wallet"><span class="ri" style="background:#8ED6BC">${ic(P.wallet)}</span><span class="lbl">服务</span><span class="val">零钱 ¥${money(S.wallet)}</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="fav"><span class="ri" style="background:#F7C56B">${ic(P.fav)}</span><span class="lbl">收藏</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="moments"><span class="ri" style="background:#8DBEEB">${ic(P.image)}</span><span class="lbl">朋友圈</span><span class="chev">${sm('chev')}</span></button>
+      <button class="row" data-act="album"><span class="ri" style="background:#F4A3BF">${ic(P.camera)}</span><span class="lbl">相册</span><span class="chev">${sm('chev')}</span></button></div>
+      <div class="group"><button class="row" data-act="settings"><span class="ri" style="background:#9CCBEF">${ic(P.gear)}</span><span class="lbl">设置</span><span class="chev">${sm('chev')}</span></button></div>`;
   }
   el.addEventListener('input', e => { if (e.target.id === 'wxSearch') renderChatList(); });
   el.addEventListener('click', e => {
@@ -1758,7 +1861,7 @@ function pageGroupList(){
   });
   return p;
 }
-const COLORS = ['#8C9AAE','#A9B8A6','#D9A48E','#D8BA8A','#C99AA4','#AEB98E','#93AEB5','#B3A6C2','#9C958E','#D78C7A'];
+const COLORS = ['#9CCBEF','#8ED6BC','#F6B49A','#F3CB6B','#F4A3BF','#A9D98F','#8FD3D8','#B9A6E8','#C3A9E8','#FF8FA9'];
 function pageAddFriend(){
   const p = mkPage('wx', '--wx-text'); let color = rand(COLORS);
   const el = p.el;
@@ -1989,7 +2092,7 @@ function pageDiaryEdit(id, date){
 
 /* ================= Calendar ================= */
 const FEST = {'01-01':'元旦','02-14':'情人节','03-08':'妇女节','04-01':'愚人节','05-01':'劳动节','05-04':'青年节','06-01':'儿童节','07-01':'建党节','08-01':'建军节','09-10':'教师节','10-01':'国庆节','10-31':'万圣夜','11-11':'双十一','12-24':'平安夜','12-25':'圣诞节'};
-const EVCOLORS = ['#D78C7A','#D9B27E','#9DB39A','#93A8C4','#C99AA4','#A9A29B'];
+const EVCOLORS = ['#FF8FA9','#F7C56B','#7FD1B1','#8DBEEB','#F4A3BF','#C9B6E6'];
 function pageCalendar(){
   const p = mkPage('cal', '--c-text');
   const now = new Date();
@@ -2128,7 +2231,7 @@ function pageAlbum(){
 }
 
 /* ================= Settings ================= */
-const WALLS = [['cream','奶油'],['blush','脏粉'],['sage','鼠尾草'],['mist','雾蓝'],['night','可可']];
+const WALLS = [['pink','草莓'],['mint','薄荷'],['lav','香芋'],['lemon','柠檬'],['night','星空']];
 const HOST_THEME = document.documentElement.getAttribute('data-theme');
 function applyLook(){
   const l = S.settings.look, r = document.documentElement;
