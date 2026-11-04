@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#ffe4ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>草莓小手机</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p50:#fff7fa; --p100:#ffeef4; --p200:#ffdbe7; --p300:#ffc2d6; --p400:#ff9fbe; --p500:#f57fa5; --p600:#e0638c;
+  --lav:#e9defc; --lav2:#c9b4f5; --mint:#d9f5ea; --cream:#fff6e8; --sky:#dcefff;
+  --ink:#6b4553; --ink2:#a07d8b; --ink3:#c9aab6;
+  --glass:rgba(255,255,255,.58); --glass2:rgba(255,255,255,.78); --line:rgba(245,127,165,.16);
+  --shadow:0 8px 24px rgba(240,128,165,.16); --shadow-s:0 3px 10px rgba(240,128,165,.12);
+  --r:22px;
+  --wall:radial-gradient(circle at 15% 12%,#ffffff 0,transparent 32%),radial-gradient(circle at 88% 30%,#ffe0ef 0,transparent 38%),radial-gradient(circle at 25% 85%,#f3e6ff 0,transparent 40%),linear-gradient(165deg,#ffeef4 0%,#ffdbe8 50%,#fde8f5 100%);
+  --font:"Quicksand","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--font);color:var(--ink);background:#fbe9ef;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background-image:radial-gradient(#f7c9d8 1.2px,transparent 1.2px);background-size:22px 22px}
+button{font-family:inherit;border:none;background:none;color:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit;color:var(--ink);font-size:15px;outline:none}
+::-webkit-scrollbar{display:none}
+
+/* ---------- phone shell ---------- */
+.phone{position:relative;width:390px;height:844px;border-radius:54px;overflow:hidden;background:var(--wall);
+  box-shadow:0 0 0 10px #fff,0 0 0 12px #ffd3e1,0 30px 80px rgba(224,99,140,.35);isolation:isolate}
+@media (max-width:500px){
+  body{background:none}
+  .phone{width:100vw;height:100dvh;border-radius:0;box-shadow:none}
+}
+.statusbar{position:absolute;top:0;left:0;right:0;height:46px;display:flex;align-items:center;justify-content:space-between;
+  padding:6px 30px 0;font-weight:700;font-size:15px;z-index:50;pointer-events:none}
+.statusbar .r{display:flex;gap:6px;align-items:center}
+.bat{width:24px;height:12px;border:1.6px solid currentColor;border-radius:4px;position:relative;padding:1.5px}
+.bat i{display:block;height:100%;width:78%;background:currentColor;border-radius:1.5px}
+.bat:after{content:"";position:absolute;right:-4px;top:3px;width:2px;height:4px;background:currentColor;border-radius:0 2px 2px 0}
+.homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:5px;background:rgba(107,69,83,.35);z-index:60;cursor:pointer}
+.homebar:before{content:"";position:absolute;inset:-14px -20px}
+
+/* ---------- home ---------- */
+.home{position:absolute;inset:0;padding:56px 22px 0;display:flex;flex-direction:column;transition:transform .35s,opacity .35s,filter .35s}
+.home.dim{transform:scale(.92);opacity:.4;filter:blur(3px)}
+.deco{position:absolute;pointer-events:none;color:#fff;text-shadow:0 2px 6px rgba(245,127,165,.4);font-size:18px;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{50%{opacity:.35;transform:scale(.8) rotate(15deg)}}
+.widgets{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.glass{background:var(--glass);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);border:1px solid rgba(255,255,255,.75);box-shadow:var(--shadow)}
+.w-clock{grid-column:span 2;border-radius:28px;padding:18px 20px;position:relative;overflow:hidden}
+.w-clock .t{font-size:54px;font-weight:700;letter-spacing:1px;line-height:1;color:var(--p600)}
+.w-clock .d{margin-top:6px;font-size:13px;color:var(--ink2);font-weight:600}
+.w-clock .msg{margin-top:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.7);padding:6px 12px;border-radius:20px;font-size:12.5px;font-weight:600}
+.w-clock .bunny{position:absolute;right:14px;top:14px;width:96px;height:96px}
+.w-small{border-radius:24px;padding:14px 15px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
+.w-small .lab{font-size:12px;color:var(--ink2);font-weight:700;display:flex;align-items:center;gap:5px}
+.w-small .big{font-size:30px;font-weight:700;color:var(--p600);line-height:1.1}
+.w-small .big small{font-size:13px;margin-left:3px;color:var(--ink2)}
+.w-small .sub{font-size:11.5px;color:var(--ink2);font-weight:600}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 10px;margin-top:22px}
+.app{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:transform .15s}
+.app:active{transform:scale(.9)}
+.ico{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;position:relative;box-shadow:var(--shadow-s),inset 0 1px 0 rgba(255,255,255,.9);border:1.5px solid rgba(255,255,255,.9)}
+.ico svg{width:30px;height:30px}
+.ico .badge{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--p500);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;border:2px solid #fff}
+.app span{font-size:12px;font-weight:600;color:var(--ink);text-shadow:0 1px 2px rgba(255,255,255,.8)}
+.dock{margin-top:auto;margin-bottom:26px;border-radius:32px;padding:14px 16px;display:flex;justify-content:space-around}
+.dock .app span{display:none}
+.i-pink{background:linear-gradient(145deg,#ffd6e4,#ffadc8)}
+.i-lav{background:linear-gradient(145deg,#efe4ff,#cfb8f7)}
+.i-mint{background:linear-gradient(145deg,#e3fbf1,#b5ead5)}
+.i-cream{background:linear-gradient(145deg,#fff5e3,#ffd9a8)}
+.i-sky{background:linear-gradient(145deg,#e6f4ff,#b8dcfb)}
+.i-rose{background:linear-gradient(145deg,#ffe6ea,#ffb9c4)}
+.i-white{background:linear-gradient(145deg,#fff,#ffeef4)}
+
+/* ---------- screens ---------- */
+.screen{position:absolute;inset:0;background:var(--p50);display:flex;flex-direction:column;z-index:20;
+  transform:scale(.85) translateY(30px);opacity:0;pointer-events:none;transition:transform .38s cubic-bezier(.2,.9,.3,1.1),opacity .25s;border-radius:inherit;overflow:hidden}
+.screen.open{transform:none;opacity:1;pointer-events:auto}
+.screen.slide{transform:translateX(100%);opacity:1;z-index:30;transition:transform .32s cubic-bezier(.3,.8,.3,1)}
+.screen.slide.open{transform:none}
+.screen:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,#ffe2ec 0,transparent 45%),radial-gradient(circle at 0 100%,#f5ecff 0,transparent 45%);z-index:-1}
+.nav{height:96px;padding:48px 14px 0;display:flex;align-items:center;gap:6px;flex-shrink:0}
+.nav h2{flex:1;font-size:18px;font-weight:700;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.nav h2 .typing{font-size:11px;color:var(--p500);font-weight:600}
+.nbtn{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;background:var(--glass2);box-shadow:var(--shadow-s);flex-shrink:0}
+.nbtn svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nbtn.ghost{background:none;box-shadow:none}
+.body{flex:1;overflow-y:auto;padding:6px 16px 40px}
+.card{background:var(--glass2);border-radius:var(--r);padding:16px;box-shadow:var(--shadow-s);border:1px solid #fff;margin-bottom:14px}
+.card h3{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.card h3 .more{margin-left:auto;font-size:12px;color:var(--p500);font-weight:600;cursor:pointer}
+.muted{color:var(--ink2);font-size:12.5px}
+.empty{text-align:center;color:var(--ink3);font-size:13px;padding:26px 0;font-weight:600}
+.empty b{display:block;font-size:34px;margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 20px;border-radius:16px;background:linear-gradient(135deg,#ffb3cb,#f57fa5);color:#fff;font-weight:700;font-size:15px;box-shadow:0 6px 16px rgba(245,127,165,.35);transition:transform .12s}
+.btn:active{transform:scale(.96)}
+.btn.soft{background:var(--p100);color:var(--p600);box-shadow:none}
+.btn.block{width:100%}
+.btn.sm{height:34px;padding:0 14px;font-size:13px;border-radius:12px}
+.fab{position:absolute;right:20px;bottom:34px;width:56px;height:56px;border-radius:20px;background:linear-gradient(135deg,#ffb3cb,#f57fa5);display:grid;place-items:center;box-shadow:0 10px 22px rgba(245,127,165,.45);z-index:5}
+.fab svg{width:26px;height:26px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink2);margin:0 0 6px 4px}
+.inp{width:100%;background:#fff;border:1.5px solid var(--p200);border-radius:14px;padding:11px 14px;transition:border .2s}
+.inp:focus{border-color:var(--p400)}
+textarea.inp{resize:none;min-height:88px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:7px 12px;border-radius:14px;background:#fff;border:1.5px solid var(--p200);font-size:13px;font-weight:600;cursor:pointer}
+.chip.on{background:var(--p400);border-color:var(--p400);color:#fff}
+.seg{display:flex;background:var(--p100);border-radius:14px;padding:4px;gap:4px}
+.seg button{flex:1;height:34px;border-radius:11px;font-weight:700;font-size:14px;color:var(--ink2)}
+.seg button.on{background:#fff;color:var(--p600);box-shadow:var(--shadow-s)}
+.row{display:flex;align-items:center;gap:10px}
+.list-item{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px dashed var(--line)}
+.list-item:last-child{border-bottom:none}
+.x{width:26px;height:26px;border-radius:9px;display:grid;place-items:center;color:var(--ink3);font-size:15px;flex-shrink:0}
+.x:hover{background:var(--p100);color:var(--p500)}
+
+/* ---------- sheet & toast ---------- */
+.mask{position:absolute;inset:0;background:rgba(107,69,83,.22);backdrop-filter:blur(2px);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
+.mask.open{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:86%;background:var(--p50);border-radius:30px 30px 0 0;z-index:90;transform:translateY(105%);transition:transform .34s cubic-bezier(.3,.85,.3,1);display:flex;flex-direction:column;box-shadow:0 -10px 30px rgba(224,99,140,.2)}
+.sheet.open{transform:none}
+.sheet .grab{width:40px;height:5px;border-radius:5px;background:var(--p300);margin:10px auto 4px}
+.sheet .sh{display:flex;align-items:center;padding:6px 20px 10px}
+.sheet .sh h3{flex:1;font-size:17px;font-weight:700}
+.sheet .sb{overflow-y:auto;padding:4px 20px 34px}
+.toast{position:absolute;top:58px;left:50%;transform:translate(-50%,-20px);background:rgba(255,255,255,.95);padding:10px 18px;border-radius:18px;font-size:13.5px;font-weight:700;box-shadow:var(--shadow);z-index:100;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;color:var(--p600)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- wechat ---------- */
+.wx-tabs{display:flex;height:74px;padding-bottom:20px;background:var(--glass2);backdrop-filter:blur(16px);border-top:1px solid #fff;flex-shrink:0}
+.wx-tabs button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:700;color:var(--ink3)}
+.wx-tabs button svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.wx-tabs button.on{color:var(--p500)}
+.wx-tabs button.on svg{fill:var(--p200)}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:9px 14px;margin-bottom:12px;color:var(--ink3);font-size:13.5px;border:1px solid var(--p100)}
+.chatrow{display:flex;gap:12px;align-items:center;padding:12px;border-radius:20px;background:var(--glass2);margin-bottom:10px;cursor:pointer;box-shadow:var(--shadow-s);border:1px solid #fff}
+.chatrow:active{transform:scale(.98)}
+.av{width:48px;height:48px;border-radius:17px;display:grid;place-items:center;font-size:26px;flex-shrink:0;background:linear-gradient(145deg,#fff,#ffe1eb);border:2px solid #fff;box-shadow:var(--shadow-s);overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.av.s{width:38px;height:38px;border-radius:14px;font-size:21px}
+.chatrow .mid{flex:1;min-width:0}
+.chatrow .nm{font-weight:700;font-size:15px;display:flex;justify-content:space-between}
+.chatrow .nm time{font-size:11px;color:var(--ink3);font-weight:600}
+.chatrow .pv{font-size:12.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.msgs{flex:1;overflow-y:auto;padding:10px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;gap:9px;align-items:flex-start;max-width:100%;animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}}
+.msg.me{flex-direction:row-reverse}
+.bub{max-width:72%;padding:10px 14px;border-radius:6px 20px 20px 20px;background:#fff;font-size:15px;line-height:1.5;box-shadow:var(--shadow-s);word-break:break-word;white-space:pre-wrap}
+.msg.me .bub{border-radius:20px 6px 20px 20px;background:linear-gradient(135deg,#ffc3d6,#ffa3c1);color:#fff;text-shadow:0 1px 1px rgba(224,99,140,.3)}
+.msg.err .bub{background:#fff0f0;color:#c0607a;font-size:13px}
+.tstamp{align-self:center;font-size:11px;color:var(--ink3);font-weight:600;background:rgba(255,255,255,.7);padding:3px 10px;border-radius:10px}
+.dots{display:inline-flex;gap:4px;padding:4px 2px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--p300);animation:bounce 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:none}30%{transform:translateY(-6px)}}
+.composer{display:flex;align-items:flex-end;gap:8px;padding:10px 12px 30px;background:var(--glass2);backdrop-filter:blur(16px);border-top:1px solid #fff;flex-shrink:0}
+.composer textarea{flex:1;background:#fff;border:1.5px solid var(--p200);border-radius:18px;padding:9px 14px;resize:none;max-height:100px;height:40px;line-height:1.4}
+.cbtn{width:40px;height:40px;border-radius:15px;display:grid;place-items:center;flex-shrink:0;background:var(--p100)}
+.cbtn svg{width:21px;height:21px;stroke:var(--p500);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.cbtn.send{background:linear-gradient(135deg,#ffb3cb,#f57fa5)}
+.cbtn.send svg{stroke:#fff}
+.me-card{display:flex;align-items:center;gap:14px;padding:20px}
+.me-card .av{width:66px;height:66px;font-size:36px;border-radius:22px}
+
+/* ---------- calendar ---------- */
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-head b{font-size:18px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-grid .wk{font-size:11.5px;color:var(--ink3);font-weight:700;padding:4px 0}
+.day{aspect-ratio:1;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer;position:relative;transition:background .15s}
+.day.out{color:var(--ink3);opacity:.45}
+.day.today{color:var(--p600);font-weight:700;background:var(--p100)}
+.day.sel{background:linear-gradient(135deg,#ffb3cb,#f57fa5)!important;color:#fff!important;box-shadow:0 4px 10px rgba(245,127,165,.4)}
+.day .dt{position:absolute;bottom:5px;display:flex;gap:2px}
+.day .dt i{width:5px;height:5px;border-radius:50%;background:var(--p400)}
+.day.sel .dt i{background:#fff}
+.day.pd{background:#ffe0ea;color:var(--p600)}
+.day.pp{background:repeating-linear-gradient(45deg,#fff0f5,#fff0f5 4px,#ffe2ec 4px,#ffe2ec 8px);color:var(--p500)}
+.day.fe{background:var(--lav)}
+.day.ov:after{content:"✿";position:absolute;top:1px;right:4px;font-size:9px;color:#a588e6}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;color:var(--ink2);font-weight:600}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{width:12px;height:12px;border-radius:4px}
+.ev{display:flex;gap:10px;align-items:center;padding:10px 12px;background:#fff;border-radius:14px;margin-bottom:8px;border-left:4px solid var(--p300)}
+.ev .tm{font-size:12px;font-weight:700;color:var(--p500);width:42px}
+.ev .tx{flex:1;font-size:14px;font-weight:600}
+
+/* ---------- period ---------- */
+.ring-wrap{display:flex;flex-direction:column;align-items:center;padding:10px 0 4px;position:relative}
+.ring{width:210px;height:210px;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .ctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring .ctr small{font-size:12.5px;color:var(--ink2);font-weight:700}
+.ring .ctr b{font-size:46px;color:var(--p600);line-height:1.1}
+.ring .ctr span{font-size:12.5px;font-weight:700;color:var(--p500);background:var(--p100);padding:3px 10px;border-radius:10px;margin-top:4px}
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 2px}
+.stat3 div{background:#fff;border-radius:16px;padding:10px 6px;text-align:center}
+.stat3 b{display:block;font-size:17px;color:var(--p600)}
+.stat3 small{font-size:11px;color:var(--ink2);font-weight:600}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:32px;height:32px;border-radius:11px;background:var(--p100);color:var(--p600);font-size:18px;font-weight:700}
+.stepper b{min-width:44px;text-align:center}
+.tip{background:linear-gradient(135deg,#fff,#fff0f6);border-radius:18px;padding:12px 14px;font-size:13px;line-height:1.6;display:flex;gap:10px;align-items:flex-start;font-weight:600}
+
+/* ---------- ledger ---------- */
+.ledger-hero{border-radius:26px;padding:18px;background:linear-gradient(140deg,#ffc6d8 0%,#ffa8c4 55%,#f7a2d4 100%);color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(245,127,165,.35);margin-bottom:14px}
+.ledger-hero:after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.18)}
+.ledger-hero .mon{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.ledger-hero .mon button{width:26px;height:26px;border-radius:9px;background:rgba(255,255,255,.3);color:#fff;font-weight:700}
+.ledger-hero .amt{font-size:36px;font-weight:700;margin:10px 0 4px}
+.ledger-hero .amt small{font-size:13px;opacity:.85;margin-right:6px}
+.ledger-hero .two{display:flex;gap:24px;font-size:12.5px;font-weight:600;opacity:.95}
+.bar{height:9px;border-radius:9px;background:var(--p100);overflow:hidden;flex:1}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#ffc2d6,#f57fa5)}
+.catrow{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;font-weight:600}
+.catrow .em{width:30px;height:30px;border-radius:11px;background:var(--p100);display:grid;place-items:center;font-size:16px}
+.catrow .v{width:70px;text-align:right;color:var(--ink2)}
+.daygrp{font-size:12px;font-weight:700;color:var(--ink2);margin:6px 4px 4px;display:flex;justify-content:space-between}
+.tx-item{display:flex;align-items:center;gap:12px;padding:10px 4px}
+.tx-item .em{width:40px;height:40px;border-radius:14px;background:var(--p100);display:grid;place-items:center;font-size:20px}
+.tx-item .mid{flex:1}
+.tx-item .mid b{font-size:14px;display:block}
+.tx-item .mid small{font-size:11.5px;color:var(--ink2)}
+.tx-item .amt{font-weight:700;font-size:15px}
+.tx-item .amt.in{color:#4fb38a}
+.keypad-amt{font-size:34px;font-weight:700;color:var(--p600);text-align:center;background:#fff;border-radius:18px;padding:10px;border:1.5px solid var(--p200);width:100%}
+
+/* ---------- notes ---------- */
+.notes-grid{columns:2;column-gap:12px}
+.note{break-inside:avoid;margin-bottom:12px;border-radius:20px;padding:14px;cursor:pointer;box-shadow:var(--shadow-s);border:1.5px solid rgba(255,255,255,.9);position:relative}
+.note:before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(-3deg);width:44px;height:14px;background:rgba(255,255,255,.75);border-radius:3px}
+.note b{display:block;font-size:14.5px;margin-bottom:6px}
+.note p{font-size:12.5px;color:var(--ink2);line-height:1.55;white-space:pre-wrap;max-height:130px;overflow:hidden}
+.note time{display:block;margin-top:8px;font-size:10.5px;color:var(--ink3);font-weight:700}
+.n-pink{background:#ffe6ee}.n-lav{background:#efe6ff}.n-mint{background:#e2f7ee}.n-cream{background:#fff3df}.n-sky{background:#e3f1ff}
+.colors{display:flex;gap:10px}
+.colors i{width:30px;height:30px;border-radius:11px;cursor:pointer;border:2.5px solid #fff;box-shadow:var(--shadow-s)}
+.colors i.on{outline:2.5px solid var(--p400)}
+
+/* ---------- mood ---------- */
+.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.mood{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;border-radius:16px;background:#fff;cursor:pointer;font-size:11.5px;font-weight:700;color:var(--ink2);border:2px solid transparent;transition:.15s}
+.mood em{font-style:normal;font-size:28px}
+.mood.on{border-color:var(--p400);background:var(--p100);color:var(--p600);transform:translateY(-3px)}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.mgrid div{aspect-ratio:1;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:18px;position:relative}
+.mgrid div small{position:absolute;top:2px;left:5px;font-size:9px;color:var(--ink3);font-weight:700}
+.diary{padding:12px;background:#fff;border-radius:16px;margin-bottom:8px;display:flex;gap:10px}
+.diary em{font-style:normal;font-size:24px}
+.diary b{font-size:12px;color:var(--ink2)}
+.diary p{font-size:13.5px;line-height:1.5;margin-top:2px}
+
+/* ---------- settings ---------- */
+.set-row{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px dashed var(--line);cursor:pointer}
+.set-row:last-child{border-bottom:none}
+.set-row .ic{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font-size:17px}
+.set-row .t{flex:1;font-weight:600;font-size:14.5px}
+.set-row .v{font-size:12.5px;color:var(--ink2);max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.walls{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.walls i{aspect-ratio:.55;border-radius:14px;cursor:pointer;border:3px solid #fff;box-shadow:var(--shadow-s)}
+.walls i.on{outline:3px solid var(--p400)}
+.emojis{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.emojis button{aspect-ratio:1;border-radius:14px;background:#fff;font-size:24px;border:2px solid transparent}
+.emojis button.on{border-color:var(--p400);background:var(--p100)}
+.switch{width:46px;height:28px;border-radius:14px;background:var(--p200);position:relative;transition:.2s;flex-shrink:0}
+.switch:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 2px 4px rgba(0,0,0,.1)}
+.switch.on{background:var(--p500)}
+.switch.on:after{left:21px}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="statusbar" id="statusbar"><span id="sbTime">9:41</span><span class="r">
+    <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+    <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2.2c2.1 0 4 .8 5.4 2.1l1.1-1.1C12.3 1.6 10 .6 7.5.6S2.7 1.6 1 3.2l1.1 1.1C3.5 3 5.4 2.2 7.5 2.2zm0 3.1c1.2 0 2.3.5 3.2 1.2l1.1-1.1c-1.1-1-2.6-1.6-4.3-1.6S4.3 4.4 3.2 5.4l1.1 1.1c.9-.7 2-1.2 3.2-1.2zm0 3.1c-.5 0-1 .2-1.3.5L7.5 10.2l1.3-1.3c-.3-.3-.8-.5-1.3-.5z"/></svg>
+    <span class="bat"><i></i></span></span></div>
+
+  <!-- HOME -->
+  <div class="home" id="home">
+    <span class="deco" style="top:60px;left:150px">✦</span>
+    <span class="deco" style="top:250px;right:30px;animation-delay:1s;font-size:14px">♡</span>
+    <span class="deco" style="top:470px;left:16px;animation-delay:2s;font-size:13px">✧</span>
+    <div class="widgets">
+      <div class="w-clock glass">
+        <div class="t" id="hTime">09:41</div>
+        <div class="d" id="hDate"></div>
+        <div class="msg" id="hMsg">🎀 今天也要开心呀</div>
+        <svg class="bunny" viewBox="0 0 100 100">
+          <ellipse cx="36" cy="26" rx="9" ry="22" fill="#fff" stroke="#ffb3cb" stroke-width="2.5" transform="rotate(-10 36 26)"/>
+          <ellipse cx="36" cy="28" rx="4" ry="14" fill="#ffd6e4" transform="rotate(-10 36 28)"/>
+          <ellipse cx="64" cy="26" rx="9" ry="22" fill="#fff" stroke="#ffb3cb" stroke-width="2.5" transform="rotate(10 64 26)"/>
+          <ellipse cx="64" cy="28" rx="4" ry="14" fill="#ffd6e4" transform="rotate(10 64 28)"/>
+          <ellipse cx="50" cy="64" rx="30" ry="26" fill="#fff" stroke="#ffb3cb" stroke-width="2.5"/>
+          <circle cx="39" cy="61" r="3.4" fill="#6b4553"/><circle cx="61" cy="61" r="3.4" fill="#6b4553"/>
+          <circle cx="40.2" cy="59.8" r="1.1" fill="#fff"/><circle cx="62.2" cy="59.8" r="1.1" fill="#fff"/>
+          <ellipse cx="31" cy="70" rx="5" ry="3" fill="#ffc2d6"/><ellipse cx="69" cy="70" rx="5" ry="3" fill="#ffc2d6"/>
+          <path d="M46 68 Q50 72 54 68" stroke="#6b4553" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M70 40 l6 -5 l1 8 z M76 35 l7 3 l-6 5z" fill="#ff9fbe"/><circle cx="76.5" cy="39" r="2.4" fill="#f57fa5"/>
+        </svg>
+      </div>
+      <div class="w-small glass" data-open="period">
+        <div class="lab">🩸 生理期</div>
+        <div class="big" id="wPeriod">--</div>
+        <div class="sub" id="wPeriodSub">点击记录</div>
+      </div>
+      <div class="w-small glass" data-open="ledger">
+        <div class="lab">🐷 本月支出</div>
+        <div class="big" id="wLedger">0</div>
+        <div class="sub" id="wLedgerSub">今天还没记账哦</div>
+      </div>
+    </div>
+    <div class="apps" id="apps"></div>
+    <div class="w-small glass" data-open="calendar" style="margin-top:22px;min-height:auto;gap:8px">
+      <div class="lab">📌 今日日程 <span style="margin-left:auto;color:var(--p500)" id="wWater"></span></div>
+      <div id="wEvents" style="font-size:13.5px;font-weight:600;line-height:1.7"></div>
+    </div>
+    <div class="dock glass" id="dock"></div>
+  </div>
+
+  <!-- WECHAT -->
+  <section class="screen" id="s-wechat">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="wxTitle">微信</h2><button class="nbtn" id="wxAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div>
+    <div class="body" id="wxBody"></div>
+    <div class="wx-tabs" id="wxTabs">
+      <button data-tab="chats" class="on"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>聊天</button>
+      <button data-tab="contacts"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6z"/></svg>通讯录</button>
+      <button data-tab="moments"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v6M20 9l-6 2M18 19l-4-5M6 19l4-5M4 9l6 2"/></svg>朋友圈</button>
+      <button data-tab="me"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>我</button>
+    </div>
+  </section>
+
+  <!-- CHAT ROOM -->
+  <section class="screen slide" id="s-chat">
+    <div class="nav"><button class="nbtn" id="chatBack"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="chatTitle">聊天</h2><button class="nbtn" id="chatMenu"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></button></div>
+    <div class="msgs" id="msgs"></div>
+    <div class="composer">
+      <button class="cbtn" id="chatReroll" title="让TA回复"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></button>
+      <textarea id="chatInput" rows="1" placeholder="说点什么吧～"></textarea>
+      <button class="cbtn send" id="chatSend"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 17-3-7z"/></svg></button>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="screen" id="s-calendar">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>日历 🗓</h2><button class="nbtn" id="calToday"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/></svg></button></div>
+    <div class="body" id="calBody"></div>
+    <button class="fab" id="calAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  </section>
+
+  <!-- PERIOD -->
+  <section class="screen" id="s-period">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>生理期 🌸</h2><button class="nbtn" id="perSet"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button></div>
+    <div class="body" id="perBody"></div>
+  </section>
+
+  <!-- LEDGER -->
+  <section class="screen" id="s-ledger">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>小猪记账 🐷</h2><span style="width:38px"></span></div>
+    <div class="body" id="ledBody"></div>
+    <button class="fab" id="ledAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  </section>
+
+  <!-- NOTES -->
+  <section class="screen" id="s-notes">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>便利贴 📝</h2><span style="width:38px"></span></div>
+    <div class="body" id="noteBody"></div>
+    <button class="fab" id="noteAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  </section>
+
+  <!-- MOOD -->
+  <section class="screen" id="s-mood">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>心情日记 🌈</h2><span style="width:38px"></span></div>
+    <div class="body" id="moodBody"></div>
+  </section>
+
+  <!-- WATER -->
+  <section class="screen" id="s-water">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>喝水打卡 🥤</h2><span style="width:38px"></span></div>
+    <div class="body" id="waterBody"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="screen" id="s-settings">
+    <div class="nav"><button class="nbtn" data-home><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><h2>设置 ⚙️</h2><span style="width:38px"></span></div>
+    <div class="body" id="setBody"></div>
+  </section>
+
+  <div class="mask" id="mask"></div>
+  <div class="sheet" id="sheet"><div class="grab"></div><div class="sh"><h3 id="shTitle"></h3><button class="x" id="shClose">✕</button></div><div class="sb" id="shBody"></div></div>
+  <div class="toast" id="toast"></div>
+  <div class="homebar" id="homebar"></div>
+</div>
+
+<script>
+/* ================= store ================= */
+const KEY='strawberry_phone_v1';
+const today=()=>ymd(new Date());
+function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function parse(s){const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}
+function addDays(s,n){const d=parse(s);d.setDate(d.getDate()+n);return ymd(d)}
+function diffDays(a,b){return Math.round((parse(a)-parse(b))/864e5)}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const DEFAULT={
+  settings:{userName:'草莓小姐',userAvatar:'🐰',sign:'今天也是可爱的一天 ♡',apiBase:'https://api.openai.com/v1',apiKey:'',model:'gpt-4o-mini',temp:0.9,wall:0,split:true,ctx:20},
+  chars:[
+    {id:'c1',name:'糯米团子',avatar:'🐻',persona:'你是用户的男朋友，温柔体贴、有点粘人，说话软软的，喜欢叫用户"宝宝"，会关心用户有没有好好吃饭和睡觉。',greeting:'宝宝在干嘛呀～想你了'},
+    {id:'c2',name:'闺蜜小桃',avatar:'🍑',persona:'你是用户最好的闺蜜，活泼话多，爱八卦、爱分享好物，说话喜欢用"哈哈哈哈"和颜文字。',greeting:'姐妹！！快来听我说个大瓜'}
+  ],
+  chats:{},
+  moments:[],
+  events:{},
+  period:{records:[],cycle:28,len:5},
+  ledger:[],
+  notes:[{id:'n1',title:'欢迎来到草莓小手机 🍓',body:'可以在「设置」里填写 AI 接口，\n和微信里的角色聊天哦～\n\n所有数据都只保存在本机浏览器里。',color:'pink',t:Date.now()}],
+  moods:{},
+  water:{}
+};
+let S;
+try{S=Object.assign(structuredClone(DEFAULT),JSON.parse(localStorage.getItem(KEY)||'{}'));S.settings=Object.assign({},DEFAULT.settings,S.settings)}catch(e){S=structuredClone(DEFAULT)}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('存储空间不足啦 >_<')}};
+S.chars.forEach(c=>{if(!S.chats[c.id]&&c.greeting)S.chats[c.id]=[{role:'assistant',content:c.greeting,t:Date.now()}]});
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s);
+let toastT;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1800)}
+function sheet(title,html,mount){$('#shTitle').textContent=title;$('#shBody').innerHTML=html;$('#sheet').classList.add('open');$('#mask').classList.add('open');mount&&mount($('#shBody'))}
+function closeSheet(){$('#sheet').classList.remove('open');$('#mask').classList.remove('open')}
+$('#mask').onclick=closeSheet;$('#shClose').onclick=closeSheet;
+const WALLS=[
+  'radial-gradient(circle at 15% 12%,#fff 0,transparent 32%),radial-gradient(circle at 88% 30%,#ffe0ef 0,transparent 38%),radial-gradient(circle at 25% 85%,#f3e6ff 0,transparent 40%),linear-gradient(165deg,#ffeef4 0%,#ffdbe8 50%,#fde8f5 100%)',
+  'radial-gradient(circle at 80% 15%,#fff 0,transparent 30%),radial-gradient(circle at 10% 70%,#ffe6d6 0,transparent 40%),linear-gradient(170deg,#fff4ec 0%,#ffe1e6 60%,#ffd3df 100%)',
+  'radial-gradient(circle at 20% 20%,#fff 0,transparent 30%),radial-gradient(circle at 85% 80%,#ffd9ec 0,transparent 40%),linear-gradient(160deg,#f2eaff 0%,#fbe4f5 55%,#ffe0ec 100%)',
+  'radial-gradient(#ffc2d6 1.6px,transparent 1.6px) 0 0/18px 18px,linear-gradient(180deg,#fff7fa,#ffe8f0)',
+  'radial-gradient(circle at 30% 10%,#fff 0,transparent 35%),linear-gradient(165deg,#eaf7ff 0%,#fbeaf3 60%,#ffe3ec 100%)',
+  'repeating-linear-gradient(90deg,rgba(255,194,214,.35) 0 14px,transparent 14px 28px),repeating-linear-gradient(0deg,rgba(255,194,214,.35) 0 14px,transparent 14px 28px),#fff9fb',
+  'radial-gradient(circle at 50% 0,#fff 0,transparent 45%),linear-gradient(180deg,#ffe9f1 0%,#ffcfe0 100%)',
+  'radial-gradient(circle at 75% 25%,#fff 0,transparent 30%),linear-gradient(150deg,#e8fbf3 0%,#fdeef4 60%,#ffe2ea 100%)'
+];
+function applyWall(){$('#phone').style.background=WALLS[S.settings.wall]||WALLS[0]}
+const ICONS={
+  wechat:'<svg viewBox="0 0 32 32"><path d="M13 6C7.5 6 3 9.6 3 14c0 2.5 1.4 4.7 3.6 6.2L5.8 23.5l3.8-2c1.1.3 2.2.5 3.4.5" fill="#fff"/><path d="M20 12c-5 0-9 3.2-9 7.2s4 7.2 9 7.2c1 0 2-.1 2.9-.4l3.4 1.8-.8-3c1.9-1.3 3.5-3.3 3.5-5.6 0-4-4-7.2-9-7.2z" fill="#fff" stroke="#ffadc8" stroke-width="1.4"/><circle cx="9.5" cy="12.5" r="1.3" fill="#f57fa5"/><circle cx="15.5" cy="12.5" r="1.3" fill="#f57fa5"/><circle cx="17" cy="18.5" r="1.1" fill="#f57fa5"/><circle cx="23" cy="18.5" r="1.1" fill="#f57fa5"/></svg>',
+  calendar:'<svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="5" fill="#fff"/><path d="M5 12a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v1H5z" fill="#ff9fbe"/><rect x="10" y="4" width="2.6" height="6" rx="1.3" fill="#e0638c"/><rect x="19.4" y="4" width="2.6" height="6" rx="1.3" fill="#e0638c"/><text x="16" y="24" font-size="9.5" font-weight="700" text-anchor="middle" fill="#e0638c" font-family="Quicksand" id="icoDay">4</text></svg>',
+  period:'<svg viewBox="0 0 32 32"><path d="M16 4c4 5.5 9 10.5 9 15.5a9 9 0 0 1-18 0C7 14.5 12 9.5 16 4z" fill="#fff"/><path d="M12 19.5a4 4 0 0 0 4 4" stroke="#ff9fbe" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M16 14.2c.9-1.6 3.6-1.3 3.6.8 0 1.8-3.6 3.8-3.6 3.8s-3.6-2-3.6-3.8c0-2.1 2.7-2.4 3.6-.8z" fill="#f57fa5"/></svg>',
+  ledger:'<svg viewBox="0 0 32 32"><ellipse cx="16" cy="18" rx="11" ry="9" fill="#fff"/><path d="M9 11 7 6.5l5 2.5M23 11l2-4.5-5 2.5" fill="#fff"/><ellipse cx="16" cy="20.5" rx="4" ry="3" fill="#ffc9a0"/><circle cx="14.6" cy="20.5" r=".9" fill="#c47a4e"/><circle cx="17.4" cy="20.5" r=".9" fill="#c47a4e"/><circle cx="11.5" cy="15.5" r="1.1" fill="#6b4553"/><circle cx="20.5" cy="15.5" r="1.1" fill="#6b4553"/><rect x="13" y="8.6" width="6" height="1.6" rx=".8" fill="#e5a56f"/></svg>',
+  notes:'<svg viewBox="0 0 32 32"><path d="M7 6h18v14l-6 6H7z" fill="#fff"/><path d="M19 26v-6h6" fill="#e9defc"/><path d="M11 12h10M11 16.5h7" stroke="#c9b4f5" stroke-width="2" stroke-linecap="round"/></svg>',
+  mood:'<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11" fill="#fff"/><circle cx="12" cy="14" r="1.5" fill="#6b4553"/><circle cx="20" cy="14" r="1.5" fill="#6b4553"/><path d="M11.5 18.5q4.5 4.5 9 0" stroke="#6b4553" stroke-width="1.8" fill="none" stroke-linecap="round"/><ellipse cx="9.5" cy="18" rx="2" ry="1.2" fill="#ffc2d6"/><ellipse cx="22.5" cy="18" rx="2" ry="1.2" fill="#ffc2d6"/></svg>',
+  water:'<svg viewBox="0 0 32 32"><path d="M9 9h14l-1.8 16a2.5 2.5 0 0 1-2.5 2.2h-5.4a2.5 2.5 0 0 1-2.5-2.2z" fill="#fff"/><path d="M10.2 15h11.6l-1 10a1.5 1.5 0 0 1-1.5 1.3h-6.6a1.5 1.5 0 0 1-1.5-1.3z" fill="#9fd0f7"/><path d="M18 9l2-5h3" stroke="#ff9fbe" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="14" cy="20" r="1.2" fill="#fff"/><circle cx="17.5" cy="22.5" r=".9" fill="#fff"/></svg>',
+  settings:'<svg viewBox="0 0 32 32"><path d="M16 5l2.2 2.4 3.2-.6.9 3.1 3 1.3-.9 3.1 1.9 2.7-2.6 1.9.2 3.2-3.2.5-1.4 2.9-3-1.2-3 1.2-1.4-2.9-3.2-.5.2-3.2L6 16.9l1.9-2.7-.9-3.1 3-1.3.9-3.1 3.2.6z" fill="#fff"/><circle cx="16" cy="16" r="4" fill="#ffd9a8"/></svg>'
+};
+const APPS=[
+  {id:'wechat',name:'微信',cls:'i-pink'},
+  {id:'calendar',name:'日历',cls:'i-white'},
+  {id:'period',name:'生理期',cls:'i-rose'},
+  {id:'ledger',name:'记账',cls:'i-cream'},
+  {id:'notes',name:'便利贴',cls:'i-lav'},
+  {id:'mood',name:'心情日记',cls:'i-mint'},
+  {id:'water',name:'喝水',cls:'i-sky'},
+  {id:'settings',name:'设置',cls:'i-pink'}
+];
+function appHTML(a){return `<div class="app" data-open="${a.id}"><div class="ico ${a.cls}">${ICONS[a.id]}${a.id==='wechat'?'<i class="badge" id="wxBadge" style="display:none"></i>':''}</div><span>${a.name}</span></div>`}
+$('#apps').innerHTML=APPS.map(appHTML).join('');
+$('#dock').innerHTML=['wechat','calendar','ledger','settings'].map(id=>appHTML(APPS.find(a=>a.id===id)).replace('id="wxBadge"','')).join('');
+
+/* ================= nav ================= */
+let current=null;
+const RENDER={};
+function openApp(id){
+  closeSheet();
+  document.querySelectorAll('.screen.open').forEach(s=>s.classList.remove('open'));
+  current=id;$('#s-'+id).classList.add('open');$('#home').classList.add('dim');
+  RENDER[id]&&RENDER[id]();
+}
+function goHome(){closeSheet();chatId=null;document.querySelectorAll('.screen.open').forEach(s=>s.classList.remove('open'));$('#home').classList.remove('dim');current=null;renderHome()}
+document.addEventListener('click',e=>{
+  const o=e.target.closest('[data-open]');if(o){openApp(o.dataset.open);return}
+  if(e.target.closest('[data-home]'))goHome();
+});
+$('#homebar').onclick=goHome;
+
+/* ================= home ================= */
+const WEEK=['日','一','二','三','四','五','六'];
+const GREETS=['🎀 今天也要开心呀','🍓 记得多喝水哦','☁️ 慢慢来，不着急','🌷 你超可爱的！','🧸 抱抱今天的你','✨ 好运正在派送中'];
+function tick(){
+  const d=new Date(),h=String(d.getHours()).padStart(2,'0'),m=String(d.getMinutes()).padStart(2,'0');
+  $('#sbTime').textContent=d.getHours()+':'+m;$('#hTime').textContent=h+':'+m;
+  $('#hDate').textContent=`${d.getMonth()+1}月${d.getDate()}日 · 星期${WEEK[d.getDay()]}`;
+  const ic=document.getElementById('icoDay');if(ic)ic.textContent=d.getDate();
+  document.querySelectorAll('#icoDay').forEach(n=>n.textContent=d.getDate());
+}
+$('#hMsg').textContent=GREETS[new Date().getDate()%GREETS.length];
+function renderHome(){
+  const p=periodStatus(today());
+  if(!p){$('#wPeriod').innerHTML='--';$('#wPeriodSub').textContent='点击记录第一次经期'}
+  else if(p.inPeriod){$('#wPeriod').innerHTML=`第${p.day}<small>天</small>`;$('#wPeriodSub').textContent='经期中 · 注意保暖哦'}
+  else{$('#wPeriod').innerHTML=`${p.until}<small>天</small>`;$('#wPeriodSub').textContent='距离下次大姨妈'}
+  const mk=today().slice(0,7);const out=S.ledger.filter(x=>x.type==='out'&&x.date.startsWith(mk)).reduce((a,b)=>a+b.amount,0);
+  $('#wLedger').innerHTML=`<small style="margin:0 2px 0 0">¥</small>${fmtMoney(out)}`;
+  const td=S.ledger.filter(x=>x.date===today()).length;$('#wLedgerSub').textContent=td?`今天记了 ${td} 笔 ✓`:'今天还没记账哦';
+  const ev=(S.events[today()]||[]).slice().sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+  $('#wEvents').innerHTML=ev.length?ev.slice(0,2).map(e=>`<div>♡ <span style="color:var(--p500)">${e.time||'全天'}</span> ${esc(e.text)}</div>`).join(''):'<div style="color:var(--ink2)">今天没有安排～去喝杯奶茶吧 🧋</div>';
+  $('#wWater').textContent='💧 '+(S.water[today()]||0)+'/8';
+  const unread=S.chars.reduce((a,c)=>a+(c.unread||0),0);const b=$('#wxBadge');if(b){b.style.display=unread?'grid':'none';b.textContent=unread}
+}
+const fmtMoney=n=>(Math.round(n*100)/100).toLocaleString('zh-CN',{maximumFractionDigits:2});
+
+/* ================= WeChat ================= */
+const AVATARS=['🐰','🐻','🐱','🐶','🦊','🐼','🐨','🐷','🐹','🦄','🐧','🐥','🍑','🍓','🌷','🌙','☁️','🧸'];
+let wxTab='chats';
+function avatarHTML(a,cls=''){return `<div class="av ${cls}">${/^(https?:|data:)/.test(a)?`<img src="${esc(a)}">`:esc(a)}</div>`}
+function timeLabel(t){const d=new Date(t),n=new Date();const hm=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');if(ymd(d)===ymd(n))return hm;if(diffDays(ymd(n),ymd(d))===1)return '昨天 '+hm;return `${d.getMonth()+1}/${d.getDate()}`}
+RENDER.wechat=()=>{
+  document.querySelectorAll('#wxTabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===wxTab));
+  const T={chats:'微信',contacts:'通讯录',moments:'朋友圈',me:'我'};$('#wxTitle').textContent=T[wxTab];
+  $('#wxAdd').style.visibility=(wxTab==='me')?'hidden':'visible';
+  const B=$('#wxBody');
+  if(wxTab==='chats'){
+    const list=S.chars.map(c=>({c,m:(S.chats[c.id]||[]).slice(-1)[0]})).sort((a,b)=>(b.m?.t||0)-(a.m?.t||0));
+    B.innerHTML=`<div class="search">🔍 搜索</div>`+(list.length?list.map(({c,m})=>`<div class="chatrow" data-chat="${c.id}">${avatarHTML(c.avatar)}<div class="mid"><div class="nm">${esc(c.name)}<time>${m?timeLabel(m.t):''}</time></div><div class="pv">${m?esc(m.content.split('\n')[0]):'开始聊天吧～'}</div></div>${c.unread?`<span class="ico" style="width:auto;height:auto;border:none;box-shadow:none"><i class="badge" style="position:static">${c.unread}</i></span>`:''}</div>`).join(''):'<div class="empty"><b>💌</b>还没有好友，点右上角 + 添加角色吧</div>');
+  }else if(wxTab==='contacts'){
+    B.innerHTML=`<div class="card" style="padding:6px 14px">${S.chars.map(c=>`<div class="list-item" style="cursor:pointer" data-edit="${c.id}">${avatarHTML(c.avatar,'s')}<div style="flex:1"><b style="font-size:14.5px">${esc(c.name)}</b><div class="muted" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px">${esc(c.persona)}</div></div><span class="muted">›</span></div>`).join('')||'<div class="empty">空空的～</div>'}</div><button class="btn block" id="addChar">＋ 添加新角色</button>`;
+    $('#addChar').onclick=()=>editChar();
+  }else if(wxTab==='moments'){
+    const u=S.settings;
+    B.innerHTML=`<div class="card" style="padding:0;overflow:hidden"><div style="height:130px;background:linear-gradient(135deg,#ffd6e4,#e9defc);position:relative"><span style="position:absolute;left:18px;top:16px;font-size:13px;color:#fff;font-weight:700">♡ ${esc(u.sign)}</span></div><div class="row" style="padding:0 16px 14px;margin-top:-28px;justify-content:flex-end;gap:10px"><b style="margin-top:28px">${esc(u.userName)}</b>${avatarHTML(u.userAvatar)}</div></div>`+
+    (S.moments.length?S.moments.slice().reverse().map(m=>{const a=m.by==='me'?{name:u.userName,avatar:u.userAvatar}:(S.chars.find(c=>c.id===m.by)||{name:'?',avatar:'❔'});return `<div class="card"><div class="row" style="align-items:flex-start">${avatarHTML(a.avatar,'s')}<div style="flex:1"><b style="font-size:14px;color:var(--p600)">${esc(a.name)}</b><p style="font-size:14px;line-height:1.55;margin:4px 0 8px;white-space:pre-wrap">${esc(m.text)}</p><div class="row" style="justify-content:space-between"><span class="muted">${timeLabel(m.t)}</span><span class="row" style="gap:4px"><button class="x" data-like="${m.id}" style="width:auto;padding:0 6px;color:${m.liked?'var(--p500)':'var(--ink3)'}">${m.liked?'♥':'♡'}</button><button class="x" data-delmo="${m.id}">✕</button></span></div>${m.comments?.length?`<div style="background:var(--p100);border-radius:12px;padding:8px 10px;margin-top:8px;font-size:13px;line-height:1.6">${m.comments.map(c=>`<div><b style="color:var(--p600)">${esc(c.name)}</b>：${esc(c.text)}</div>`).join('')}</div>`:''}</div></div></div>`}).join(''):'<div class="empty"><b>🌸</b>还没有动态，点 + 发一条吧</div>');
+    B.querySelectorAll('[data-like]').forEach(b=>b.onclick=()=>{const m=S.moments.find(x=>x.id===b.dataset.like);m.liked=!m.liked;save();RENDER.wechat()});
+    B.querySelectorAll('[data-delmo]').forEach(b=>b.onclick=()=>{S.moments=S.moments.filter(x=>x.id!==b.dataset.delmo);save();RENDER.wechat()});
+  }else{
+    const u=S.settings;
+    B.innerHTML=`<div class="card me-card">${avatarHTML(u.userAvatar)}<div><b style="font-size:19px">${esc(u.userName)}</b><div class="muted" style="margin-top:4px">${esc(u.sign)}</div></div></div>
+    <div class="card" style="padding:4px 16px">
+      <div class="set-row" data-open="settings"><span class="ic i-pink">🎀</span><span class="t">个人资料 & AI 设置</span><span class="muted">›</span></div>
+      <div class="set-row" id="wxStats"><span class="ic i-lav">💬</span><span class="t">聊天记录</span><span class="v">${Object.values(S.chats).reduce((a,b)=>a+b.length,0)} 条</span></div>
+      <div class="set-row"><span class="ic i-mint">🔒</span><span class="t">AI 接口</span><span class="v">${S.settings.apiKey?'已连接 ✓':'未设置（离线模式）'}</span></div>
+    </div>`;
+  }
+  B.querySelectorAll('[data-chat]').forEach(r=>r.onclick=()=>openChat(r.dataset.chat));
+  B.querySelectorAll('[data-edit]').forEach(r=>r.onclick=()=>editChar(r.dataset.edit));
+};
+$('#wxTabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;wxTab=b.dataset.tab;RENDER.wechat()};
+$('#wxAdd').onclick=()=>{if(wxTab==='moments')postMoment();else editChar()};
+
+function editChar(id){
+  const c=id?S.chars.find(x=>x.id===id):{name:'',avatar:'🐰',persona:'',greeting:''};
+  let av=c.avatar;
+  sheet(id?'编辑角色':'添加新角色 ✨',`
+    <div class="field"><label>头像</label><div class="emojis">${AVATARS.map(a=>`<button data-av="${a}" class="${a===av?'on':''}">${a}</button>`).join('')}</div>
+    <input class="inp" id="cAvUrl" style="margin-top:8px" placeholder="或粘贴图片链接（可选）" value="${/^(https?:|data:)/.test(av)?esc(av):''}"></div>
+    <div class="field"><label>名字</label><input class="inp" id="cName" value="${esc(c.name)}" placeholder="TA叫什么呢"></div>
+    <div class="field"><label>人设</label><textarea class="inp" id="cPer" placeholder="描述TA的性格、和你的关系、说话方式…">${esc(c.persona)}</textarea></div>
+    <div class="field"><label>开场白（可选）</label><input class="inp" id="cGreet" value="${esc(c.greeting||'')}" placeholder="TA的第一句话"></div>
+    <button class="btn block" id="cSave">保存</button>
+    ${id?'<button class="btn soft block" id="cDel" style="margin-top:10px">删除角色</button>':''}`,b=>{
+    b.querySelectorAll('[data-av]').forEach(x=>x.onclick=()=>{av=x.dataset.av;b.querySelectorAll('[data-av]').forEach(y=>y.classList.toggle('on',y===x));b.querySelector('#cAvUrl').value=''});
+    b.querySelector('#cSave').onclick=()=>{
+      const name=b.querySelector('#cName').value.trim();if(!name)return toast('要给TA起个名字哦');
+      const url=b.querySelector('#cAvUrl').value.trim();
+      const data={name,avatar:url||av,persona:b.querySelector('#cPer').value.trim(),greeting:b.querySelector('#cGreet').value.trim()};
+      if(id)Object.assign(c,data);else{const n={id:uid(),...data};S.chars.push(n);if(n.greeting)S.chats[n.id]=[{role:'assistant',content:n.greeting,t:Date.now()}]}
+      save();closeSheet();RENDER.wechat();if(chatId===id&&id)$('#chatTitle').textContent=data.name;toast('保存成功 ♡');
+    };
+    if(id)b.querySelector('#cDel').onclick=()=>{if(!confirm('确定删除 '+c.name+' 和所有聊天记录吗？'))return;S.chars=S.chars.filter(x=>x.id!==id);delete S.chats[id];save();closeSheet();RENDER.wechat()};
+  });
+}
+function postMoment(){
+  sheet('发朋友圈 🌸',`<div class="field"><textarea class="inp" id="moText" placeholder="这一刻的想法…"></textarea></div><button class="btn block" id="moPost">发表</button><p class="muted" style="margin-top:10px;text-align:center">${S.settings.apiKey?'好友们会来评论哦～':'设置 AI 接口后好友会来评论'}</p>`,b=>{
+    b.querySelector('#moPost').onclick=async()=>{
+      const text=b.querySelector('#moText').value.trim();if(!text)return;
+      const m={id:uid(),by:'me',text,t:Date.now(),comments:[]};S.moments.push(m);save();closeSheet();RENDER.wechat();
+      if(!S.settings.apiKey)return;
+      for(const c of S.chars.slice(0,4)){
+        try{const r=await callAI([{role:'system',content:sysPrompt(c)+'\n现在用户发了一条朋友圈，请你以好友身份在下面评论一句，简短自然，不超过30字，只输出评论内容。'},{role:'user',content:'朋友圈内容：'+text}]);
+          m.comments.push({name:c.name,text:r.trim().split('\n')[0]});save();if(current==='wechat'&&wxTab==='moments')RENDER.wechat();
+        }catch(e){}
+      }
+    };
+  });
+}
+
+/* ---- chat room ---- */
+let chatId=null,busy=false;
+function openChat(id){chatId=id;const c=S.chars.find(x=>x.id===id);c.unread=0;save();$('#chatTitle').textContent=c.name;$('#s-chat').classList.add('open');renderMsgs();setTimeout(()=>$('#chatInput').focus(),350)}
+$('#chatBack').onclick=()=>{$('#s-chat').classList.remove('open');chatId=null;RENDER.wechat()};
+function renderMsgs(extra=''){
+  const c=S.chars.find(x=>x.id===chatId);if(!c)return;const u=S.settings;const list=S.chats[chatId]||[];
+  let last=0;
+  $('#msgs').innerHTML=list.map((m,i)=>{
+    let ts='';if(m.t-last>5*60e3){ts=`<div class="tstamp">${timeLabel(m.t)}</div>`}last=m.t;
+    const me=m.role==='user';
+    return ts+`<div class="msg ${me?'me':''} ${m.err?'err':''}" data-i="${i}">${avatarHTML(me?u.userAvatar:c.avatar,'s')}<div class="bub">${esc(m.content)}</div></div>`;
+  }).join('')+extra;
+  const box=$('#msgs');box.scrollTop=box.scrollHeight;
+  box.querySelectorAll('.msg').forEach(el=>{let tm;const start=()=>{tm=setTimeout(()=>msgMenu(+el.dataset.i),550)};const end=()=>clearTimeout(tm);
+    el.addEventListener('touchstart',start,{passive:true});el.addEventListener('touchend',end);el.addEventListener('touchmove',end,{passive:true});
+    el.addEventListener('contextmenu',e=>{e.preventDefault();msgMenu(+el.dataset.i)})});
+}
+function msgMenu(i){
+  const list=S.chats[chatId];const m=list[i];if(!m)return;
+  sheet('消息操作',`<div class="card" style="font-size:14px;white-space:pre-wrap">${esc(m.content)}</div>
+    <div class="row" style="gap:10px"><button class="btn soft" style="flex:1" id="mCopy">复制</button><button class="btn soft" style="flex:1" id="mEdit">编辑</button><button class="btn" style="flex:1" id="mDel">删除</button></div>`,b=>{
+    b.querySelector('#mCopy').onclick=()=>{navigator.clipboard?.writeText(m.content);toast('已复制');closeSheet()};
+    b.querySelector('#mDel').onclick=()=>{list.splice(i,1);save();closeSheet();renderMsgs()};
+    b.querySelector('#mEdit').onclick=()=>{const v=prompt('编辑消息',m.content);if(v!=null){m.content=v;save();renderMsgs()}closeSheet()};
+  });
+}
+$('#chatMenu').onclick=()=>{
+  const c=S.chars.find(x=>x.id===chatId);
+  sheet(c.name,`<div class="card" style="padding:4px 16px">
+    <div class="set-row" id="cmEdit"><span class="ic i-pink">✏️</span><span class="t">编辑人设</span><span class="muted">›</span></div>
+    <div class="set-row" id="cmMoment"><span class="ic i-lav">🌸</span><span class="t">让TA发一条朋友圈</span><span class="muted">›</span></div>
+    <div class="set-row" id="cmClear"><span class="ic i-rose">🧹</span><span class="t">清空聊天记录</span><span class="muted">›</span></div></div>`,b=>{
+    b.querySelector('#cmEdit').onclick=()=>editChar(chatId);
+    b.querySelector('#cmClear').onclick=()=>{if(confirm('清空和 '+c.name+' 的聊天记录？')){S.chats[chatId]=[];save();renderMsgs();closeSheet()}};
+    b.querySelector('#cmMoment').onclick=async()=>{closeSheet();toast(c.name+' 正在编辑朋友圈…');
+      try{const txt=S.settings.apiKey?await callAI([{role:'system',content:sysPrompt(c)},...history(c),{role:'user',content:'（系统指令：请以你的身份发一条符合人设和最近心情的朋友圈，只输出朋友圈正文，不超过60字）'}]):fallbackMoment();
+        S.moments.push({id:uid(),by:c.id,text:txt.trim(),t:Date.now(),comments:[]});save();toast(c.name+' 发了新动态 🌸');}catch(e){toast('发送失败：'+e.message)}};
+  });
+};
+const inp=$('#chatInput');
+inp.addEventListener('input',()=>{inp.style.height='40px';inp.style.height=Math.min(inp.scrollHeight,100)+'px'});
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();sendMsg()}});
+$('#chatSend').onclick=()=>sendMsg();
+$('#chatReroll').onclick=()=>{if(inp.value.trim())sendMsg(false);aiReply()};
+function sendMsg(reply=true){
+  const v=inp.value.trim();if(!v){if(reply)aiReply();return}
+  (S.chats[chatId]=S.chats[chatId]||[]).push({role:'user',content:v,t:Date.now()});inp.value='';inp.style.height='40px';save();renderMsgs();
+  if(reply)aiReply();
+}
+function sysPrompt(c){
+  const u=S.settings,d=new Date();
+  return `你现在扮演「${c.name}」。\n人设：${c.persona||'一个温柔可爱的朋友'}\n你正在用微信和「${u.userName}」聊天。现在是${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 星期${WEEK[d.getDay()]} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}。\n要求：完全代入角色，用口语化、自然的微信聊天语气回复；${u.split?'每条消息简短，可以发 1~4 条消息，每条消息之间用换行分隔；':''}不要写旁白、动作描写或括号说明；不要承认自己是AI。`;
+}
+function history(c){return (S.chats[c.id]||[]).filter(m=>!m.err).slice(-(S.settings.ctx||20)).map(m=>({role:m.role,content:m.content}))}
+async function callAI(messages){
+  const u=S.settings;const base=u.apiBase.replace(/\/+$/,'');
+  const r=await fetch(base+'/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+u.apiKey},body:JSON.stringify({model:u.model,messages,temperature:+u.temp})});
+  if(!r.ok){let t=await r.text();throw new Error(r.status+' '+t.slice(0,120))}
+  const j=await r.json();return j.choices?.[0]?.message?.content||'';
+}
+const FALLBACK=['嗯嗯！我在听呢 (｡•ᴗ•｡)','哈哈哈你好可爱','真的吗？快跟我多说说～','抱抱你 🧸','今天有没有好好吃饭呀','我也是这么想的！','呜呜被你说中了','那我们周末一起去吃甜品吧🍰','好哦好哦','你在干嘛呀，想你了'];
+function fallbackMoment(){return ['今天的晚霞是草莓味的 🌇','又是想喝奶茶的一天🧋','好想出去玩呀～','小确幸：路上遇到一只小猫 🐱'][Math.floor(Math.random()*4)]}
+async function aiReply(){
+  if(busy||!chatId)return;const c=S.chars.find(x=>x.id===chatId);const id=chatId;busy=true;
+  const typing=`<div class="msg">${avatarHTML(c.avatar,'s')}<div class="bub"><span class="dots"><i></i><i></i><i></i></span></div></div>`;
+  $('#chatTitle').innerHTML=esc(c.name)+'<span class="typing">对方正在输入…</span>';renderMsgs(typing);
+  try{
+    let text;
+    if(!S.settings.apiKey){await new Promise(r=>setTimeout(r,900+Math.random()*700));text=FALLBACK[Math.floor(Math.random()*FALLBACK.length)];}
+    else text=await callAI([{role:'system',content:sysPrompt(c)},...history(c)]);
+    const parts=S.settings.split?text.split(/\n+/).map(s=>s.trim()).filter(Boolean):[text.trim()];
+    for(let i=0;i<parts.length;i++){
+      if(i)await new Promise(r=>setTimeout(r,500+Math.min(parts[i].length*40,1200)));
+      (S.chats[id]=S.chats[id]||[]).push({role:'assistant',content:parts[i],t:Date.now()});save();
+      if(chatId===id)renderMsgs(i<parts.length-1?typing:'');else{c.unread=(c.unread||0)+1;save();renderHome()}
+    }
+  }catch(e){(S.chats[id]=S.chats[id]||[]).push({role:'assistant',content:'⚠️ 消息发送失败：'+e.message+'\n请检查设置里的 AI 接口～',t:Date.now(),err:true});save();if(chatId===id)renderMsgs()}
+  busy=false;if(chatId===id)$('#chatTitle').textContent=c.name;
+}
+
+/* ================= Calendar ================= */
+let calM=new Date();calM.setDate(1);let calSel=today();
+function monthCells(y,m){const first=new Date(y,m,1),start=new Date(first);start.setDate(1-first.getDay());const cells=[];for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);cells.push({s:ymd(d),d:d.getDate(),out:d.getMonth()!==m})}return cells}
+RENDER.calendar=()=>{
+  const y=calM.getFullYear(),m=calM.getMonth();
+  const cells=monthCells(y,m);
+  const evs=S.events[calSel]||[];
+  $('#calBody').innerHTML=`<div class="card"><div class="cal-head"><button class="nbtn" id="cPrev"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><b>${y}年 ${m+1}月</b><button class="nbtn" id="cNext"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    <div class="cal-grid">${WEEK.map(w=>`<div class="wk">${w}</div>`).join('')}${cells.map(c=>{const p=phaseOf(c.s);const n=(S.events[c.s]||[]).length;return `<div class="day ${c.out?'out':''} ${c.s===today()?'today':''} ${c.s===calSel?'sel':''} ${p==='period'?'pd':p==='pred'?'pp':''}" data-d="${c.s}">${c.d}${n?`<span class="dt">${'<i></i>'.repeat(Math.min(n,3))}</span>`:''}</div>`}).join('')}</div>
+    <div class="legend"><span><i style="background:#ffe0ea"></i>经期</span><span><i style="background:repeating-linear-gradient(45deg,#fff0f5,#fff0f5 3px,#ffe2ec 3px,#ffe2ec 6px)"></i>预测经期</span><span><i style="background:var(--p400);border-radius:50%;width:7px;height:7px"></i>日程</span></div></div>
+    <div class="card"><h3>📌 ${parse(calSel).getMonth()+1}月${parse(calSel).getDate()}日 星期${WEEK[parse(calSel).getDay()]}<span class="more" id="cAdd2">＋ 添加</span></h3>
+    ${evs.length?evs.slice().sort((a,b)=>(a.time||'').localeCompare(b.time||'')).map(e=>`<div class="ev" style="border-color:${e.color||'var(--p300)'}"><span class="tm">${e.time||'全天'}</span><span class="tx">${esc(e.text)}</span><button class="x" data-del="${e.id}">✕</button></div>`).join(''):'<div class="empty"><b>🌤</b>这天没有安排，好好休息吧</div>'}</div>
+    ${upcomingHTML()}`;
+  $('#cPrev').onclick=()=>{calM.setMonth(m-1);RENDER.calendar()};$('#cNext').onclick=()=>{calM.setMonth(m+1);RENDER.calendar()};
+  $('#cAdd2').onclick=addEvent;
+  $('#calBody').querySelectorAll('[data-d]').forEach(d=>d.onclick=()=>{calSel=d.dataset.d;const dd=parse(calSel);if(dd.getMonth()!==m){calM=new Date(dd.getFullYear(),dd.getMonth(),1)}RENDER.calendar()});
+  $('#calBody').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{S.events[calSel]=evs.filter(e=>e.id!==b.dataset.del);if(!S.events[calSel].length)delete S.events[calSel];save();RENDER.calendar()});
+};
+function upcomingHTML(){
+  const t=today();const items=Object.entries(S.events).filter(([d])=>d>t).sort().slice(0,4).flatMap(([d,l])=>l.map(e=>({d,...e}))).slice(0,5);
+  if(!items.length)return '';
+  return `<div class="card"><h3>⏰ 即将到来</h3>${items.map(e=>`<div class="list-item"><span class="chip" style="padding:4px 9px;font-size:12px">${diffDays(e.d,t)}天后</span><span style="flex:1;font-weight:600;font-size:14px">${esc(e.text)}</span><span class="muted">${e.d.slice(5)}</span></div>`).join('')}</div>`;
+}
+const EVCOLORS=['#ffb3cb','#c9b4f5','#9fd0f7','#9fe0c4','#ffd09a'];
+function addEvent(){
+  let col=EVCOLORS[0];
+  sheet('新建日程 🗓',`<div class="field"><label>日期</label><input type="date" class="inp" id="eD" value="${calSel}"></div>
+  <div class="field"><label>内容</label><input class="inp" id="eT" placeholder="比如：和闺蜜喝下午茶 ☕"></div>
+  <div class="field"><label>时间（可选）</label><input type="time" class="inp" id="eH"></div>
+  <div class="field"><label>颜色</label><div class="colors">${EVCOLORS.map((c,i)=>`<i style="background:${c}" data-c="${c}" class="${i?'':'on'}"></i>`).join('')}</div></div>
+  <button class="btn block" id="eS">添加</button>`,b=>{
+    b.querySelectorAll('[data-c]').forEach(x=>x.onclick=()=>{col=x.dataset.c;b.querySelectorAll('[data-c]').forEach(y=>y.classList.toggle('on',y===x))});
+    b.querySelector('#eS').onclick=()=>{const d=b.querySelector('#eD').value,t=b.querySelector('#eT').value.trim();if(!d||!t)return toast('写点内容吧～');
+      (S.events[d]=S.events[d]||[]).push({id:uid(),text:t,time:b.querySelector('#eH').value,color:col});save();calSel=d;const dd=parse(d);calM=new Date(dd.getFullYear(),dd.getMonth(),1);closeSheet();RENDER.calendar();toast('已添加日程 ✓')};
+  });
+}
+$('#calAdd').onclick=addEvent;$('#calToday').onclick=()=>{calSel=today();calM=new Date();calM.setDate(1);RENDER.calendar()};
+
+/* ================= Period ================= */
+function sortedRecs(){return S.period.records.slice().sort()}
+function avgCycle(){const r=sortedRecs();if(r.length<2)return S.period.cycle;const gaps=[];for(let i=1;i<r.length;i++){const g=diffDays(r[i],r[i-1]);if(g>15&&g<60)gaps.push(g)}return gaps.length?Math.round(gaps.slice(-6).reduce((a,b)=>a+b,0)/Math.min(gaps.length,6)):S.period.cycle}
+function phaseOf(s){
+  const r=sortedRecs();if(!r.length)return null;const L=S.period.len,C=S.period.cycle;
+  for(const st of r){const k=diffDays(s,st);if(k>=0&&k<L)return 'period'}
+  const last=r[r.length-1];const k=diffDays(s,last);
+  if(k<0)return null;
+  const off=k%C;const n=Math.floor(k/C);
+  if(off<L&&n>=1)return 'pred';
+  const ov=C-14;if(off===ov)return 'ovu';if(off>=ov-5&&off<=ov+1)return 'fertile';
+  return 'safe';
+}
+function periodStatus(s){
+  const r=sortedRecs();if(!r.length)return null;const L=S.period.len,C=S.period.cycle;const last=r[r.length-1];
+  const k=diffDays(s,last);
+  if(k>=0&&k<L)return {inPeriod:true,day:k+1,cycleDay:k+1,next:addDays(last,C)};
+  let next=addDays(last,C);while(diffDays(s,next)>=C)next=addDays(next,C);
+  const until=diffDays(next,s);
+  const cd=((k%C)+C)%C+1;
+  return {inPeriod:false,until:Math.max(until,0),late:until<0,cycleDay:cd,next,phase:phaseOf(s)};
+}
+let perM=new Date();perM.setDate(1);
+const PHASE_TXT={period:'经期中',pred:'预测经期',fertile:'易孕期',ovu:'排卵日',safe:'安全期'};
+const TIPS={period:'经期要注意保暖，多喝红糖姜茶，避免生冷和剧烈运动哦 🫖',fertile:'现在是易孕期，皮肤状态也会变好，适合出门拍照 📸',ovu:'今天是排卵日～身体可能有轻微不适，记得多休息',safe:'安全期也要好好照顾自己，规律作息，心情会更好 🌷',pred:'预测的经期快到了，提前准备好卫生巾和暖宝宝吧 🎒'};
+RENDER.period=()=>{
+  const t=today(),st=periodStatus(t),C=S.period.cycle;
+  const ph=st?(st.inPeriod?'period':st.phase):null;
+  const prog=st?Math.min(st.cycleDay/C,1):0;const R=88,circ=2*Math.PI*R;
+  const y=perM.getFullYear(),m=perM.getMonth();
+  $('#perBody').innerHTML=`<div class="card"><div class="ring-wrap"><div class="ring"><svg viewBox="0 0 200 200"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ffc2d6"/><stop offset="1" stop-color="#f57fa5"/></linearGradient></defs>
+    <circle cx="100" cy="100" r="${R}" fill="none" stroke="#ffeef4" stroke-width="16"/>
+    <circle cx="100" cy="100" r="${R}" fill="none" stroke="url(#rg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${circ}" stroke-dashoffset="${circ*(1-prog)}" style="transition:stroke-dashoffset .8s"/></svg>
+    <div class="ctr">${!st?'<small>还没有记录哦</small><b>🌸</b><span>点下方按钮开始</span>':st.inPeriod?`<small>经期第</small><b>${st.day}</b><span>天 · 注意休息</span>`:st.late?`<small>已推迟</small><b>${-diffDays(st.next,t)}</b><span>天 · 别太焦虑</span>`:`<small>距离下次经期</small><b>${st.until}</b><span>天 · ${PHASE_TXT[ph]||''}</span>`}</div></div></div>
+    <div class="stat3"><div><b>${C}</b><small>周期(天)</small></div><div><b>${S.period.len}</b><small>经期(天)</small></div><div><b>${st?st.next.slice(5).replace('-','/'):'--'}</b><small>下次预测</small></div></div>
+    <div class="row" style="gap:10px;margin-top:12px">${st&&st.inPeriod?`<button class="btn soft" style="flex:1" id="pEnd">姨妈走啦</button>`:`<button class="btn" style="flex:1" id="pStart">🩸 姨妈来了</button>`}<button class="btn soft" style="flex:1" id="pOther">补记其他日期</button></div></div>
+    ${ph?`<div class="tip" style="margin-bottom:14px"><span style="font-size:22px">💗</span><span>${TIPS[ph]}</span></div>`:''}
+    <div class="card"><div class="cal-head"><button class="nbtn" id="pPrev"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><b style="font-size:16px">${y}年 ${m+1}月</b><button class="nbtn" id="pNext"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+    <div class="cal-grid">${WEEK.map(w=>`<div class="wk">${w}</div>`).join('')}${monthCells(y,m).map(c=>{const p=phaseOf(c.s);return `<div class="day ${c.out?'out':''} ${c.s===t?'today':''} ${p==='period'?'pd':p==='pred'?'pp':p==='fertile'?'fe':p==='ovu'?'fe ov':''}" data-pd="${c.s}">${c.d}</div>`}).join('')}</div>
+    <div class="legend"><span><i style="background:#ffe0ea"></i>经期</span><span><i style="background:repeating-linear-gradient(45deg,#fff0f5,#fff0f5 3px,#ffe2ec 3px,#ffe2ec 6px)"></i>预测</span><span><i style="background:var(--lav)"></i>易孕期</span><span>✿ 排卵日</span></div>
+    <p class="muted" style="margin-top:8px">点击日期可以把它记为经期开始日</p></div>
+    <div class="card"><h3>📖 历史记录 <span class="more">平均周期 ${avgCycle()} 天</span></h3>${sortedRecs().reverse().map((r,i,a)=>`<div class="list-item"><span style="font-size:18px">🌸</span><span style="flex:1;font-weight:600">${r.replace(/-/g,'/')}</span><span class="muted">${i<a.length-1?'周期 '+diffDays(r,a[i+1])+' 天':'首次记录'}</span><button class="x" data-rm="${r}">✕</button></div>`).join('')||'<div class="empty">暂无记录</div>'}</div>`;
+  const add=d=>{if(S.period.records.includes(d))return toast('这天已经记录过啦');S.period.records.push(d);if(S.period.records.length>=3)S.period.cycle=avgCycle();save();RENDER.period();toast('已记录，抱抱你 🧸')};
+  $('#pStart')&&($('#pStart').onclick=()=>add(t));
+  $('#pEnd')&&($('#pEnd').onclick=()=>{const last=sortedRecs().pop();S.period.len=Math.max(2,Math.min(10,diffDays(t,last)+1));save();RENDER.period();toast('辛苦啦！经期长度已更新为 '+S.period.len+' 天')});
+  $('#pOther').onclick=()=>sheet('补记经期开始日',`<div class="field"><input type="date" class="inp" id="pd" value="${t}" max="${t}"></div><button class="btn block" id="pdS">记录</button>`,b=>b.querySelector('#pdS').onclick=()=>{const v=b.querySelector('#pd').value;if(v){closeSheet();add(v)}});
+  $('#pPrev').onclick=()=>{perM.setMonth(m-1);RENDER.period()};$('#pNext').onclick=()=>{perM.setMonth(m+1);RENDER.period()};
+  $('#perBody').querySelectorAll('[data-pd]').forEach(d=>d.onclick=()=>{const v=d.dataset.pd;if(v>t)return toast('不能记录未来的日期哦');if(S.period.records.includes(v))return;if(confirm(`把 ${v} 记为经期开始日？`))add(v)});
+  $('#perBody').querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{S.period.records=S.period.records.filter(x=>x!==b.dataset.rm);save();RENDER.period()});
+};
+$('#perSet').onclick=()=>{
+  const tmp={...S.period};
+  const body=()=>`<div class="card"><div class="list-item"><span style="flex:1;font-weight:600">周期长度</span><div class="stepper"><button data-k="cycle" data-v="-1">−</button><b>${tmp.cycle} 天</b><button data-k="cycle" data-v="1">＋</button></div></div>
+    <div class="list-item"><span style="flex:1;font-weight:600">经期长度</span><div class="stepper"><button data-k="len" data-v="-1">−</button><b>${tmp.len} 天</b><button data-k="len" data-v="1">＋</button></div></div></div><button class="btn block" id="psS">保存</button>`;
+  const mount=b=>{b.querySelectorAll('[data-k]').forEach(x=>x.onclick=()=>{const k=x.dataset.k;tmp[k]=Math.max(k==='len'?2:18,Math.min(k==='len'?10:45,tmp[k]+ +x.dataset.v));b.innerHTML=body();mount(b)});b.querySelector('#psS').onclick=()=>{S.period.cycle=tmp.cycle;S.period.len=tmp.len;save();closeSheet();RENDER.period()}};
+  sheet('周期设置',body(),mount);
+};
+
+/* ================= Ledger ================= */
+const CATS={out:[['餐饮','🍰'],['奶茶','🧋'],['购物','🛍️'],['美妆','💄'],['交通','🚌'],['娱乐','🎮'],['居家','🏠'],['学习','📚'],['医疗','💊'],['其他','✨']],in:[['工资','💰'],['红包','🧧'],['兼职','💼'],['理财','📈'],['其他','✨']]};
+const catEm=(type,c)=>(CATS[type].find(x=>x[0]===c)||['','✨'])[1];
+let ledM=today().slice(0,7);
+RENDER.ledger=()=>{
+  const list=S.ledger.filter(x=>x.date.startsWith(ledM)).sort((a,b)=>b.date.localeCompare(a.date)||b.t-a.t);
+  const out=list.filter(x=>x.type==='out').reduce((a,b)=>a+b.amount,0),inc=list.filter(x=>x.type==='in').reduce((a,b)=>a+b.amount,0);
+  const byCat={};list.filter(x=>x.type==='out').forEach(x=>byCat[x.cat]=(byCat[x.cat]||0)+x.amount);
+  const cats=Object.entries(byCat).sort((a,b)=>b[1]-a[1]);const max=cats[0]?.[1]||1;
+  const groups={};list.forEach(x=>(groups[x.date]=groups[x.date]||[]).push(x));
+  const [Y,M]=ledM.split('-').map(Number);
+  $('#ledBody').innerHTML=`<div class="ledger-hero"><div class="mon"><button id="lPrev">‹</button>${Y}年${M}月<button id="lNext">›</button></div>
+    <div class="amt"><small>支出</small>¥${fmtMoney(out)}</div><div class="two"><span>收入 ¥${fmtMoney(inc)}</span><span>结余 ¥${fmtMoney(inc-out)}</span></div></div>
+    ${cats.length?`<div class="card"><h3>🍬 支出分类</h3>${cats.map(([c,v])=>`<div class="catrow"><span class="em">${catEm('out',c)}</span><span style="width:34px">${c}</span><div class="bar"><i style="width:${v/max*100}%"></i></div><span class="v">¥${fmtMoney(v)}</span></div>`).join('')}</div>`:''}
+    <div class="card" style="padding:12px 14px">${Object.keys(groups).length?Object.entries(groups).map(([d,l])=>{const so=l.filter(x=>x.type==='out').reduce((a,b)=>a+b.amount,0);return `<div class="daygrp"><span>${d.slice(5).replace('-','月')}日 星期${WEEK[parse(d).getDay()]}</span><span>支出 ¥${fmtMoney(so)}</span></div>${l.map(x=>`<div class="tx-item"><span class="em">${catEm(x.type,x.cat)}</span><div class="mid"><b>${esc(x.cat)}</b><small>${esc(x.note||'')}</small></div><span class="amt ${x.type==='in'?'in':''}">${x.type==='in'?'+':'-'}${fmtMoney(x.amount)}</span><button class="x" data-del="${x.id}">✕</button></div>`).join('')}`}).join(''):'<div class="empty"><b>🐷</b>这个月还没有记账哦～</div>'}</div>`;
+  const shift=n=>{const d=new Date(Y,M-1+n,1);ledM=ymd(d).slice(0,7);RENDER.ledger()};
+  $('#lPrev').onclick=()=>shift(-1);$('#lNext').onclick=()=>shift(1);
+  $('#ledBody').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(!confirm('删除这笔记录？'))return;S.ledger=S.ledger.filter(x=>x.id!==b.dataset.del);save();RENDER.ledger()});
+};
+$('#ledAdd').onclick=()=>{
+  let type='out',cat='餐饮';
+  const catsHTML=()=>CATS[type].map(([c,e])=>`<button class="chip ${c===cat?'on':''}" data-cat="${c}">${e} ${c}</button>`).join('');
+  sheet('记一笔 🐷',`<div class="seg" style="margin-bottom:14px"><button class="on" data-ty="out">支出</button><button data-ty="in">收入</button></div>
+    <div class="field"><input class="keypad-amt" id="lA" type="number" inputmode="decimal" placeholder="0.00"></div>
+    <div class="field"><label>分类</label><div class="chips" id="lC">${catsHTML()}</div></div>
+    <div class="row" style="gap:10px"><div class="field" style="flex:1.4"><label>备注</label><input class="inp" id="lN" placeholder="买了什么呀"></div><div class="field" style="flex:1"><label>日期</label><input class="inp" type="date" id="lD" value="${today()}"></div></div>
+    <button class="btn block" id="lS">记下来</button>`,b=>{
+    const bindCats=()=>b.querySelectorAll('[data-cat]').forEach(x=>x.onclick=()=>{cat=x.dataset.cat;b.querySelector('#lC').innerHTML=catsHTML();bindCats()});bindCats();
+    b.querySelectorAll('[data-ty]').forEach(x=>x.onclick=()=>{type=x.dataset.ty;cat=CATS[type][0][0];b.querySelectorAll('[data-ty]').forEach(y=>y.classList.toggle('on',y===x));b.querySelector('#lC').innerHTML=catsHTML();bindCats()});
+    setTimeout(()=>b.querySelector('#lA').focus(),300);
+    b.querySelector('#lS').onclick=()=>{const a=parseFloat(b.querySelector('#lA').value);if(!(a>0))return toast('金额要大于 0 哦');
+      const date=b.querySelector('#lD').value||today();S.ledger.push({id:uid(),type,cat,amount:a,note:b.querySelector('#lN').value.trim(),date,t:Date.now()});save();ledM=date.slice(0,7);closeSheet();RENDER.ledger();toast(type==='out'?'已记录，钱包痛痛 💸':'进账啦 ✨')};
+  });
+};
+
+/* ================= Notes ================= */
+const NCOL=['pink','lav','mint','cream','sky'];const NCOLV={pink:'#ffe6ee',lav:'#efe6ff',mint:'#e2f7ee',cream:'#fff3df',sky:'#e3f1ff'};
+RENDER.notes=()=>{
+  const l=S.notes.slice().sort((a,b)=>b.t-a.t);
+  $('#noteBody').innerHTML=l.length?`<div class="notes-grid" style="padding-top:8px">${l.map(n=>`<div class="note n-${n.color}" data-n="${n.id}"><b>${esc(n.title||'无标题')}</b><p>${esc(n.body)}</p><time>${new Date(n.t).toLocaleDateString('zh-CN')}</time></div>`).join('')}</div>`:'<div class="empty"><b>📝</b>写下第一张便利贴吧</div>';
+  $('#noteBody').querySelectorAll('[data-n]').forEach(x=>x.onclick=()=>editNote(x.dataset.n));
+};
+function editNote(id){
+  const n=id?S.notes.find(x=>x.id===id):{title:'',body:'',color:'pink'};let col=n.color;
+  sheet(id?'编辑便利贴':'新便利贴',`<div class="field"><input class="inp" id="nT" value="${esc(n.title)}" placeholder="标题"></div>
+  <div class="field"><textarea class="inp" id="nB" style="min-height:160px" placeholder="写点什么…">${esc(n.body)}</textarea></div>
+  <div class="field"><div class="colors">${NCOL.map(c=>`<i style="background:${NCOLV[c]}" data-c="${c}" class="${c===col?'on':''}"></i>`).join('')}</div></div>
+  <div class="row" style="gap:10px">${id?'<button class="btn soft" id="nD" style="flex:1">删除</button>':''}<button class="btn" id="nS" style="flex:2">保存</button></div>`,b=>{
+    b.querySelectorAll('[data-c]').forEach(x=>x.onclick=()=>{col=x.dataset.c;b.querySelectorAll('[data-c]').forEach(y=>y.classList.toggle('on',y===x))});
+    b.querySelector('#nS').onclick=()=>{const title=b.querySelector('#nT').value.trim(),body=b.querySelector('#nB').value.trim();if(!title&&!body)return closeSheet();
+      if(id)Object.assign(n,{title,body,color:col,t:Date.now()});else S.notes.push({id:uid(),title,body,color:col,t:Date.now()});save();closeSheet();RENDER.notes()};
+    id&&(b.querySelector('#nD').onclick=()=>{S.notes=S.notes.filter(x=>x.id!==id);save();closeSheet();RENDER.notes()});
+  });
+}
+$('#noteAdd').onclick=()=>editNote();
+
+/* ================= Mood ================= */
+const MOODS=[['🥰','超开心'],['😊','不错'],['😐','一般'],['😢','难过'],['😤','生气']];
+RENDER.mood=()=>{
+  const t=today(),cur=S.moods[t]||{};const d=new Date(),y=d.getFullYear(),m=d.getMonth();const days=new Date(y,m+1,0).getDate();const pad=new Date(y,m,1).getDay();
+  const recent=Object.entries(S.moods).filter(([,v])=>v.text).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,10);
+  $('#moodBody').innerHTML=`<div class="card"><h3>🌈 今天心情怎么样？</h3><div class="moods">${MOODS.map(([e,n])=>`<div class="mood ${cur.m===e?'on':''}" data-m="${e}"><em>${e}</em>${n}</div>`).join('')}</div>
+    <textarea class="inp" id="mT" style="margin-top:12px;min-height:80px" placeholder="写写今天发生的小事吧～">${esc(cur.text||'')}</textarea><button class="btn block" id="mS" style="margin-top:10px">保存今天</button></div>
+    <div class="card"><h3>📅 ${m+1}月心情</h3><div class="mgrid">${WEEK.map(w=>`<div style="background:none;aspect-ratio:auto;font-size:11px;color:var(--ink3);font-weight:700">${w}</div>`).join('')}${'<div style="background:none"></div>'.repeat(pad)}${Array.from({length:days},(_,i)=>{const s=ymd(new Date(y,m,i+1));return `<div><small>${i+1}</small>${S.moods[s]?.m||''}</div>`}).join('')}</div></div>
+    ${recent.length?`<div class="card"><h3>📖 最近的日记</h3>${recent.map(([d,v])=>`<div class="diary"><em>${v.m||'📝'}</em><div><b>${d.replace(/-/g,'/')}</b><p>${esc(v.text)}</p></div></div>`).join('')}</div>`:''}`;
+  let sel=cur.m;
+  $('#moodBody').querySelectorAll('[data-m]').forEach(x=>x.onclick=()=>{sel=x.dataset.m;$('#moodBody').querySelectorAll('[data-m]').forEach(y=>y.classList.toggle('on',y===x))});
+  $('#mS').onclick=()=>{if(!sel)return toast('先选一个心情吧');S.moods[t]={m:sel,text:$('#mT').value.trim()};save();RENDER.mood();toast('今天的心情已收藏 💝')};
+};
+
+/* ================= Water ================= */
+RENDER.water=()=>{
+  const t=today(),goal=8,n=S.water[t]||0;
+  const week=Array.from({length:7},(_,i)=>{const s=addDays(t,i-6);return {s,n:S.water[s]||0}});
+  $('#waterBody').innerHTML=`<div class="card" style="text-align:center"><h3 style="justify-content:center">今天喝了 ${n} / ${goal} 杯</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 6px">${Array.from({length:goal},(_,i)=>`<div style="aspect-ratio:.8;border-radius:12px 12px 18px 18px;border:2.5px solid ${i<n?'#9fd0f7':'var(--p200)'};background:${i<n?'linear-gradient(180deg,#e6f4ff 30%,#9fd0f7 30%)':'#fff'};display:grid;place-items:center;font-size:20px">${i<n?'💧':''}</div>`).join('')}</div>
+    <div class="row" style="gap:10px"><button class="btn soft" style="flex:1" id="wM">撤销</button><button class="btn" style="flex:2" id="wP">＋ 喝了一杯</button></div>
+    <p class="muted" style="margin-top:10px">${n>=goal?'太棒啦！今天的目标达成 🎉':'还差 '+(goal-n)+' 杯，水润润的才可爱 ✨'}</p></div>
+    <div class="card"><h3>🗓 最近 7 天</h3><div style="display:flex;align-items:flex-end;gap:8px;height:110px">${week.map(w=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end"><span style="font-size:10.5px;color:var(--ink2);font-weight:700">${w.n}</span><div style="width:100%;border-radius:8px;background:linear-gradient(180deg,#bfe1fb,#ffb3cb);height:${Math.min(w.n/goal,1)*70+4}px"></div><small style="font-size:10.5px;color:var(--ink3);font-weight:700">${WEEK[parse(w.s).getDay()]}</small></div>`).join('')}</div></div>`;
+  $('#wP').onclick=()=>{S.water[t]=n+1;save();RENDER.water()};$('#wM').onclick=()=>{S.water[t]=Math.max(0,n-1);save();RENDER.water()};
+};
+
+/* ================= Settings ================= */
+RENDER.settings=()=>{
+  const u=S.settings;
+  $('#setBody').innerHTML=`<div class="card me-card" id="sProfile" style="cursor:pointer">${avatarHTML(u.userAvatar)}<div style="flex:1"><b style="font-size:18px">${esc(u.userName)}</b><div class="muted" style="margin-top:4px">${esc(u.sign)}</div></div><span class="muted">编辑 ›</span></div>
+  <div class="card"><h3>🤖 AI 接口 <span class="more" style="color:${u.apiKey?'#4fb38a':'var(--ink3)'}">${u.apiKey?'● 已配置':'○ 离线模式'}</span></h3>
+    <div class="field"><label>API 地址（兼容 OpenAI 格式）</label><input class="inp" id="aB" value="${esc(u.apiBase)}" placeholder="https://api.openai.com/v1"></div>
+    <div class="field"><label>API Key</label><input class="inp" id="aK" type="password" value="${esc(u.apiKey)}" placeholder="sk-..."></div>
+    <div class="field"><label>模型</label><div class="row"><input class="inp" id="aM" value="${esc(u.model)}" list="mlist" style="flex:1"><button class="btn soft sm" id="aFetch">拉取</button></div><datalist id="mlist"></datalist></div>
+    <div class="row" style="gap:10px"><div class="field" style="flex:1"><label>温度 ${u.temp}</label><input type="range" min="0" max="1.5" step="0.1" value="${u.temp}" id="aT" style="width:100%;accent-color:var(--p500)"></div><div class="field" style="flex:1"><label>上下文条数</label><input class="inp" id="aC" type="number" value="${u.ctx}" min="2" max="100"></div></div>
+    <div class="list-item" style="padding:6px 2px 12px"><span style="flex:1;font-weight:600;font-size:14px">回复拆成多条气泡</span><button class="switch ${u.split?'on':''}" id="aS"></button></div>
+    <div class="row" style="gap:10px"><button class="btn soft" style="flex:1" id="aTest">测试连接</button><button class="btn" style="flex:1" id="aSave">保存</button></div></div>
+  <div class="card"><h3>🖼 壁纸</h3><div class="walls">${WALLS.map((w,i)=>`<i style="background:${w}" data-w="${i}" class="${i===u.wall?'on':''}"></i>`).join('')}</div></div>
+  <div class="card" style="padding:4px 16px">
+    <div class="set-row" id="dExp"><span class="ic i-mint">📤</span><span class="t">导出数据备份</span><span class="muted">›</span></div>
+    <div class="set-row" id="dImp"><span class="ic i-sky">📥</span><span class="t">导入数据</span><span class="muted">›</span></div>
+    <div class="set-row" id="dClr"><span class="ic i-rose">🗑</span><span class="t">清空所有数据</span><span class="muted">›</span></div></div>
+  <p class="muted" style="text-align:center;margin:6px 0 10px">🍓 草莓小手机 v1.0 · 数据仅保存在本机</p>`;
+  const B=$('#setBody');
+  B.querySelectorAll('[data-w]').forEach(x=>x.onclick=()=>{u.wall=+x.dataset.w;save();applyWall();RENDER.settings()});
+  const T=B.querySelector('#aT');T.oninput=()=>T.previousElementSibling.textContent='温度 '+T.value;
+  const sw=B.querySelector('#aS');sw.onclick=()=>sw.classList.toggle('on');
+  const grab=()=>{u.apiBase=B.querySelector('#aB').value.trim()||DEFAULT.settings.apiBase;u.apiKey=B.querySelector('#aK').value.trim();u.model=B.querySelector('#aM').value.trim()||DEFAULT.settings.model;u.temp=+T.value;u.ctx=Math.max(2,+B.querySelector('#aC').value||20);u.split=sw.classList.contains('on')};
+  B.querySelector('#aSave').onclick=()=>{grab();save();RENDER.settings();toast('设置已保存 ♡')};
+  B.querySelector('#aTest').onclick=async()=>{grab();save();toast('连接中…');try{const r=await callAI([{role:'user',content:'用一句可爱的话跟我打个招呼'}]);toast('连接成功 ✓');sheet('测试成功 🎉',`<div class="card" style="font-size:14px;line-height:1.6">${esc(r)}</div>`)}catch(e){toast('连接失败 >_<');sheet('连接失败',`<div class="card" style="font-size:13px;color:#c0607a;word-break:break-all">${esc(e.message)}</div><p class="muted">请检查 API 地址、Key 和模型名称，部分接口可能不支持浏览器跨域访问。</p>`)}};
+  B.querySelector('#aFetch').onclick=async()=>{grab();try{const r=await fetch(u.apiBase.replace(/\/+$/,'')+'/models',{headers:{Authorization:'Bearer '+u.apiKey}});const j=await r.json();const ids=(j.data||[]).map(x=>x.id);B.querySelector('#mlist').innerHTML=ids.map(i=>`<option value="${esc(i)}">`).join('');toast(`拉取到 ${ids.length} 个模型`)}catch(e){toast('拉取失败')}};
+  B.querySelector('#sProfile').onclick=editProfile;
+  B.querySelector('#dExp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:'application/json'}));a.download='草莓小手机备份-'+today()+'.json';a.click();toast('已导出 ✓')};
+  B.querySelector('#dImp').onclick=()=>{const f=document.createElement('input');f.type='file';f.accept='.json';f.onchange=async()=>{try{const d=JSON.parse(await f.files[0].text());S=Object.assign(structuredClone(DEFAULT),d);save();applyWall();RENDER.settings();toast('导入成功 ✓')}catch(e){toast('文件格式不对哦')}};f.click()};
+  B.querySelector('#dClr').onclick=()=>{if(confirm('真的要清空所有数据吗？此操作不能撤销哦')){localStorage.removeItem(KEY);location.reload()}};
+};
+function editProfile(){
+  const u=S.settings;let av=u.userAvatar;
+  sheet('我的资料 🎀',`<div class="field"><label>头像</label><div class="emojis">${AVATARS.map(a=>`<button data-av="${a}" class="${a===av?'on':''}">${a}</button>`).join('')}</div></div>
+  <div class="field"><label>昵称</label><input class="inp" id="pN" value="${esc(u.userName)}"></div>
+  <div class="field"><label>个性签名</label><input class="inp" id="pS" value="${esc(u.sign)}"></div><button class="btn block" id="pSave">保存</button>`,b=>{
+    b.querySelectorAll('[data-av]').forEach(x=>x.onclick=()=>{av=x.dataset.av;b.querySelectorAll('[data-av]').forEach(y=>y.classList.toggle('on',y===x))});
+    b.querySelector('#pSave').onclick=()=>{u.userAvatar=av;u.userName=b.querySelector('#pN').value.trim()||'草莓小姐';u.sign=b.querySelector('#pS').value.trim();save();closeSheet();RENDER[current]&&RENDER[current]()};
+  });
+}
+
+/* ================= boot ================= */
+applyWall();tick();setInterval(tick,15000);renderHome();
+</script>
+</body>
+</html>
